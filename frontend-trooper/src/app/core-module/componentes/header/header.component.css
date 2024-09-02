@@ -1,42 +1,46 @@
 .custom-navbar {
     background-color: #ebe8e850; 
     position: absolute; 
-    top: 20px; /* Mueve la navbar hacia abajo */
+    top: 20px; 
     width: 100%;
     z-index: 10;
-    height: 62px; /* Altura de la navbar */
+    height: 62px; 
     padding: 0 20px;
     display: flex;
     align-items: center;
     margin-top: 3px;
 }
 
+.collapsenavbar-collapse{
+    background-color: #000;
+}
+
 .navbar-logo {
-    height: 70px; /* Tamaño del logo ajustado */
+    height: 50px; 
     width: auto;
 }
 
 .navbar-nav {
     display: flex;
     align-items: center;
-    margin-left: 20px; /* Espacio entre el logo y los links */
+    margin-left: 20px; 
 }
 
 .nav-link {
-    color: #000; /* Color de los enlaces */
+    color: #000; 
     font-weight: 500;
     margin-right: 15px;
-    padding: 10px 0; /* Ajusta el padding para centrar verticalmente */
+    padding: 10px 0; 
 }
 
 .nav-link:hover {
-    color: var(--color-background); /* Color al hacer hover */
+    color: var(--color-background); 
 }
 
 .navbar-buttons {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Empuja los botones hacia la derecha */
+    margin-left: auto;
 }
 
 .btn-login, .btn-register {
@@ -51,30 +55,29 @@
 }
 
 .btn-register {
-    background-color: #333; /* Fondo oscuro para el botón de registro */
+    background-color: #333; 
     color: var(--color-white);
 }
 
 .btn-login:hover {
-    background-color: #a3a3a3; /* Fondo más oscuro al hacer hover */
+    background-color: #a3a3a3; 
 }
 
 .btn-register:hover {
-    background-color: var(--color-background); /* Fondo más oscuro al hacer hover */
+    background-color: var(--color-background); 
 }
 
 .user-menu {
     display: flex;
     align-items: center;
-    position: relative;
 }
 
 .user-menu .btn-user {
     background-color: var(--color-background);
     color: #fff;
     border: none;
-    padding: 8px 10px;
-    border-radius: 40%;
+    padding: 7px 8px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,22 +91,39 @@
     display: inline-block;
 }
 
-.dropdown-menu {
-    background-color: #ffffff; /* Fondo del menú desplegable */
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
 
-.dropdown-item {
-    color: #333; /* Color de los enlaces en el menú */
-    padding: 8px 15px;
-}
 
-.dropdown-item:hover {
-    background-color: #f1f1f1; /* Fondo al hacer hover en los items */
-}
+/* Media queries para pantallas pequeñas */
+@media (max-width: 576px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinear los links a la izquierda */
+        width: 100%;
+        padding-left: 20px;
+    }
 
-.dropdown-divider {
-    margin: 0;
+    .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinear los botones a la izquierda */
+        width: 100%;
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+
+    .btn-login, .btn-register, .user-menu {
+        width: calc(100% - 40px); /* Adaptar los botones al tamaño de la pantalla */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .user-menu {
+        justify-content: flex-start;
+    }
 }
