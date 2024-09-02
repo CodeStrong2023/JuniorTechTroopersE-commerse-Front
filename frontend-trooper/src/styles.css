@@ -13,9 +13,15 @@
     --color-background: #081C1B;
     --color-footer: #151515;
     --color-card: #606160;
+    --color-white: #FFFFFF;
   }
 
 body {
     background-color: var(--color-background);
     color: var(--color-text);
+}
+
+::selection {
+    background-color: var(--color-card);
+    
 }

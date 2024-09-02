@@ -12,7 +12,7 @@
 }
 
 .navbar-logo {
-    height: 50px; /* Tamaño del logo ajustado */
+    height: 70px; /* Tamaño del logo ajustado */
     width: auto;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .nav-link:hover {
-    color: #0056b3; /* Color al hacer hover */
+    color: var(--color-background); /* Color al hacer hover */
 }
 
 .navbar-buttons {
@@ -40,8 +40,8 @@
 }
 
 .btn-login, .btn-register {
-    background-color: #c5dc00;
-    color: #000;
+    background-color: var(--color-button);
+    color: var(--color-text);
     border: none;
     margin-right: 10px;
     padding: 5px 15px;
@@ -52,24 +52,29 @@
 
 .btn-register {
     background-color: #333; /* Fondo oscuro para el botón de registro */
-    color: #fff;
+    color: var(--color-white);
 }
 
-.btn-login:hover, .btn-register:hover {
-    background-color: #1d2b53; /* Fondo más oscuro al hacer hover */
+.btn-login:hover {
+    background-color: #a3a3a3; /* Fondo más oscuro al hacer hover */
+}
+
+.btn-register:hover {
+    background-color: var(--color-background); /* Fondo más oscuro al hacer hover */
 }
 
 .user-menu {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .user-menu .btn-user {
-    background-color: #1d2b53;
+    background-color: var(--color-background);
     color: #fff;
     border: none;
-    padding: 5px 10px;
-    border-radius: 50%;
+    padding: 8px 10px;
+    border-radius: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,4 +86,24 @@
     height: 20px;
     width: 20px;
     display: inline-block;
+}
+
+.dropdown-menu {
+    background-color: #ffffff; /* Fondo del menú desplegable */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.dropdown-item {
+    color: #333; /* Color de los enlaces en el menú */
+    padding: 8px 15px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1; /* Fondo al hacer hover en los items */
+}
+
+.dropdown-divider {
+    margin: 0;
 }
