@@ -57,7 +57,7 @@
 }
 
 .user-icon {
-    background-image: url('../../../../assets/icons/user/user.png'); /* Reemplaza con la imagen del ícono de usuario */
+    background-image: url('../../../../assets/icons/user/user.png'); 
     background-size: cover;
     height: 20px;
     width: 20px;
@@ -65,6 +65,6 @@
 }
 
 .navbar-logo {
-    height: 60px; /* Aumenta el tamaño según lo que necesites */
+    height: 60px; 
     width: auto;
 }

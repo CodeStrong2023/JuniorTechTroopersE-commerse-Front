@@ -4,3 +4,18 @@
     font-weight: weight;
     font-style: normal;
 }
+
+/* Variables de colores */
+:root {
+    --color-primary: #222222;
+    --color-button: #BCCE04;
+    --color-text: #000000;
+    --color-background: #081C1B;
+    --color-footer: #151515;
+    --color-card: #606160;
+  }
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
