@@ -1,6 +1,6 @@
 .banner-container {
     position: relative;
-    height: 100vh; /* Altura completa de la pantalla */
+    height: 100vh;
     width: 100%;
     overflow: hidden;
 }
@@ -8,28 +8,139 @@
 .banner-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin distorsión */
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
 }
 
+.banner-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinea el contenido al inicio (parte superior) */
+    z-index: 3;
+    margin-top: 100px; /* Mantiene el título justo debajo del navbar */
+    padding: 0 40px;
+}
+
+.banner-title {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    text-align: left;
+}
+
+.banner-logo {
+    height: 300px; /* Aumenta la altura del logo */
+    width: 383px;
+    position: absolute;
+    right: 130px; /* Ajusta la distancia desde el borde derecho */
+    top: 130px; /* Ajusta la distancia desde la parte superior */
+}
+
 .banner-content {
     position: relative;
-    z-index: 2; /* Asegura que el contenido esté por encima de la imagen */
+    z-index: 2;
     color: white;
     text-align: center;
-    top: 50%;
+    top: 55%; /* Mantén el filtro centrado verticalmente */
     transform: translateY(-50%);
+    width: 100%;
 }
 
 .search-box {
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto 0;
+    margin-top: 80px;
+    background-color: #1c1d1ba1;
+    padding: 15px;
+    border-radius: 8px;
+    width: 50%;
 }
 
-.search-box input, .search-box button {
-    padding: 10px;
-    margin: 5px;
+.input-container {
+    position: relative;
+    flex-grow: 1;
+}
+
+.input-container i {
+    position: absolute;
+    top: 52%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+.search-box input {
+    padding: 10px 10px 10px 40px;
+    margin: 0;
     border-radius: 5px;
     border: none;
+    font-size: 16px;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    box-sizing: border-box;
+}
+
+.search-box input[type="date"] {
+    width: 100%;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #d4e017;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Iconos personalizados */
+.icon-bed::before,
+.icon-calendar::before,
+.icon-search::before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.icon-bed::before {
+    background-image: url('../../../../../assets/icons/filtro/cama.png');
+}
+
+.icon-calendar::before {
+    background-image: url('../../../../../assets/icons/filtro/calendario.png');
+}
+
+/* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .search-box {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .input-container,
+    .search-box button {
+        width: 100%;
+    }
+
+    .input-container i {
+        left: 15px;
+    }
 }

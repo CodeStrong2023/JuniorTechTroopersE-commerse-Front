@@ -21,10 +21,16 @@
           <div class="navbar-buttons ms-auto">
               <button class="btn btn-login">Iniciar sesión</button>
               <button class="btn btn-register">Registrarse</button>
-              <div class="user-menu">
-                  <button class="btn btn-user">
+              <div class="user-menu dropdown">
+                  <button class="btn btn-user dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                       <span class="user-icon"></span>
                   </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                      <li><a class="dropdown-item" href="#">Perfil</a></li>
+                      <li><a class="dropdown-item" href="#">Mis Reservas</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                  </ul>
               </div>
           </div>
       </div>
