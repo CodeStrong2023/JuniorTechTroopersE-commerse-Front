@@ -11,7 +11,17 @@
         <div class="search-box">
             <div class="input-container">
                 <i class="icon-bed"></i>
-                <input type="text" placeholder="¿A dónde vas?" />
+                <input type="text" 
+                       placeholder="¿A dónde vas?" 
+                       (input)="onSearchLocation($event)" 
+                       [value]="selectedLocation?.nombre"/>
+                <!-- Lista de sugerencias -->
+                <ul *ngIf="suggestions.length > 0">
+                    <li *ngFor="let suggestion of suggestions" 
+                        (click)="selectSuggestion(suggestion)">
+                        {{ suggestion.nombre }}
+                    </li>
+                </ul>
             </div>
             <div class="input-container">
                 <i class="icon-calendar"></i>
@@ -22,4 +32,6 @@
             </button>
         </div>
     </div>
+    
+    
 </div>
