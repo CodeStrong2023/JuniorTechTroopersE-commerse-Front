@@ -128,6 +128,31 @@
     background-image: url('../../../../../assets/icons/filtro/calendario.png');
 }
 
+
+/*Estilos de filtro y sugerencias*/
+.input-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.322);
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .input-container ul li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .input-container ul li:hover {
+    background-color: #f0f0f0;
+  }
+  
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .search-box {

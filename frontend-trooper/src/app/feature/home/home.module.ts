@@ -7,6 +7,7 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
 import { TendenciasComponent } from './componentes/tendencias/tendencias.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { CoreModule } from '../../core-module/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CoreModule } from '../../core-module/core.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ]
 })
 export class HomeModule { }
