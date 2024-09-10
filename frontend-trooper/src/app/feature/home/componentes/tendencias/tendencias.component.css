@@ -1,0 +1,131 @@
+.v39_304 {
+
+    /* Nuestros alojamientos */
+
+    position: absolute;
+    width: 1101px;
+    height: 170px;
+    left: 145px;
+    top: 1000px;
+
+    font-family: 'Kodchasan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 125px;
+
+    color: #BCCE04;
+
+}
+
+.v51_88 {
+    /* Tendencias */
+
+    position: absolute;
+    width: 785px;
+    height: 160px;
+    left: 1043px;
+    top: 1100px;
+
+    font-family: var(--font-title2);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 128px;
+    line-height: 120px;
+    /* identical to box height */
+    letter-spacing: -0.0em;
+
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.v51_75 {
+    /* Card 3 */
+
+    position: absolute;
+    width: 900px;
+    height: 332px;
+    left: 522px;
+    top: 1300px;
+
+    background: rgba(96, 97, 96, 0.5);
+    border-radius: 20px;
+
+}
+
+.v228_416 {
+    position: absolute;
+    width: 900px;
+    height: 332px;
+    left: 522px;
+    top: 1700px;
+
+    background: rgba(96, 97, 96, 0.5);
+    border-radius: 20px;
+
+}
+
+.v228_407 {
+    position: absolute;
+    width: 900px;
+    height: 332px;
+    left: 522px;
+    top: 2100px;
+
+    background: rgba(247, 248, 247, 0.322);
+    border-radius: 20px;
+}
+
+.v228_411 {
+    /* Frame 15 */
+
+    position: absolute;
+    width: 386px;
+    height: 280px;
+    left: 484px;
+    top: 18px;
+
+
+}
+
+.v51_80 {
+    /* Cabaña Montaña Verde */
+
+    width: 300px;
+    height: 24px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+
+    color: var(--color-button);
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
+.v51_81 {
+    /* San Rafael | Disfruta de vistas panorámicas a la montaña desde nuestra encantadora cabaña, que cuenta con una reluciente piscina privada, una cochera para tu comodidad y una acogedora zona de parrilla. */
+
+    position: absolute;
+    width: 367px;
+    height: 102px;
+    left: 500px;
+    top: 100px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    /* or 112% */
+
+    color: #FFFEFC;
+
+
+}
