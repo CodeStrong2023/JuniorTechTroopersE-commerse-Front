@@ -1,5 +1,9 @@
 .footer {
     position: relative;
+    /* O 'absolute' si es necesario */
+    z-index: 0;
+    /* Asegura que esté detrás de las cards */
+    margin-top: 300px;
     background-color: #111;
     /* Fondo oscuro */
     padding: 20px;
