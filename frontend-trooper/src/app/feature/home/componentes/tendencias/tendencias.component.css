@@ -5,92 +5,79 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: auto;
-    /* Asegura que la página se ajuste correctamente */
     overflow-x: hidden;
-
 }
 
-/* El contenedor v39_307 usando flexbox para centrar */
 .v39_307 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 20px;
-    /* Espacio entre las cards */
     margin-bottom: 100px;
-    /* Aumenta el margen inferior para que no se superponga el footer */
     position: relative;
-    /* Añade esta posición si es necesario */
     min-height: 100vh;
 }
 
+/* Título Nuestros alojamientos - Siempre por encima */
 .v39_304 {
-    /* Nuestros alojamientos */
     position: absolute;
-    width: 1101px;
-    height: 170px;
-    margin-left: 145px;
-    margin-top: 60px;
     font-family: 'Kodchasan';
     font-style: normal;
     font-weight: 400;
+    color: #BCCE04;
+    /* Tamaños y posición iniciales */
     font-size: 96px;
     line-height: 125px;
-    color: #BCCE04;
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+    z-index: 2;
+    /* Asegura que siempre esté por encima */
 }
 
+/* Título Tendencias - Debajo de Nuestros alojamientos */
 .v51_88 {
-    /* Tendencias */
     position: relative;
-    width: 785px;
-    height: 160px;
-    margin-left: 1043px;
-    top: 140px;
     font-family: var(--font-title2);
     font-style: normal;
+    top: 160px;
+    left: 1000px;
     font-weight: 400;
-    font-size: 128px;
-    line-height: 160px;
     letter-spacing: 0.1em;
     color: rgba(255, 255, 255, 0.3);
+    /* Tamaños y posición iniciales */
+    font-size: 128px;
+    line-height: 160px;
+    width: 100%;
+    /* Debajo de Nuestros alojamientos */
+    z-index: 1;
+    /* Mantiene la jerarquía */
 }
 
-/* Estilos generales para las cards */
+/* Cards */
 .card {
     position: relative;
     width: 800px;
     height: 500px;
-    z-index: 1;
-    top: 200px;
     margin: 30px;
+    top: 120px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(3, 3, 3, 0.753);
     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* Imagen de las cards */
 .card__image {
-    position: cover;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    object-fit: cover;
     border-radius: 10px;
 }
 
-.card__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-/* Contenido de las cards */
 .card__content {
     position: absolute;
     bottom: 0;
@@ -98,40 +85,49 @@ body {
     width: 100%;
     padding: 20px;
     background-color: rgba(7, 7, 7, 0.53);
-    /* Ajusta el color si es necesario */
     transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* Títulos de las cards */
 .card__title {
     font-size: 22px;
     font-weight: 400;
-    margin-bottom: 1px;
     color: var(--color-button);
-    font-family: var(--font-title2);
 }
 
-/* Textos dentro de las cards */
 .card__text {
     font-size: 16px;
-    line-height: 1;
-    margin-bottom: 20px;
     color: #f5f3ee;
-    font-weight: 300;
 }
 
-/* Botones de las cards */
 .card__button {
-    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-button);
+    font-weight: 600;
+    color: var(--color-background);
+    border-radius: 5px;
+    text-decoration: none;
+    ;
+}
+
+.card__button:hover {
+    background-color: rgba(4, 67, 70, 0);
+    font-weight: 600;
+    color: var(--color-button);
+}
+
+.provincias__button {
     padding: 10px 20px;
     background-color: var(--color-button);
     font-weight: 600;
     color: var(--color-background);
     text-decoration: none;
     border-radius: 5px;
+    margin-top: 130px;
+
+    display: inline-block;
 }
 
-.card__button:hover {
+.provincias__button:hover {
     background-color: rgba(4, 67, 70, 0);
     font-weight: 600;
     color: var(--color-button);
@@ -150,56 +146,125 @@ body {
     transform: translateY(-160%);
 }
 
+/* Media Queries para mantener el diseño y hacerlo responsive */
+@media (max-width: 1200px) {
+    .card {
+        width: 90%;
+        height: 450px;
+    }
 
-/* Botón debajo de las cards */
-.provincias__button {
-    padding: 10px 20px;
-    background-color: var(--color-button);
-    font-weight: 600;
-    top: 160px;
-    color: var(--color-background);
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 40px;
-    /* Aumenta el margen superior para separar del contenido */
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    /* Asegura que esté por encima de otros elementos */
+    .v39_304 {
+        font-size: 80px;
+        margin-top: 40px;
+        position: center;
+        /* Mantener espacio arriba */
+    }
+
+    .v51_88 {
+        font-size: 60px;
+        margin-top: 10px;
+        left: 400px;
+    }
 }
 
-.provincias__button:hover {
-    background-color: rgba(4, 67, 70, 0);
-    font-weight: 600;
-    color: var(--color-button);
+@media (max-width: 992px) {
+    .card {
+        width: 85%;
+        height: 400px;
+    }
+
+    .v39_304 {
+        font-size: 70px;
+        margin-top: 30px;
+        position: center;
+        /* Espacio más ajustado */
+    }
+
+    .v51_88 {
+        font-size: 70px;
+        margin-top: 20px;
+        left: 250px;
+    }
+
+    .card:hover .card__content {
+        transform: translateY(-100%);
+    }
+    .provincias__button {
+        width: 40%;
+        text-align: center;
+    }
 }
 
-/* Estilos únicos para la primera card */
-.card-1 .card__title {
-    color: var(--color-button);
-    /* Ejemplo de cambio de color */
+@media (max-width: 768px) {
+    .v39_307 {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 90%;
+        height: 350px;
+    }
+
+    .v39_304 {
+        font-size: 50px;
+        margin-top: 20px;
+        /* Ajustar para pantallas pequeñas */
+    }
+
+    .v51_88 {
+        font-size: 70px;
+        top: 80px;
+        left: 190px;
+    }
+
+    .provincias__button {
+        width: 40%;
+        text-align: center;
+    }
+
+    .card:hover .card__content {
+        transform: translateY(-80%);
+    }
+
 }
 
-.card-1 .card__text {
-    font-size: 18px;
-}
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+        height: auto;
+    }
 
-/* Estilos únicos para la segunda card */
-.card-2 .card__title {
-    color: var(--color-button);
-    /* Ejemplo de cambio de color */
-}
+    .v39_304 {
+        font-size: 40px;
+        margin-top: 15px;
+    }
 
-.card-2 .card__text {
-    font-size: 18px;
-}
+    .v51_88 {
+        font-size: 40px;
+        top: 80px;
+        left: 160px;
+    }
+    .card {
+        width: 90%;
+        height: 350px;
+        top: 40px;
+    }
 
-/* Estilos únicos para la tercera card */
-.card-3 .card__title {
-    color: var(--color-button);
-    /* Ejemplo de cambio de color */
-}
+    .card__title {
+        font-size: 18px;
+    }
 
-.card-3 .card__text {
-    font-size: 18px;
+    .card__text {
+        font-size: 14px;
+    }
+
+    .provincias__button {
+        width: 40%;
+        text-align: center;
+    }
+
+    .card:hover .card__content {
+        transform: translateY(-80%);
+    }
+
 }
