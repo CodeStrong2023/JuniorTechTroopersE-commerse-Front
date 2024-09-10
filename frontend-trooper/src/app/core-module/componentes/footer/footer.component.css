@@ -1,9 +1,12 @@
 .footer {
-    background-color: #111; /* Fondo oscuro */
+    position: relative;
+    background-color: #111;
+    /* Fondo oscuro */
     padding: 20px;
-    color: #D0E218; /* Texto en color amarillo verdoso */
+    color: #D0E218;
+    /* Texto en color amarillo verdoso */
     text-align: center;
-   font-weight: 200;
+    font-weight: 200;
     font-size: 14px;
 }
 
@@ -13,13 +16,17 @@
     align-items: center;
 }
 
-.footer-left, .footer-center, .footer-right {
+.footer-left,
+.footer-center,
+.footer-right {
     flex: 1;
     display: flex;
     justify-content: center;
 }
 
-.footer-left p, .footer-center p, .footer-right p {
+.footer-left p,
+.footer-center p,
+.footer-right p {
     margin: 0;
 }
 
@@ -32,9 +39,9 @@
         flex-direction: column;
     }
 
-    .footer-left, .footer-center, .footer-right {
+    .footer-left,
+    .footer-center,
+    .footer-right {
         margin: 10px 0;
     }
 }
-
-

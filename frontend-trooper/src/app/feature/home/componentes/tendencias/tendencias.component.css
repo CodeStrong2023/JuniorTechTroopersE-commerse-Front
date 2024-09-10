@@ -1,111 +1,98 @@
 .v39_304 {
-
     /* Nuestros alojamientos */
-
     position: absolute;
     width: 1101px;
     height: 170px;
-    left: 145px;
-    top: 1000px;
-
+    margin-left: 145px;
+    margin-top: 40px;
     font-family: 'Kodchasan';
     font-style: normal;
     font-weight: 400;
     font-size: 96px;
     line-height: 125px;
-
     color: #BCCE04;
-
 }
 
 .v51_88 {
     /* Tendencias */
-
-    position: absolute;
+    position: relative;
     width: 785px;
     height: 160px;
-    left: 1043px;
-    top: 1100px;
-
+    margin-left: 1043px;
+    top: 90px;
     font-family: var(--font-title2);
     font-style: normal;
     font-weight: 400;
     font-size: 128px;
-    line-height: 120px;
-    /* identical to box height */
-    letter-spacing: -0.0em;
-
+    line-height: 160px;
+    letter-spacing: 0.1em;
     color: rgba(255, 255, 255, 0.3);
 }
 
-.v51_75 {
-    /* Card 3 */
-
-    position: absolute;
-    width: 900px;
-    height: 332px;
-    left: 522px;
-    top: 1300px;
-
-    background: rgba(96, 97, 96, 0.5);
-    border-radius: 20px;
-
-}
-
-.v228_416 {
-    position: absolute;
-    width: 900px;
-    height: 332px;
-    left: 522px;
-    top: 1700px;
-
-    background: rgba(96, 97, 96, 0.5);
-    border-radius: 20px;
-
-}
-
+.v51_76,
+.v228_416,
 .v228_407 {
-    position: absolute;
+    position: relative;
     width: 900px;
     height: 332px;
     left: 522px;
-    top: 2100px;
+    background: rgba(96, 97, 96, 0.3);
+    /* Fondo semitransparente */
+    border-radius: 12px;
+    margin-top: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
 
-    background: rgba(247, 248, 247, 0.322);
-    border-radius: 20px;
+    /* Aplicar el desenfoque al fondo */
+    backdrop-filter: blur(10px);
+    /* Ajusta la cantidad de desenfoque */
+    -webkit-backdrop-filter: blur(10px);
+    /* Soporte para navegadores WebKit */
 }
 
-.v228_411 {
-    /* Frame 15 */
+.foto-card {
+    /* foto card */
+    position: absolute;
+    width: 400px;
+    height: auto;
+    left: 19px;
+    top: 28px;
+    border-radius: 8px;
+}
+
+.v228_405 {
+    /*Boton visitar*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
 
     position: absolute;
-    width: 386px;
-    height: 280px;
-    left: 484px;
-    top: 18px;
+    width: 150px;
+    height: 41px;
+    left: 600px;
+    top: 260px;
 
-
+    background: linear-gradient(0deg, #BCCE04, #BCCE04), #FFFFFF;
+    border-radius: 10px;
 }
 
 .v51_80 {
-    /* Cabaña Montaña Verde */
-
-    width: 300px;
-    height: 24px;
-
+    position: absolute;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 25px;
     line-height: 30px;
-
-    color: var(--color-button);
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    color: #BCCE04;
+    left: 535px;
+    top: 40px;
+    margin-bottom: 15px;
+    /* Espacio entre el título y la descripción */
 
 }
 
@@ -116,16 +103,36 @@
     width: 367px;
     height: 102px;
     left: 500px;
-    top: 100px;
+    top: 120px;
 
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 16px;
     line-height: 18px;
     /* or 112% */
 
     color: #FFFEFC;
+}
 
+.v222_100 {
+    /* Botón general */
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 242px;
+    height: 40px;
+    left: 879px;
+    top: 2508px;
+
+    background: linear-gradient(0deg, #BCCE04, #BCCE04), #FFFFFF;
+    border-radius: 10px;
 
 }
