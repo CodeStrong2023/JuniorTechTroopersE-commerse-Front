@@ -4,9 +4,10 @@
     z-index: 0;
     /* Asegura que esté detrás de las cards */
     margin-top: 200px;
-    background-color: #111;
+    background-color: #11111186;
+    backdrop-filter: blur(10px);
     /* Fondo oscuro */
-    padding: 20px;
+    padding: 60px;
     color: #D0E218;
     /* Texto en color amarillo verdoso */
     text-align: center;
