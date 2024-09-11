@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HospedajeRoutingModule } from './hospedaje-routing.module';
 import { HospedajeProvinciasComponent } from './components/hospedaje-provincias/hospedaje-provincias.component';
+import { CoreModule } from '../../core-module/core.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { HospedajeProvinciasComponent } from './components/hospedaje-provincias/
   ],
   imports: [
     CommonModule,
-    HospedajeRoutingModule
+    HospedajeRoutingModule,
+    CoreModule
   ]
 })
 export class HospedajeModule { }
