@@ -71,14 +71,12 @@
     margin-top: 10px;
     padding: 20px;
     box-shadow: 0 2px 9px #020202f6
-    
 }
 
 
 .card:hover {
     transform: translateY(-10px);
     box-shadow: 0 6px 20px var(--color-button)
-    
 }
 
 .image {
@@ -183,9 +181,35 @@
     color: var(--color-button);
 }
 
+@media (max-width: 1366px) {
+    .contenedor-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 88px;
+        margin-top: 45px;
+    }
+
+    .v51_88 {
+        font-size: 110px;
+        left: 50px;
+    }
+}
+
 @media (max-width: 1200px) {
     .contenedor-cards {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 80px;
+        margin-top: 40px;
+    }
+
+    .v51_88 {
+        font-size: 90px;
+        left: 0;
     }
 }
 
@@ -193,10 +217,32 @@
     .contenedor-cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .v39_304 {
+        font-size: 50px;
+        margin-top: 30px;
+    }
+
+    .v51_88 {
+        font-size: 50px;
+        left: 0;
+        top:30px;
+    }
 }
 
 @media (max-width: 600px) {
     .contenedor-cards {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 40px;
+        margin-top: 1px;
+    }
+
+    .v51_88 {
+        font-size: 50px;
+        top: 40px;
+        left: 0;
     }
 }
