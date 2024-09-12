@@ -19,7 +19,8 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FiltroComponent
   ]
 })
 export class CoreModule { }
