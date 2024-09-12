@@ -1,0 +1,136 @@
+.banner-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;    
+    transform: translateY(-50%);
+    width: 100%;
+    margin-top: 250px;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 30px auto 0;
+    background-color: rgba(5, 5, 5, 0.377); /* Fondo transparente */
+    padding: 10px;
+    border-radius: 5px;
+    width: 60%; /* Ajuste de ancho para que sea más estrecho */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.input-container {
+    position: relative;
+    flex-grow: 1;
+}
+
+.input-container i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+
+.search-box input {
+    padding: 10px 10px 10px 35px;
+    margin: 0;
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    font-size: 14px;
+    width: 100%;
+    color: #050505; /* Texto oscuro */
+    background-color: #fff; /* Fondo blanco */
+    box-sizing: border-box;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    margin: 0;
+    border-radius: 5px;
+    border: none;
+    background-color: #d4e017; /* Ajusta el color al tono de la imagen */
+    color: black;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #c0cc10; /* Color más oscuro al pasar el ratón */
+    color: black;
+}
+
+/* Ajustes de iconos */
+.icon-bed::before,
+.icon-calendar::before,
+.icon-search::before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.icon-bed::before {
+    background-image: url('../../../../assets/icons/filtro/cama.png');
+}
+
+.icon-calendar::before {
+    background-image: url('../../../../assets/icons/filtro/calendario.png');
+}
+
+/* Estilos del menú desplegable */
+.input-container ul {
+    list-style: none; /* Quitar el estilo de lista */
+    margin: 0;
+    padding: 5px; /* Ajustar el padding */
+    position: absolute;
+    background: #f8f7f7; /* Fondo oscuro */
+    border: 1px solid #000000; /* Borde negro */
+    max-height: 200px; /* Hacer más largo */
+    border-radius: 20px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Alinear los elementos hacia abajo */
+}
+
+.input-container ul li {
+    padding: 10px;
+    cursor: pointer;
+    background: none; /* Eliminar fondo */
+    color: #000; /* Letras negras */
+    border-bottom: 1px solid #e0e0e0; /* Línea separadora */
+}
+
+.input-container ul li:last-child {
+    border-bottom: none; /* Quitar línea al último elemento */
+}
+
+.input-container ul li:hover {
+    background-color: #f0f0f0; /* Fondo al pasar el ratón */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    .search-box {
+        width: 90%; /* Ajusta el ancho para dispositivos móviles */
+        flex-wrap: wrap;
+    }
+
+    .input-container,
+    .search-box button {
+        width: 100%;
+    }
+}
