@@ -23,7 +23,7 @@
     line-height: 125px;
     width: 100%;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 50px;
     z-index: 2;
     /* Asegura que siempre esté por encima */
 }
@@ -51,41 +51,42 @@
 .contenedor-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    /* Cambiamos a 4 columnas */
     gap: 20px;
-    max-width: 1200px;
-    margin-top: 300px;
-    /* Esto bajará las cards */
+    max-width: 1400px;
+    margin-top: 180px;
 }
 
 .card {
     overflow: hidden;
     border-radius: 0.5rem;
-    max-width: 320px;
-    height: 500px;
+    max-width: 300px;
+    height: 460px;
     background-color: #07070749;
     backdrop-filter: blur(10px);
     color: #212121;
-    /* Puedes agregar margen inferior para más separación entre las cards */
-    margin-bottom: 200px;
+    margin-bottom: 1px;
     z-index: 5;
     position: relative;
-    margin-top: 150px;
-    /* Ajusta este valor para que la card se mueva hacia abajo */
+    margin-top: 10px;
     padding: 20px;
-
+    box-shadow: 0 2px 9px #020202f6
 }
+
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 6px #141414
+    box-shadow: 0 6px 20px var(--color-button)
 }
 
 .image {
     height: 270%;
     width: 269px;
     object-fit: cover;
+    margin-left: -5px;
+    align-items: center;
     border-radius: 8px;
-    box-shadow: 0 4px 6px #141414b7
+    box-shadow: 0 6px 9px #020202f6
 }
 
 
@@ -129,24 +130,26 @@
 .action {
     margin-top: 1rem;
     display: inline-block;
-    width: 60%;
+    width: 40%;
+    height: 20%;
     background-color: var(--color-button);
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: var(--font-title2);
-    line-height: 1.25rem;
+    line-height: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgb(26, 25, 25);
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .action:hover {
     background-color: #41410415;
-    box-shadow: 0 4px 6px var(--color-button);
+    box-shadow: 0 2px 12px var(--color-button);
     color: var(--color-button);
 }
 
@@ -160,24 +163,53 @@
 }
 
 .btn-ver-mas {
-    background-color: #c9da40;
+    background-color: var(--color-button);
+    width: 200px;
     color: #071b18;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 8px;
+    margin-top: 100px;
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s ease;
 }
 
 .btn-ver-mas:hover {
-    background-color: #d9ea5b;
+    background-color: #41410415;
+    box-shadow: 0 2px 12px var(--color-button);
+    color: var(--color-button);
+}
+
+@media (max-width: 1366px) {
+    .contenedor-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 88px;
+        margin-top: 45px;
+    }
+
+    .v51_88 {
+        font-size: 110px;
+        left: 50px;
+    }
 }
 
 @media (max-width: 1200px) {
     .contenedor-cards {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 80px;
+        margin-top: 40px;
+    }
+
+    .v51_88 {
+        font-size: 90px;
+        left: 0;
     }
 }
 
@@ -185,10 +217,32 @@
     .contenedor-cards {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .v39_304 {
+        font-size: 50px;
+        margin-top: 30px;
+    }
+
+    .v51_88 {
+        font-size: 50px;
+        left: 0;
+        top:30px;
+    }
 }
 
 @media (max-width: 600px) {
     .contenedor-cards {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .v39_304 {
+        font-size: 40px;
+        margin-top: 1px;
+    }
+
+    .v51_88 {
+        font-size: 50px;
+        top: 40px;
+        left: 0;
     }
 }

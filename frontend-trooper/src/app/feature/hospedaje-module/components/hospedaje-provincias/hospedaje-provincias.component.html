@@ -4,23 +4,22 @@
         <span class="v51_88">SUEÑOS</span>
     </div>
 
-    <div class="card">
-        <img class="image" src="../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg">
-        <div class="content">
-            <p class="text-1">
-                PALM RESORT
-            </p>
-            <div class="text-2">
-                <span>
-                    $150.000
-                </span>
-                <span>24 al 30 de abril</span>
+    <div class="contenedor-cards">
+        <!-- Genera 9 cards a partir de los datos del TypeScript -->
+        <div class="card" *ngFor="let card of cards">
+            <img class="image" [src]="card.image" alt="{{card.title}}">
+            <div class="content">
+                <p class="text-1">{{ card.title }}</p>
+                <p class="text-2">
+                    <span>${{ card.price | number }}</span>
+                    <span>24 al 30 de abril</span>
+                </p>
+                <a class="action" href="">
+                    RESERVAR
+                </a>
             </div>
-
-            <a class="action" href="">
-                RESERVAR
-            </a>
         </div>
     </div>
+
     <button class="btn-ver-mas">Ver más</button>
 </div>
