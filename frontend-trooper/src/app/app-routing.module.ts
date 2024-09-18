@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'hospedaje',
     loadChildren: () => import('./feature/hospedaje-module/hospedaje.module').then(m => m.HospedajeModule)  // Carga diferida de hospedaje TEMPORAL
   }
+  
 ];
 
 @NgModule({
