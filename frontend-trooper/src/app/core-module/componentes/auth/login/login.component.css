@@ -1,0 +1,117 @@
+.login-container {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    background-color: #121a1d;
+  }
+  
+  .left-section {
+    width: 50%;
+    background-image: url('../../../../../assets/images/login-registro/login-registro.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .title {
+    margin-bottom: 150px;
+  }
+  
+  .title h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.5em;
+    font-family: var(--font-text);
+    font-weight: 400;
+  }
+  
+  /* Aplica color verde a los primeros dos h2 */
+  .title h2:nth-child(1),
+  .title h2:nth-child(2) {
+    color: #b0c929; /* Color verde */
+  }
+  
+  /* El tercer h2 será blanco */
+  .title h2:nth-child(3) {
+    color: #ffffff;
+  }
+  
+  .right-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-title {
+    font-size: 2.5rem;
+    font-family: var(--font-title2);
+    color: #3b3939;
+    margin-bottom: 1.0rem;
+    text-align: left;
+    font-weight: light;
+  }
+  
+  .card {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 569px; 
+    text-align: center;
+  }
+  
+  .card form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card label {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    font-family: var(--font-text);
+  }
+  
+  .card input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .card button {
+    padding: 0.75rem;
+    background-color: #b0c929;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-text);
+  }
+  
+  .card button:hover {
+    background-color: #98a61f;
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .left-section, .right-section {
+      width: 100%;
+      height: 50%;
+    }
+  
+    .card {
+      width: 80%;
+    }
+  }
+  
