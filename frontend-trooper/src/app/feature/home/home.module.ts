@@ -7,8 +7,7 @@ import { TendenciasComponent } from './componentes/tendencias/tendencias.compone
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { CoreModule } from '../../core-module/core.module';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './componentes/auth/login/login.component';
-import { RegistroComponent } from './componentes/auth/registro/registro.component';
+
 
 
 @NgModule({
@@ -16,14 +15,14 @@ import { RegistroComponent } from './componentes/auth/registro/registro.componen
     BannerComponent,    
     TendenciasComponent,
     InicioComponent,
-    LoginComponent,
-    RegistroComponent
+   
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CoreModule,
     HttpClientModule
-  ]
+  ],
+ 
 })
 export class HomeModule { }
