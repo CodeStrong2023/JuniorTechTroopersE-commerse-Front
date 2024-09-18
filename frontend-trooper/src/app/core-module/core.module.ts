@@ -5,17 +5,22 @@ import { CoreRoutingModule } from './core-routing.module';
 import { HeaderComponent } from './componentes/header/header.component';
 import { FooterComponent } from './componentes/footer/footer.component';
 import { FiltroComponent } from './componentes/filtro/filtro.component';
+import { LoginComponent } from './componentes/auth/login/login.component';
+import { RegistroComponent } from './componentes/auth/registro/registro.component';
+
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    FiltroComponent
+    FiltroComponent,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,    
   ],
   exports:[
     HeaderComponent,

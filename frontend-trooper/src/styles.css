@@ -32,7 +32,10 @@ body {
     height: 100vh;
 }
 
-
+::selection {
+    background-color: var(--color-button);
+    color: var(--color-text);
+}
 
 ::-webkit-scrollbar {
     width: 15px;

@@ -9,17 +9,20 @@ import { CoreModule } from '../../core-module/core.module';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     BannerComponent,    
     TendenciasComponent,
-    InicioComponent
+    InicioComponent,
+   
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CoreModule,
     HttpClientModule
-  ]
+  ],
+ 
 })
 export class HomeModule { }
