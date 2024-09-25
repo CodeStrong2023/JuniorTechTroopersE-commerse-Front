@@ -38,6 +38,9 @@
 .footer-center p {
     text-align: center;
 }
+.logo-footer{
+    width: 150px;
+}
 
 @media (max-width: 768px) {
     .footer-content {

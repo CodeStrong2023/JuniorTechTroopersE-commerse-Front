@@ -37,10 +37,10 @@
 }
 
 .banner-logo {
-    height: 350px; /* Aumenta la altura del logo */
+    height: 200px; /* Aumenta la altura del logo */
     width: auto;
     position: absolute;
     right: 230px; /* Ajusta la distancia desde el borde derecho */
-    top: 20px; /* Ajusta la distancia desde la parte superior */
+    top: 100px; /* Ajusta la distancia desde la parte superior */
 }
 
