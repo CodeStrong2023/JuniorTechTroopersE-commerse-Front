@@ -25,17 +25,22 @@
 }
 
 .banner-title {
-    color: white;
-    margin: 0;
-    font-size: 24px;
-    text-align: left;
+    
+    width: 700px;
+    color:rgba(48, 48, 48, 0.788);
+    margin: 50px;
+    font-size: 40px;
+    position: absolute;
+    text-align: center;
+    top: 100px
+    
 }
 
 .banner-logo {
-    height: 300px; /* Aumenta la altura del logo */
-    width: 383px;
+    height: 350px; /* Aumenta la altura del logo */
+    width: auto;
     position: absolute;
-    right: 130px; /* Ajusta la distancia desde el borde derecho */
-    top: 130px; /* Ajusta la distancia desde la parte superior */
+    right: 230px; /* Ajusta la distancia desde el borde derecho */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
 }
 
