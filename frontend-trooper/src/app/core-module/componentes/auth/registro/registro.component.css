@@ -2,7 +2,7 @@
     display: flex;
     height: 100vh;
     justify-content: space-between;
-    background-color: #121a1d;
+
 }
 
 .left-section {
@@ -86,7 +86,8 @@
 
 /* Contenedor principal de la tarjeta */
 .card {
-    background-color: #2a2a2a; /* Fondo oscuro */
+    background-color: #fdfdfd07; /* Fondo oscuro */
+    backdrop-filter: blur(0.05rem);
     padding: 2rem;
     border-radius: 10px;
     width: 700px;
