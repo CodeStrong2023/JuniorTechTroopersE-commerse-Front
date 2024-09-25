@@ -1,151 +1,209 @@
+/* Pantallas grandes */
 .login-container {
     display: flex;
     height: 100vh;
     justify-content: space-between;
-    background-color: #121a1d;
-}
-
-.left-section {
-    width: 50%;
-    background-image: url('../../../../../assets/images/login-registro/login-registro.png'); 
-    background-size: cover;
-    background-position: center;
+  }
+  
+  .left-section {
+    width: 80%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
-}
-
-.title {
-    margin-bottom: 150px;
-}
-
-.title h2 {
+  }
+  
+  .registro {
+    position: relative;
+    top: 3px;
+    left: 50px;
+  }
+  
+  .imagen-registro {
+    display: block;
+    width: 100%;
+    opacity: 0.3;
+  }
+  
+  .title {
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     text-align: center;
-    margin: 0;
+    font-size: 30px;
+  }
+  
+  .title h2 {
+    margin: 2px;
     font-weight: 300;
     font-size: 1.5em;
     font-family: var(--font-text);
-    font-weight: 400;
-}
-
-/* Aplica color verde a los primeros dos h2 */
-.title h2:nth-child(1),
-.title h2:nth-child(2) {
-    color: #b0c929; /* Color verde */
-}
-
-/* El tercer h2 será blanco */
-.title h2:nth-child(3) {
     color: #ffffff;
-}
-
-.right-section {
+  }
+  
+  /* Aplica color verde a los primeros dos h2 */
+  .title h2:nth-child(1),
+  .title h2:nth-child(2) {
+    color: #b0c929;
+  }
+  
+  /* El tercer h2 será blanco */
+  .title h2:nth-child(3) {
+    color: #ffffff;
+  }
+  
+  .right-section {
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.login-title {
+    position: relative;
+    left: 300px;
+  }
+  
+  .login-title {
     font-size: 2.5rem;
     font-family: var(--font-title2);
-    color: #3b3939;
-    margin-bottom: 1.0rem;
+    color: var(--color-card);
+    margin-bottom: 1rem;
     text-align: left;
-    font-weight: light;
-}
-
-.card {
-    background-color: #2a2a2a;
+    font-weight: 300;
+  }
+  
+  /* Contenedor principal de la tarjeta */
+  .card {
+    background-color: #fdfdfd07; /* Fondo oscuro */
+    backdrop-filter: blur(0.05rem);
     padding: 2rem;
     border-radius: 10px;
-    width: 569px; 
+    width: 700px;
     text-align: center;
-}
-
-.card form {
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.486); /* Sombra para darle profundidad */
+  }
+  
+  /* Formulario y disposición de los elementos */
+  .card form {
     display: flex;
     flex-direction: column;
-}
-
-.card label {
-    color: #fff;
-    margin-bottom: 0.5rem;
-    text-align: left;
-    font-family: var(--font-text);
-}
-
-.card input {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-}
-
-.input-group {
+    gap: 1.5rem; /* Espacio entre cada grupo de inputs */
+    width: 100%;
+  }
+  
+  /* Estilo para los grupos de inputs */
+  .input-group {
     display: flex;
     justify-content: space-between;
-}
-
-.input-group input {
-    width: 48%; /* Para dividir los campos Nombre y Apellido */
-}
-
-.card button {
-    padding: 0.75rem;
-    background-color: #b0c929;
+    gap: -1.7rem; /* Espacio entre los inputs */
+  }
+  
+  /* Inputs individuales dentro de los grupos */
+  .input-group input {
+    width: 100%;
+    padding: 0.3rem;
     border: none;
     border-radius: 5px;
-    color: #000;
-    font-weight: bold;
+    font-size: 14px;
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+    background-color: #f5f5f5; /* Fondo claro */
+  }
+  
+  /* Estilo de los labels */
+  .card label {
+    color: #b0c929; /* Color verde para que coincida con el tema */
+    font-family: var(--font-text);
+    font-size: 14px;
+    margin-bottom: 0.3rem;
+    align-self: flex-start; /* Alinea los labels a la izquierda */
+  }
+  
+  /* Estilo de los inputs que no están en grupos */
+  .card input {
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #f5f5f5; /* Fondo claro para los inputs */
+    box-sizing: border-box;
+  }
+  
+  /* Botón de registro */
+  .card button {
+    padding: 0.75rem;
+    width: 140px; /* Ancho fijo para centrar el botón */
+    background-color: #b0c929; /* Verde brillante */
+    border: none;
+    border-radius: 9px;
+    color: var(--color-background);
+    font-weight: 500;
+    font-family: var(--font-text);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: var(--font-text);
-}
-
-.card button:hover {
-    background-color: #98a61f;
-}
-
-@media (max-width: 768px) {
+    align-self: center; /* Centra el botón */
+  }
+  
+  /* Efecto hover en el botón */
+  .card button:hover {
+    background-color: #41410415;
+    box-shadow: 0 2px 12px var(--color-button);
+    color: var(--color-button);
+  }
+  
+  /* Media Queries */
+  
+  /* Pantallas medianas (tablets) */
+  @media (max-width: 768px) {
     .login-container {
-        flex-direction: column;
+      flex-direction: column;
     }
-
-    .left-section, .right-section {
-        width: 100%;
-        height: 50%;
+  
+    .left-section,
+    .right-section {
+      width: 100%;
+      height: 50%;
     }
-
+  
     .card {
-        width: 80%;
+      width: 80%;
+      margin-top: 1rem; /* Espacio superior */
     }
-
+  
     .input-group input {
-        width: 100%;
+      width: 100%;
     }
-}
-
-@media (max-width: 480px) {
-    .login-container {
-        flex-direction: column;
-    }
-
+  
     .title h2 {
-        font-size: 1em;
+      font-size: 1.2em; /* Ajuste de tamaño */
     }
-
+  }
+  
+  /* Pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .title h2 {
+      font-size: 1em; /* Ajuste de tamaño */
+    }
+  
     .card {
-        width: 90%;
+      width: 90%;
+      padding: 1rem; /* Espacio interno */
+      margin-top: 2rem; /* Espacio superior */
     }
-
+  
     .login-title {
-        font-size: 1.5rem;
+      font-size: 1.5rem; /* Ajuste de tamaño */
     }
-
+  
     .input-group input {
-        width: 100%;
+      width: 100%;
     }
-}
+  }
+  
