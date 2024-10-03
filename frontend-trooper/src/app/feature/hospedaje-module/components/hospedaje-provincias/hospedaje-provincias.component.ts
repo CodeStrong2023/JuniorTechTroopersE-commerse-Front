@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hospedaje-provincias',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HospedajeProvinciasComponent {
 
+  constructor(private router: Router) { } 
   // Lista de cards con información para mostrar en el HTML
   cards = [
     {
