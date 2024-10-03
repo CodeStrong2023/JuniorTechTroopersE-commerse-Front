@@ -10,12 +10,12 @@ h3 {
 /* Contenedor Principal */
 .perfil-container {
   display: flex;
-  justify-content: center; /* Centra las cards horizontalmente */
+  justify-content: center;
   gap: 20px;
-  padding-top: 100px; /* Espacio debajo del header */
+  padding-top: 100px;
   padding-left: 50px;
   padding-right: 50px;
-  flex-wrap: wrap; /* Permite que las cards se ajusten al espacio */
+  flex-wrap: wrap;
 }
 
 /* Card de Perfil */
@@ -24,13 +24,13 @@ h3 {
   border-radius: 10px;
   padding: 20px;
   color: #fff;
-  max-width: 609px; /* Ajusta el ancho máximo */
+  max-width: 609px;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-bottom: 20px; /* Espacio entre perfil y contacto */
+  margin-bottom: 20px;
 }
 
 /* Imagen de perfil */
@@ -48,10 +48,10 @@ h3 {
   border-radius: 10px;
   padding: 20px;
   color: #fff;
-  max-width: 609px; /* Ajusta el ancho máximo */
+  max-width: 609px;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 10px; /* Espacio entre cards */
+  margin-top: 10px;
 }
 
 /* Card de Alojamientos */
@@ -60,29 +60,32 @@ h3 {
   border-radius: 10px;
   padding: 20px;
   color: #fff;
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 609px;
   box-sizing: border-box;
-  margin-bottom: 20px; /* Espacio debajo de la card */
+  margin-bottom: 20px;
+  position: relative;
 }
 
-/* Card de Mis Reservas (idéntica a la de Alojamientos) */
+/* Card de Mis Reservas */
 .reservas-card {
   background-color: #1f2e29;
   border-radius: 10px;
   padding: 20px;
   color: #fff;
-  width: 400px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 609px;
   box-sizing: border-box;
+  margin-bottom: 20px;
+  position: relative;
 }
 
-/* Botón de edición cuadrado y en la esquina inferior derecha */
+/* Botón de edición */
 .edit-btn {
   background-color: var(--color-button);
   border: none;
   width: 52px;
-  height: 35px; /* Tamaño cuadrado */
+  height: 35px;
   color: white;
   cursor: pointer;
   border-radius: 8px;
@@ -94,27 +97,61 @@ h3 {
   justify-content: center;
 }
 
+.edit-btn:hover {
+  background-color: #8dda5a;
+}
+
 /* Icono dentro del botón */
 .edit-btn i {
   font-size: 15px;
   color: black;
 }
 
+/* Botón de "Agregar más" */
+.add-btn {
+  background-color: var(--color-button);
+  border: none;
+  width: 50px;
+  height: 35px;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 20px;
+  right: 25px; /* Posiciona el botón dentro de la card, a la derecha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Icono dentro del botón */
+.add-btn i { 
+  font-size: 18px;
+  color: black;
+}
+
 /* Responsivo */
 @media screen and (max-width: 768px) {
   .perfil-container {
-    flex-direction: column; /* Cambia a disposición en columna */
+    flex-direction: column;
     padding-top: 50px;
     padding-left: 20px;
     padding-right: 20px;
   }
 
   .perfil-card, .contacto-card, .alojamientos-card, .reservas-card {
-    max-width: 100%; /* Asegura que ocupen todo el ancho en pantallas pequeñas */
+    max-width: 100%;
   }
 
   .edit-btn {
     bottom: 10px;
-    right: 10px; /* Ajusta la posición del botón en pantallas pequeñas */
+    right: 10px;
+  }
+
+  .add-btn {
+    
+    bottom: 10px;
+    right: 70px;
   }
 }
