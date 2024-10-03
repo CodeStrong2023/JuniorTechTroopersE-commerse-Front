@@ -1,3 +1,12 @@
+* {
+  font-family: var(--font-text);
+}
+
+h3 {
+  font-family: var(--font-title1);
+  color: var(--color-button);
+}
+
 /* Contenedor Principal */
 .perfil-container {
   display: flex;
@@ -24,10 +33,10 @@
   margin-bottom: 20px; /* Espacio entre perfil y contacto */
 }
 
-/* Imagen de perfil más grande */
+/* Imagen de perfil */
 .perfil-img {
   border-radius: 50%;
-  width: 200px; /* Tamaño más grande de la imagen de perfil */
+  width: 200px;
   height: 200px;
   margin-bottom: 10px;
   align-self: center;
@@ -52,21 +61,33 @@
   padding: 20px;
   color: #fff;
   width: 400px;
-  max-width: 100%; 
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Espacio debajo de la card */
+}
+
+/* Card de Mis Reservas (idéntica a la de Alojamientos) */
+.reservas-card {
+  background-color: #1f2e29;
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  width: 400px;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
 /* Botón de edición cuadrado y en la esquina inferior derecha */
 .edit-btn {
-  background-color: #6bcb77;
+  background-color: var(--color-button);
   border: none;
-  width: 52px;  /* Tamaño cuadrado */
-  height: 52px; 
+  width: 52px;
+  height: 35px; /* Tamaño cuadrado */
   color: white;
   cursor: pointer;
-  border-radius: 8px; /* Bordes ligeramente redondeados */
+  border-radius: 8px;
   position: absolute;
-  bottom: 20px; /* Posiciona el botón en la esquina inferior derecha */
+  bottom: 20px;
   right: 20px;
   display: flex;
   align-items: center;
@@ -75,7 +96,8 @@
 
 /* Icono dentro del botón */
 .edit-btn i {
-  font-size: 20px;
+  font-size: 15px;
+  color: black;
 }
 
 /* Responsivo */
@@ -87,7 +109,7 @@
     padding-right: 20px;
   }
 
-  .perfil-card, .contacto-card, .alojamientos-card {
+  .perfil-card, .contacto-card, .alojamientos-card, .reservas-card {
     max-width: 100%; /* Asegura que ocupen todo el ancho en pantallas pequeñas */
   }
 
