@@ -18,6 +18,7 @@
     border-radius: 5px;
     width: 60%; /* Ajuste de ancho para que sea más estrecho */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    overflow: visible; /* Permitir que los elementos internos sobresalgan */
 }
 
 .input-container {
@@ -101,7 +102,7 @@
     border-radius: 20px;
     overflow-y: auto;
     width: 100%;
-    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    z-index: 9999; /* Asegura que el menú esté por encima de otros elementos */
     display: flex;
     flex-direction: column; /* Alinear los elementos hacia abajo */
 }
@@ -135,6 +136,6 @@
     }
 
     .input-container ul {
-        z-index: 1000; /* Asegura que el menú esté por encima en móviles también */
+        z-index: 9999; /* Asegura que el menú esté por encima en móviles también */
     }
 }

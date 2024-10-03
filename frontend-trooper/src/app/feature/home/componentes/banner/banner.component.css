@@ -25,15 +25,13 @@
 }
 
 .banner-title {
-    
     width: 700px;
-    color:rgba(48, 48, 48, 0.788);
+    color: rgba(48, 48, 48, 0.788);
     margin: 50px;
     font-size: 40px;
     position: absolute;
     text-align: center;
-    top: 100px
-    
+    top: 100px;
 }
 
 .banner-logo {
@@ -44,3 +42,9 @@
     top: 100px; /* Ajusta la distancia desde la parte superior */
 }
 
+.filtro {
+    position: absolute; /* Posiciona el filtro relativo al contenedor */
+    top: 450px; /* Ajusta la distancia desde la parte superior */
+    width: 100%; /* Asegura que ocupe todo el ancho del banner */
+   
+}
