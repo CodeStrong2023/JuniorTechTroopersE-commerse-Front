@@ -1,0 +1,83 @@
+.perfil-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .perfil-card, .contacto-card, .alojamientos-card {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    padding: 20px;
+    color: #d3d3d3;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .perfil-foto {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+  
+  .nombre-usuario {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+  
+  .localizacion {
+    color: #ccc;
+    font-size: 14px;
+  }
+  
+  .editar-perfil-btn, .editar-contacto-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #6B4E73;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contacto-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contacto-card ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .contacto-card ul li i {
+    margin-right: 10px;
+  }
+  
+  .alojamientos-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .alojamientos-card th, .alojamientos-card td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .estado.disponible {
+    color: #90EE90; /* Verde para disponible */
+  }
+  
+  .estado.ocupado {
+    color: #FF6347; /* Rojo para ocupado */
+  }
+  
