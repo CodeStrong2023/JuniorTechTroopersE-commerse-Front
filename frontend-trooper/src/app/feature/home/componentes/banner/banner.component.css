@@ -18,33 +18,67 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Alinea el contenido al inicio (parte superior) */
+    align-items: center;
     z-index: 3;
-    margin-top: 100px; /* Mantiene el título justo debajo del navbar */
-    padding: 0 40px;
+    padding: 0 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25vh; /* Ajusta para bajar el título y el logo */
 }
 
 .banner-title {
-    width: 700px;
-    color: rgba(48, 48, 48, 0.788);
-    margin: 50px;
-    font-size: 40px;
-    position: absolute;
-    text-align: center;
-    top: 100px;
+    color: rgba(48, 46, 46, 0.9);
+    font-size: 2.0vw; /* Usa vw para hacerlo responsive */
+    text-align: left;
+    max-width: 600px;
+    line-height: 1.2;
+    margin: 0; /* Elimina los márgenes */
 }
 
 .banner-logo {
-    height: 200px; /* Aumenta la altura del logo */
+    height: 15vw; /* Usa vw para que se ajuste según el tamaño de la pantalla */
     width: auto;
-    position: absolute;
-    right: 230px; /* Ajusta la distancia desde el borde derecho */
-    top: 100px; /* Ajusta la distancia desde la parte superior */
+    max-height: 200px; /* Establece un límite máximo */
 }
 
 .filtro {
-    position: absolute; /* Posiciona el filtro relativo al contenedor */
-    top: 450px; /* Ajusta la distancia desde la parte superior */
-    width: 100%; /* Asegura que ocupe todo el ancho del banner */
-   
+    position: absolute;
+    top: 75%; /* Ajusta la distancia desde la parte superior */
+    width: 100%;  
+}
+
+@media (max-width: 768px) {
+    .banner-title {
+        font-size: 5vw; /* Ajusta el tamaño del texto en pantallas pequeñas */
+        max-width: 400px;
+    }
+
+    .banner-logo {
+        height: 100px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+        position: relative; /* Cambia la posición a relativa para evitar que se superponga */
+    }
+
+    .filtro {
+        top: 80%; /* Ajusta la distancia en pantallas pequeñas */
+        padding: 0 10px; /* Ajusta el padding para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-title {
+        font-size: 6vw; /* Aumenta aún más el tamaño del texto en pantallas muy pequeñas */
+    }
+
+    .banner-header {
+        flex-direction: column; /* Cambia el layout para pantallas muy pequeñas */
+        align-items: center;
+        margin-top: 20vh; /* Ajusta el margen superior para pantallas pequeñas */
+    }
+
+    .banner-logo {
+        margin-top: 20px;
+        height: 80px; /* Ajusta aún más el tamaño del logo */
+    }
 }
