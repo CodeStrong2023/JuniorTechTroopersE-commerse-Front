@@ -4,8 +4,7 @@
     color: white;
     text-align: center;    
     transform: translateY(-50%);
-    width: 100%;
-    margin-top: 650px;
+    width: 100%;    
 }
 
 .search-box {
@@ -24,6 +23,7 @@
 .input-container {
     position: relative;
     flex-grow: 1;
+    z-index: 100; /* Asegura que el input esté por encima */
 }
 
 .input-container i {
@@ -95,13 +95,13 @@
     margin: 0;
     padding: 5px; /* Ajustar el padding */
     position: absolute;
-    background: #f8f7f7; /* Fondo oscuro */
+    background: #f8f7f7; /* Fondo claro */
     border: 1px solid #000000; /* Borde negro */
-    max-height: 200px; /* Hacer más largo */
+    max-height: 200px; /* Ajustar la altura máxima */
     border-radius: 20px;
     overflow-y: auto;
     width: 100%;
-    z-index: 1;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
     display: flex;
     flex-direction: column; /* Alinear los elementos hacia abajo */
 }
@@ -132,5 +132,9 @@
     .input-container,
     .search-box button {
         width: 100%;
+    }
+
+    .input-container ul {
+        z-index: 1000; /* Asegura que el menú esté por encima en móviles también */
     }
 }
