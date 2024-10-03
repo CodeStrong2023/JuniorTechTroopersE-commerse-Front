@@ -199,6 +199,13 @@ footer {
     box-shadow: 0 2px 12px var(--color-button);
     color: var(--color-button);
 }
+
+
+.filtro {   
+    margin-top: 200px; /* Ajusta la distancia desde la parte superior */
+    width: 100%; /* Asegura que ocupe todo el ancho del banner */
+}
+
 footer{
     position: bottom;
     bottom: 0;

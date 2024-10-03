@@ -1,5 +1,9 @@
 <app-header></app-header>
+<div class="filtro">
+<app-filtro></app-filtro>
+</div>
 <div class="contenedor-principal">
+    
     
     <div class="v299_97">
         <span class="v39_304">El destino de tus</span>
@@ -16,13 +20,13 @@
                     <span>${{ card.price | number }}</span>
                     <span>24 al 30 de abril</span>
                 </p>
-                <a class="action" href="">
+                <a class="action"  routerLink="/detail">
                     RESERVAR
                 </a>
             </div>
         </div>
     </div>
 
-    <button class="btn-ver-mas">Ver más</button>
+    <button class="btn-ver-mas" routerLink="/detail">Ver más</button>
 </div>
 <app-footer></app-footer>
