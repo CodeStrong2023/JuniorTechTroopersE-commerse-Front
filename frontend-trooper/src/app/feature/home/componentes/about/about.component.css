@@ -1,7 +1,10 @@
+/* Variables de colores */
+
+
 .about-section {
-    padding: 50px;
-    background-color: #183d3d; /* Color de fondo oscuro */
+    padding: 50px;    
     text-align: center;
+    margin-top: 50px;
 }
 
 .about-header {
@@ -13,6 +16,7 @@
     font-size: 48px;
     font-weight: bold;
     margin: 0;
+    font-family: var(--font-title1);
 }
 
 .title-grey {
@@ -20,16 +24,18 @@
     font-size: 48px;
     font-weight: 400;
     margin: 0;
+    font-family: var(--font-title2);
 }
 
 .about-card {
-    background-color: #305c5c;
+    background-color: var(--color-card-2);
     padding: 30px;
     border-radius: 15px;
     max-width: 1100px;
     margin: 0 auto;
-    color: white;
+    color: var(--color-white);
     text-align: left;
+    font-family: var(--font-text);
 }
 
 .description {
@@ -39,7 +45,7 @@
 }
 
 .offer-title {
-    color: #f1c40f;
+    color: var(--color-button);
     font-size: 26px;
     margin-bottom: 20px;
 }
@@ -51,7 +57,7 @@
 }
 
 .offer-item {
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 10px;
     padding: 15px;
     width: 250px;
@@ -67,7 +73,7 @@
 .offer-item p {
     margin-top: 10px;
     font-size: 16px;
-    color: black;
+    color: var(--color-text);
 }
 
 /* Media Query para dispositivos móviles */
