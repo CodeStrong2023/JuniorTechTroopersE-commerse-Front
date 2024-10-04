@@ -1,6 +1,6 @@
 .custom-navbar {
-    background-color: #fcfafa1c;
-    backdrop-filter: blur(10px);
+    background-color: #fcfafa80;
+    backdrop-filter: blur(30px);
     position: absolute;
     top: 10px;
     width: 100%;

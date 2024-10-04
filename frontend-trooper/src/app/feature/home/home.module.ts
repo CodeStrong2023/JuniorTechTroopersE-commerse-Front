@@ -9,6 +9,7 @@ import { CoreModule } from '../../core-module/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './componentes/about/about.component';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TendenciasComponent,
     InicioComponent,
     ContactoComponent,
+    AboutComponent,
    
   ],
   imports: [
