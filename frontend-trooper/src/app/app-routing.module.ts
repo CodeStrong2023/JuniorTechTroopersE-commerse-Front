@@ -22,6 +22,8 @@ const routes: Routes = [
     loadChildren: () => import('./feature/usuario-module/usuario.module').then(m => m.UsuarioModule)  // Carga diferida de usuario TEMPORAL
   },
 
+ 
+
   
  
 ];
