@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="reservation-container">
     <h1 class="title">Crear nuevo hospedaje</h1>
   
@@ -59,8 +60,13 @@
   
           <!-- Imagen -->
           <div class="form-group">
-            <label for="image">Imagen del hospedaje</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
+            <label for="image-upload">Subir imagen</label>
+            <div class="custom-file-upload">
+              <label for="image-upload" class="upload-button">
+                <i class="bi bi-paperclip"></i> Subir imagen
+              </label>
+              <input type="file" id="image-upload" class="file-input">
+            </div>
           </div>
   
           <!-- Botones -->
@@ -72,4 +78,4 @@
       </div>
     </div>
   </div>
-  
+  <app-footer></app-footer>

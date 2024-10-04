@@ -1,142 +1,188 @@
 .reservation-container {
-    padding: 50px;
-    max-width: 1200px;
-    margin: 50px auto 0;
-    background-color: #102a40;
+  padding: 50px;
+  max-width: 1200px;
+  margin: 50px auto 0;  
+}
+
+.title {
+  font-size: 48px;
+  color: var(--color-button); /* Color del botón como título */
+  text-align: center;
+  font-family: var(--font-title1); /* Fuente de título desde variables */
+}
+
+.reservation-content {
+  display: flex;
+  justify-content: center; /* Centra la card */
+  margin-top: 50px;
+}
+
+.place-card {
+  background-color: var(--color-card-2); /* Uso de variable para el fondo de la card */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;  /* Limita el ancho máximo de la card */
+}
+
+h2 {
+  color: var(--color-button); /* Uso del color del botón */
+  font-family: var(--font-title2); /* Fuente desde variables */
+}
+
+h3 {
+  color: var(--color-card); /* Otro color desde las variables */
+  margin-bottom: 10px;
+  font-family: var(--font-title2); /* Fuente desde variables */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  color: var(--color-white); /* Uso de la variable para el texto blanco */
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-card); /* Borde con el color de la tarjeta */
+  border-radius: 5px;
+  background-color: var(--color-white); /* Fondo de la tarjeta */
+  color: var(--color-card-2); /* Texto blanco */
+}
+
+input[type="file"] {
+  padding: 10px;
+  background-color: var(--color-card-2); /* Fondo de la tarjeta */
+  color: var(--color-white); /* Texto blanco */
+  border: 1px solid var(--color-card); /* Borde con el color de la tarjeta */
+  border-radius: 5px;
+  width: 100%;
+}
+
+.services {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.services label {
+  color: var(--color-white); /* Texto blanco */
+  width: 48%;
+  margin-bottom: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.reserve-button,
+.cancel-button {
+  width: 48%;
+  padding: 15px;
+  background-color: var(--color-button); /* Uso de variable para el botón */
+  color: var(--color-primary); /* Texto primario */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  font-family: var(--font-title2); /* Fuente desde variables */
+}
+
+.reserve-button:hover {
+  background-color: #99cc00; /* No hay variable, se mantiene este color de hover */
+}
+
+.cancel-button {
+  background-color: #ff6666; /* Este color se mantiene */
+}
+
+.cancel-button:hover {
+  background-color: #ff4d4d; /* Hover del botón cancelar */
+}
+
+
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--color-card-2); /* Fondo del botón */
+  color: var(--color-white); /* Color del texto */
+  border: 1px solid var(--color-card); /* Borde */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--font-title2);
+  width: 100%; /* Botón al 100% */
+  text-align: center;
+}
+
+.upload-button i {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.upload-button:hover {
+  background-color: var(--color-card); /* Color de hover */
+}
+
+.upload-button:active {
+  background-color: #99cc00; /* Color de clic */
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .reservation-container {
+      padding: 30px;
   }
-  
-  .title {
-    font-size: 48px;
-    color: #ccff00;
-    text-align: center;
-  }
-  
-  .reservation-content {
-    display: flex;
-    justify-content: center; /* Centra la card */
-    margin-top: 50px;
-  }
-  
+
   .place-card {
-    background-color: #0c2a2e;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 600px;  /* Limita el ancho máximo de la card */
+      width: 100%;
   }
-  
-  h2 {
-    color: #ccff00;
-  }
-  
-  h3 {
-    color: #8a8d8d;
-    margin-bottom: 10px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    color: #fff;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #8a8d8d;
-    border-radius: 5px;
-    background-color: #0d4f60;
-    color: #fff;
-  }
-  
-  input[type="file"] {
-    padding: 10px;
-    background-color: #0d4f60;
-    color: #fff;
-    border: 1px solid #8a8d8d;
-    border-radius: 5px;
-    width: 100%;
-  }
-  
-  .services {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
+
   .services label {
-    color: #fff;
-    width: 48%;
-    margin-bottom: 10px;
+      width: 100%; /* Servicios en una columna en pantallas pequeñas */
   }
-  
-  .form-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .title {
+      font-size: 36px;
   }
-  
+
+  .place-card h2 {
+      font-size: 24px;
+  }
+
   .reserve-button,
   .cancel-button {
-    width: 48%;
-    padding: 15px;
-    background-color: #ccff00;
-    color: #102a40;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .reserve-button:hover {
-    background-color: #99cc00;
-  }
-  
-  .cancel-button {
-    background-color: #ff6666;
-  }
-  
-  .cancel-button:hover {
-    background-color: #ff4d4d;
-  }
-  
-  /* Media queries para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .reservation-container {
-      padding: 30px;
-    }
-  
-    .place-card {
-      width: 100%;
-    }
-  
-    .services label {
-      width: 100%; /* Servicios en una columna en pantallas pequeñas */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .title {
-      font-size: 36px;
-    }
-  
-    .place-card h2 {
-      font-size: 24px;
-    }
-  
-    .reserve-button,
-    .cancel-button {
       font-size: 16px;
-    }
   }
-  
+}
