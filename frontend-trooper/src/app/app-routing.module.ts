@@ -4,6 +4,7 @@ import path from 'path';
 import { HomeModule } from './feature/home/home.module';
 import { HospedajeModule } from './feature/hospedaje-module/hospedaje.module';
 
+
 const routes: Routes = [
   //Ruta por defecto para cargar el modulo de home
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: 'perfil-usuario',
     loadChildren: () => import('./feature/usuario-module/usuario.module').then(m => m.UsuarioModule)  // Carga diferida de usuario TEMPORAL
   },
+
+ 
+
+  
  
 ];
 

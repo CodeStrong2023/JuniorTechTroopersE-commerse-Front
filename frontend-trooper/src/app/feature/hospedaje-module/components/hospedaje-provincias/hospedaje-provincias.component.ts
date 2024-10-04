@@ -9,6 +9,13 @@ import { Router } from '@angular/router';
 export class HospedajeProvinciasComponent {
 
   constructor(private router: Router) { } 
+
+  ngOnInit(): void {}
+
+  info(){
+    this.router.navigate(['/info']);
+  }
+
   // Lista de cards con información para mostrar en el HTML
   cards = [
     {

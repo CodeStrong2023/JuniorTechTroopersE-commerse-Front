@@ -7,6 +7,8 @@ import { TendenciasComponent } from './componentes/tendencias/tendencias.compone
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { CoreModule } from '../../core-module/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,13 +17,16 @@ import { HttpClientModule } from '@angular/common/http';
     BannerComponent,    
     TendenciasComponent,
     InicioComponent,
+    ContactoComponent,
    
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
  
 })

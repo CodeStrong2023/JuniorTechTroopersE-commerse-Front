@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HospedajeModule } from './hospedaje.module';
 import { HospedajeProvinciasComponent } from './components/hospedaje-provincias/hospedaje-provincias.component';
 import { DetalleHospedajeComponent } from './components/detalle-hospedaje/detalle-hospedaje.component';
+import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hospedaje.component';
+
 
 const routes: Routes = [
   {path:'', component: HospedajeProvinciasComponent},
-  {path:'detail', component: DetalleHospedajeComponent},
+  {path:'info', component: DetalleHospedajeComponent},
+  {path: 'nuevo', component: NuevoHospedajeComponent}
 
   
 ];

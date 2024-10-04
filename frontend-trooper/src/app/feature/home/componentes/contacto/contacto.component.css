@@ -1,0 +1,163 @@
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: space-between;  
+}
+
+/* Sección Izquierda */
+.left-section {
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  color: #b0c929;
+  font-family: sans-serif;
+  padding: 0 2rem;
+  z-index: 1;
+}
+
+.title h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 2.0vw; /* Tamaño adaptativo para pantallas grandes */
+}
+
+.title-gray{
+  color: #f5f5f5;
+}
+
+/* Sección Derecha */
+.right-section {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.contact-card {
+  background-color: #fdfdfd07;
+  backdrop-filter: blur(0.05rem);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card h2 {
+  color: #b0c929;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.form-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #b0c929;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #97a81b;
+}
+
+/* Media Queries */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto; /* Permite que el contenedor crezca de acuerdo al contenido */
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-card {
+    width: 90%;
+  }
+
+  .title h2 {
+    font-size: 5vw; /* Aumentar el tamaño en pantallas medianas */
+  }
+}
+
+.alert {
+  position: absolute; 
+  top: 20px; /* Espaciado desde la parte superior */
+  right: 20px; /* Espaciado desde la derecha */
+  z-index: 9999; 
+  max-width: 300px; 
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    height: auto; /* Permite que el contenedor se ajuste a pantallas más pequeñas */
+  }
+
+  .left-section, .right-section {
+    width: 100%;
+    height: auto;
+  }
+
+  .title {
+    padding: 0 1rem; /* Ajustar el padding para pantallas pequeñas */
+  }
+
+  .title h2 {
+    font-size: 7vw; /* Aumentar el tamaño en pantallas pequeñas */
+  }
+
+  .contact-card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .form-group input, .form-group textarea {
+    font-size: 0.9rem; /* Reducir un poco el tamaño de texto */
+  }
+}

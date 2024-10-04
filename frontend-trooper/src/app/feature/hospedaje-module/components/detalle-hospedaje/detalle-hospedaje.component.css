@@ -1,104 +1,146 @@
 .reservation-container {
-    padding: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #102a40;
-  }
-  
-  .title {
-    font-size: 48px;
-    color: #ccff00;
-    text-align: center;
-  }
-  
-  .title span {
-    font-size: 40px;
-    color: #8a8d8d;
-  }
-  
+  padding: 50px;
+  max-width: 1200px;
+  margin: 50px auto 0;  /* Añadimos margen superior */
+}
+
+.title {
+  font-size: 48px;
+  color: #ccff00;
+  text-align: center;
+  font-family: var(--font-title1);
+}
+
+.title span {
+  font-size: 40px;
+  color: #8a8d8d;
+  font-family: var(--font-title2)
+}
+
+.reservation-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  flex-wrap: wrap;  /* Permite que las tarjetas se reorganicen en pantallas pequeñas */
+}
+
+.place-card,
+.price-card {
+  background-color: #0c2a2e;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 48%;  /* Cambia a 100% en pantallas pequeñas */
+  margin-bottom: 20px;  /* Espacio entre tarjetas en pantallas pequeñas */
+}
+
+.place-card h2,
+.price-card h2 {
+  color: #ccff00;
+}
+
+.place-card p,
+.place-details,
+.price-card span {
+  color: #fff;
+}
+
+.place-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.price-card h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.check-in-out {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.check-in,
+.check-out {
+  width: 48%;
+}
+
+label {
+  color: #fff;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #8a8d8d;
+  border-radius: 5px;
+  background-color: #0d4f60;
+  color: #fff;
+}
+
+.reserve-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ccff00;
+  color: #102a40;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.reserve-button:hover {
+  background-color: #99cc00;
+}
+
+/* Media queries para dispositivos pequeños */
+@media (max-width: 768px) {
   .reservation-content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;  /* Centra las tarjetas */
   }
-  
-  .place-card, .price-card {
-    background-color: #0c2a2e;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 48%;
+
+  .place-card,
+  .price-card {
+    width: 100%;  /* Tarjetas ocupan todo el ancho en pantallas pequeñas */
+    margin-bottom: 20px;
   }
-  
-  .place-card h2 {
-    color: #ccff00;
+
+  .title {
+    font-size: 36px;
   }
-  
-  .place-card p {
-    color: #fff;
+
+  .title span {
+    font-size: 30px;
   }
-  
-  .place-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin: 20px 0;
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 28px;
   }
-  
+
+  .title span {
+    font-size: 24px;
+  }
+
+  .place-card p,
   .place-details {
-    color: #fff;
+    font-size: 14px;  /* Reduce el tamaño del texto */
+  }
+
+  .price-card h2 {
+    font-size: 24px;
+  }
+
+  .reserve-button {
     font-size: 16px;
   }
-  
-  .price-card h2 {
-    color: #ccff00;
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  .price-card h2 span {
-    font-size: 18px;
-    color: #8a8d8d;
-  }
-  
-  .check-in-out {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .check-in, .check-out {
-    width: 48%;
-  }
-  
-  .check-in label, .check-out label, .guests label {
-    color: #fff;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .check-in input, .check-out input, .guests select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #8a8d8d;
-    border-radius: 5px;
-    background-color: #0d4f60;
-    color: #fff;
-  }
-  
-  .reserve-button {
-    width: 100%;
-    padding: 15px;
-    background-color: #ccff00;
-    color: #102a40;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .reserve-button:hover {
-    background-color: #99cc00;
-  }
-  
+}
