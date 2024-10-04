@@ -6,13 +6,14 @@ import { HospedajeProvinciasComponent } from './components/hospedaje-provincias/
 import { CoreModule } from '../../core-module/core.module';
 import { DetalleHospedajeComponent } from './components/detalle-hospedaje/detalle-hospedaje.component';
 import { HospedajeInfoComponent } from './hospedaje-info/hospedaje-info/hospedaje-info.component';
+import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hospedaje.component';
 
 
 @NgModule({
   declarations: [
     HospedajeProvinciasComponent,
     DetalleHospedajeComponent,    
-    HospedajeInfoComponent
+    HospedajeInfoComponent, NuevoHospedajeComponent
   ],
   imports: [
     CommonModule,
