@@ -1,1 +1,21 @@
-<p>carrito works!</p>
+
+<div class="cart-overlay" *ngIf="isVisible">
+    <div class="cart">
+      <h2>Tu Carrito</h2>
+      
+      <div *ngIf="hospedajeSeleccionado">
+        <h3>{{ hospedajeSeleccionado.nombre }}</h3>
+        <p>Precio por noche: ${{ hospedajeSeleccionado.precio }}</p>
+        <div>
+          <label for="noches">Cantidad de noches:</label>
+          <input id="noches" type="number" [(ngModel)]="cantidadNoches" min="1" (change)="calcularTotal()">
+        </div>
+        <h4>Total: ${{ total }}</h4>
+        <button (click)="eliminarHospedaje()">Eliminar</button>
+        <button (click)="realizarCompra()">Pagar</button>
+      </div>
+  
+      <button class="close-btn" (click)="toggleCart()">Cerrar</button>
+    </div>
+  </div>
+  

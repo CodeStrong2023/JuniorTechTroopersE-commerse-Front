@@ -7,6 +7,7 @@ import { CoreModule } from '../../core-module/core.module';
 import { DetalleHospedajeComponent } from './components/detalle-hospedaje/detalle-hospedaje.component';
 import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hospedaje.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CarritoComponent } from './components/carrito/carrito.component';
   imports: [
     CommonModule,
     HospedajeRoutingModule,
-    CoreModule
+    CoreModule,
+    FormsModule
   ]
 })
 export class HospedajeModule { }
