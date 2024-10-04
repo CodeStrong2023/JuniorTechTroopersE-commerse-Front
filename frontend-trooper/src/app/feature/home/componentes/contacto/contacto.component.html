@@ -1,32 +1,42 @@
 <div class="contact-container">
-    <div class="left-section">
-      <img class="background-image" src="ruta/a/imagen.png" alt="Trooper Stay">
-      <div class="title">
-        <h2>La experiencia perfecta</h2>
-        <h2>para el hospedaje perfecto</h2>
-        <h2>en tu próximo destino</h2>
-      </div>
-    </div>
-    <div class="right-section">
-      <div class="contact-card">
-        <h2>CONTACTO</h2>
-        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <input type="text" id="nombre" formControlName="name" placeholder="Nombre" required>
-            <input type="text" id="apellido" formControlName="apellido" placeholder="Apellido" required>
-          </div>
-          <div class="form-group">
-            <input type="email" id="email" formControlName="email" placeholder="Email" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" id="telefono" formControlName="telefono" placeholder="Número de teléfono" required>
-          </div>
-          <div class="form-group">
-            <textarea id="mensaje" formControlName="mensaje" placeholder="Mensaje" rows="5" required></textarea>
-          </div>
-          <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
-        </form>
-      </div>
+  <!-- Mensaje de éxito -->
+  <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle-fill"></i> {{ successMessage }}
+
+  </div>
+  <div class="left-section">
+    <img class="background-image" src="../../../../../assets/images/login-registro/login-registro.png"
+      alt="Trooper Stay">
+    <div class="title">
+      <h2>La experiencia perfecta</h2>
+      <h2>para el hospedaje perfecto</h2>
+      <h2 class="title-gray">en tu próximo destino</h2>
     </div>
   </div>
-  
+
+  <div class="right-section">
+    <div class="contact-card">
+      <h2>CONTACTO</h2>
+
+
+
+
+      <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="text" id="nombre" formControlName="name" placeholder="Nombre" required>
+          <input type="text" id="apellido" formControlName="apellido" placeholder="Apellido" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" formControlName="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="telefono" formControlName="telefono" placeholder="Número de teléfono">
+        </div>
+        <div class="form-group">
+          <textarea id="mensaje" formControlName="mensaje" placeholder="Mensaje" rows="5" required></textarea>
+        </div>
+        <button type="submit" [disabled]="contactForm.invalid">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
