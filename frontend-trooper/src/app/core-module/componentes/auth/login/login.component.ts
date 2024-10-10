@@ -22,7 +22,7 @@ export class LoginComponent {
       response => {
         console.log('Login exitoso:', response);
         // Redirigimos al usuario al perfil después del login exitoso
-        this.router.navigate(['']);
+        this.router.navigate(['/perfil-usuario']);
       },
       error => {
         console.error('Error durante el login:', error);

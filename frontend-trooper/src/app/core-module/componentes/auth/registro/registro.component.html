@@ -1,45 +1,56 @@
 <div class="login-container">
   <div class="left-section">
     <div class="registro">
-      <img class="imagen-registro" src="../../../../../assets/icons/logo/logo.png">
+      <img class="imagen-registro" src="../../../../../assets/icons/logo/logo.png" alt="Logo">
       <div class="title">
         <h2>La experiencia perfecta</h2>
         <h2>para el hospedaje perfecto</h2>
         <h2>en tu próximo destino</h2>
       </div>
     </div>
+  </div>
 
-    <div class="right-section">
-      <h1 class="login-title">REGISTRO</h1>
-      <div class="card">
-        <form>
-          <div class="input-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" placeholder="Nombre" />
-          </div>
+  <div class="right-section">
+    <h1 class="login-title">REGISTRO</h1>
+    <div class="card">
+      <form (ngSubmit)="registrarUsuario()" #registroForm="ngForm">
+        <div class="input-group">
+          <label for="firstname">Nombre</label>
+          <input type="text" id="firstname" [(ngModel)]="usuario.firstname" name="firstname" placeholder="Nombre" required />
+        </div>
 
-          <div class="input-group">
-            <label for="apellido">Apellido</label>
-            <input type="text" id="apellido" placeholder="Apellido" />
-          </div>
+        <div class="input-group">
+          <label for="lastname">Apellido</label>
+          <input type="text" id="lastname" [(ngModel)]="usuario.lastname" name="lastname" placeholder="Apellido" required />
+        </div>
 
-          <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Email" />
-          </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" [(ngModel)]="usuario.email" name="email" placeholder="Email" required />
+        </div>
 
-          <div class="input-group">
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" placeholder="Contraseña" />
-          </div>
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" [(ngModel)]="usuario.password" name="password" placeholder="Contraseña" required />
+        </div>
 
-          <div class="input-group">
-            <label for="telefono">Número de teléfono</label>
-            <input type="tel" id="telefono" placeholder="Número de teléfono" />
-          </div>
+        <div class="input-group">
+          <label for="telefono">Número de teléfono</label>
+          <input type="tel" id="telefono" [(ngModel)]="usuario.phone" name="phone" placeholder="Número de teléfono" required />
+        </div>
 
-          <button type="submit">Registrarse</button>
-        </form>
-      </div>
+        <div class="input-group">
+          <label for="birthdate">Fecha de Nacimiento</label>
+          <input type="date" id="birthdate" [(ngModel)]="usuario.birthdate" name="birthdate" required />
+        </div>
+
+        <div class="input-group">
+          <label for="imgUrl">Subir Imagen</label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </div>
+
+        <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
+      </form>
     </div>
   </div>
+</div>
