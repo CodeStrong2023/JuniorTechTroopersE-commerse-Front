@@ -3,28 +3,28 @@
     <div class="registro">
       <img class="imagen-login" src="../../../../../assets/icons/logo/logo.png">
       <div class="title">
-      <h2>La experiencia perfecta</h2>
-      <h2>para el hospedaje perfecto</h2>
-      <h2>en tu próximo destino</h2>
+        <h2>La experiencia perfecta</h2>
+        <h2>para el hospedaje perfecto</h2>
+        <h2>en tu próximo destino</h2>
+      </div>
     </div>
   </div>
+
   <div class="right-section">
     <h1 class="login-title">LOGIN</h1>
     <div class="card">
-      <form>
+      <form (ngSubmit)="onSubmit()">
         <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Ingresa tu email" />
+        <input type="email" id="email" placeholder="Ingresa tu email" [(ngModel)]="credentials.username" name="email" required />
         
         <label for="password">Contraseña</label>
-        <input type="password" id="password" placeholder="Ingresa tu contraseña" />
+        <input type="password" id="password" placeholder="Ingresa tu contraseña" [(ngModel)]="credentials.password" name="password" required />
+        
         <div class="button-group">
-          <button type="submit">Iniciar Sesion</button>
+          <button type="submit">Iniciar Sesión</button>
           <button class="submit-registro" type="button" routerLink="/register">Registrarse</button>
         </div>
       </form>
     </div>
   </div>
-  
 </div>
-
-```
