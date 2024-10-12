@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { RegisterUser } from '../../../../shared/model/register-user';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { ImagesService } from '../../../../shared/services/images-service/images.service';
 
@@ -10,48 +11,28 @@ import { ImagesService } from '../../../../shared/services/images-service/images
 })
 export class RegistroComponent {
   selectedFile: File | null = null;
-  downloadURL: string | undefined;
   isLoading: boolean = false;
+  defaultImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsHsf7pQFE45aJ_-rkWcO_nkBoa5gYSN39g&s'; // URL por defecto
 
-  constructor(
-    private authService: AuthService
-  ) {}
-
-  // Captura el archivo seleccionado (actualmente no lo estamos usando, pero lo dejamos por si más adelante volvemos a usar la subida de imagen)
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  // Formatear la fecha en formato YYYY-MM-DD
-  formatDate(date: Date): string {
-    const d = new Date(date);
-    const month = '' + (d.getMonth() + 1);
-    const day = '' + d.getDate();
-    const year = d.getFullYear();
-
-    return [year, month.padStart(2, '0'), day.padStart(2, '0')].join('-');
-  }
+  constructor(private authService: AuthService) {}
 
   // Envía el formulario
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.isLoading = true; // Inicia el estado de carga
-      
-      // Formateamos la fecha antes de enviarla
-      const formattedBirthdate = this.formatDate(form.value.birthdate);
 
-      // Simulamos el registro con la URL de imagen predeterminada
-      const userData = {
+      const userData: RegisterUser = {
+        user_rol: '6b5d77ac-4101-487c-910e-334c1e1f7342', // ID del rol de usuario
+        userName: form.value.firstname.toLowerCase(), // o cualquier lógica para generar el username
+        password: form.value.password,
+        imgUrl: this.defaultImgUrl, // URL por defecto de la imagen
         firstname: form.value.firstname,
         lastname: form.value.lastname,
         email: form.value.email,
-        password: form.value.password,
+        birthdate: form.value.birthdate,
         phone: form.value.phone,
-        birthdate: formattedBirthdate,  // Fecha formateada
-        ubication_x: form.value.ubication_x,
-        ubication_y: form.value.ubication_y,
-        createdAt: form.value.createdAt,
-        imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsHsf7pQFE45aJ_-rkWcO_nkBoa5gYSN39g&s' // URL simulada de imagen
+        ubication_x: 666, // Puedes reemplazar estos valores por lo que necesites
+        ubication_y: 666,
       };
 
       // Llama al servicio de autenticación para registrar al usuario
