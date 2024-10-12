@@ -45,11 +45,26 @@
         </div>
 
         <div class="input-group">
+          <label for="ubication_x">Ubicación X</label>
+          <input type="number" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación X" required />
+        </div>
+
+        <div class="input-group">
+          <label for="ubication_y">Ubicación Y</label>
+          <input type="number" id="ubication_y" name="ubication_y" ngModel placeholder="Ubicación Y" required />
+        </div>
+
+        <div class="input-group">
+          <label for="createdAt">Fecha de Creación</label>
+          <input type="date" id="createdAt" name="createdAt" ngModel required />
+        </div>
+
+        <div class="input-group">
           <label for="imgUrl">Subir Imagen</label>
           <input type="file" (change)="onFileSelected($event)" />
         </div>
 
-        <button type="submit" [disabled]="!registroForm.valid || !selectedFile">Registrarse</button>
+        <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
       </form>
     </div>
   </div>

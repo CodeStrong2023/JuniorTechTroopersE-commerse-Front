@@ -11,57 +11,63 @@ import { ImagesService } from '../../../../shared/services/images-service/images
 export class RegistroComponent {
   selectedFile: File | null = null;
   downloadURL: string | undefined;
-  isLoading: boolean = false; // Indica si está en proceso de carga
+  isLoading: boolean = false;
 
   constructor(
-    private imagesService: ImagesService,
     private authService: AuthService
   ) {}
 
-  // Captura el archivo seleccionado del input
+  // Captura el archivo seleccionado (actualmente no lo estamos usando, pero lo dejamos por si más adelante volvemos a usar la subida de imagen)
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
-  // Método que maneja el envío del formulario
+  // Formatear la fecha en formato YYYY-MM-DD
+  formatDate(date: Date): string {
+    const d = new Date(date);
+    const month = '' + (d.getMonth() + 1);
+    const day = '' + d.getDate();
+    const year = d.getFullYear();
+
+    return [year, month.padStart(2, '0'), day.padStart(2, '0')].join('-');
+  }
+
+  // Envía el formulario
   onSubmit(form: NgForm) {
-    if (form.valid && this.selectedFile) {
-      this.isLoading = true; // Comienza el estado de carga
+    if (form.valid) {
+      this.isLoading = true; // Inicia el estado de carga
       
-      // Sube la imagen al almacenamiento de Firebase
-      this.imagesService.uploadImage(this.selectedFile).then((url) => {
-        this.downloadURL = url; // URL de la imagen subida
-        console.log('Imagen subida correctamente:', this.downloadURL);
+      // Formateamos la fecha antes de enviarla
+      const formattedBirthdate = this.formatDate(form.value.birthdate);
 
-        // Construye los datos del usuario con la URL de la imagen
-        const userData = {
-          firstname: form.value.firstname,
-          lastname: form.value.lastname,
-          email: form.value.email,
-          password: form.value.password,
-          phone: form.value.phone,
-          birthdate: form.value.birthdate,
-          imgUrl: this.downloadURL // Añadimos la URL de la imagen
-        };
+      // Simulamos el registro con la URL de imagen predeterminada
+      const userData = {
+        firstname: form.value.firstname,
+        lastname: form.value.lastname,
+        email: form.value.email,
+        password: form.value.password,
+        phone: form.value.phone,
+        birthdate: formattedBirthdate,  // Fecha formateada
+        ubication_x: form.value.ubication_x,
+        ubication_y: form.value.ubication_y,
+        createdAt: form.value.createdAt,
+        imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsHsf7pQFE45aJ_-rkWcO_nkBoa5gYSN39g&s' // URL simulada de imagen
+      };
 
-        // Registra al usuario a través del servicio Auth
-        this.authService.register(userData).subscribe(
-          (response) => {
-            console.log('Usuario registrado exitosamente:', response);
-            this.isLoading = false; // Finaliza el estado de carga
-            // Aquí podrías redireccionar o mostrar un mensaje de éxito
-          },
-          (error) => {
-            console.error('Error al registrar el usuario:', error);
-            this.isLoading = false; // Finaliza el estado de carga
-          }
-        );
-      }).catch((error) => {
-        console.error('Error al subir la imagen:', error);
-        this.isLoading = false; // Finaliza el estado de carga
-      });
+      // Llama al servicio de autenticación para registrar al usuario
+      this.authService.register(userData).subscribe(
+        (response) => {
+          console.log('Usuario registrado exitosamente:', response);
+          this.isLoading = false; // Finaliza el estado de carga
+          // Aquí puedes agregar lógica adicional, como redireccionar o mostrar un mensaje de éxito
+        },
+        (error) => {
+          console.error('Error al registrar el usuario:', error);
+          this.isLoading = false; // Finaliza el estado de carga
+        }
+      );
     } else {
-      console.error('Formulario inválido o imagen no seleccionada.');
+      console.error('Formulario inválido.');
     }
   }
 }
