@@ -61,5 +61,8 @@ export class AuthService {
     this.token = null;
     localStorage.removeItem('jwt_token');
   }
+  isAuthenticated(): boolean {
+    return !!this.getToken();  // Devuelve true si el token existe
+  }
 
 }
