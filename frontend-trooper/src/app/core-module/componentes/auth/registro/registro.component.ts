@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
+import { ImagesService } from '../../../../shared/services/images-service/images.service';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -9,34 +11,57 @@ import { finalize } from 'rxjs/operators';
 export class RegistroComponent {
   selectedFile: File | null = null;
   downloadURL: string | undefined;
+  isLoading: boolean = false;
 
-  constructor() {}
+  constructor(
+    private imagesService: ImagesService,
+    private authService: AuthService
+  ) {}
 
+  // Captura el archivo seleccionado
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
-  uploadFile() {
-    if (this.selectedFile) {
-      const storage = getStorage();
-      const storageRef = ref(storage, `images/${Date.now()}_${this.selectedFile.name}`);
+  // Envía el formulario
+  onSubmit(form: NgForm) {
+    if (form.valid && this.selectedFile) {
+      this.isLoading = true; // Inicia el estado de carga
       
-      uploadBytes(storageRef, this.selectedFile).then((snapshot) => {
-        getDownloadURL(snapshot.ref).then((url) => {
-          this.downloadURL = url;
-          console.log('File available at', this.downloadURL);
-        });
-      });
-    }
-  }
+      // Primero, sube la imagen
+      this.imagesService.uploadImage(this.selectedFile).then((url) => {
+        this.downloadURL = url;
+        console.log('Imagen subida correctamente:', this.downloadURL);
 
-  onSubmit(form: any) {
-    if (form.valid && this.downloadURL) {
-      // Registrar al usuario con los datos y la URL de la imagen
-      console.log('Formulario enviado con éxito:', form.value);
-      console.log('Imagen subida en URL:', this.downloadURL);
+        // Luego, registra al usuario con los datos del formulario y la URL de la imagen
+        const userData = {
+          firstname: form.value.firstname,
+          lastname: form.value.lastname,
+          email: form.value.email,
+          password: form.value.password,
+          phone: form.value.phone,
+          birthdate: form.value.birthdate,
+          imgUrl: this.downloadURL // URL de la imagen subida
+        };
+
+        // Llama al servicio de autenticación para registrar al usuario
+        this.authService.register(userData).subscribe(
+          (response) => {
+            console.log('Usuario registrado exitosamente:', response);
+            this.isLoading = false; // Finaliza el estado de carga
+            // Aquí puedes agregar lógica adicional, como redireccionar o mostrar un mensaje de éxito
+          },
+          (error) => {
+            console.error('Error al registrar el usuario:', error);
+            this.isLoading = false; // Finaliza el estado de carga
+          }
+        );
+      }).catch((error) => {
+        console.error('Error al subir la imagen:', error);
+        this.isLoading = false; // Finaliza el estado de carga
+      });
     } else {
-      console.error('Formulario inválido o imagen no subida.');
+      console.error('Formulario inválido o imagen no seleccionada.');
     }
   }
 }
