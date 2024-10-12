@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CoreRoutingModule,
-    FormsModule    
+    FormsModule,
+        
   ],
   exports:[
     HeaderComponent,
