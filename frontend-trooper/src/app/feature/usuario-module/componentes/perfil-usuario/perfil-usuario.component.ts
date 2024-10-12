@@ -1,31 +1,33 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Storage, ref, uploadBytes} from '@angular/fire/storage';
+import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../../../../shared/model/user-profile';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
+
 
 @Component({
   selector: 'app-perfil-usuario',
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.css'
 })
-export class PerfilUsuarioComponent {
-  constructor(private storage: Storage, private router: Router) {}
+export class PerfilUsuarioComponent implements OnInit {
+  userProfile: UserProfile | null = null;
+  isLoading: boolean = true; // Para mostrar un spinner mientras se carga la info
 
-  uploadImage($event: any){
-    const file = $event.target.files[0];
-    console.log(file);
+  constructor(private authService: AuthService) {}
 
-
-    const imgRef = ref(this.storage, `images/${file.name}`);
-
-    uploadBytes(imgRef, file)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
-
+  ngOnInit(): void {
+    this.loadUserProfile();
   }
 
-
-
-  irANuevoHospedaje() {
-    this.router.navigate(['/hospedaje/nuevo']);  
+  loadUserProfile(): void {
+    this.authService.getProfile().subscribe(
+      (profile: UserProfile) => {
+        this.userProfile = profile;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error al cargar el perfil de usuario:', error);
+        this.isLoading = false;
+      }
+    );
   }
 }
