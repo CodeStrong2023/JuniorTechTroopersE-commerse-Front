@@ -11,29 +11,29 @@ import { ImagesService } from '../../../../shared/services/images-service/images
 export class RegistroComponent {
   selectedFile: File | null = null;
   downloadURL: string | undefined;
-  isLoading: boolean = false;
+  isLoading: boolean = false; // Indica si está en proceso de carga
 
   constructor(
     private imagesService: ImagesService,
     private authService: AuthService
   ) {}
 
-  // Captura el archivo seleccionado
+  // Captura el archivo seleccionado del input
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
-  // Envía el formulario
+  // Método que maneja el envío del formulario
   onSubmit(form: NgForm) {
     if (form.valid && this.selectedFile) {
-      this.isLoading = true; // Inicia el estado de carga
+      this.isLoading = true; // Comienza el estado de carga
       
-      // Primero, sube la imagen
+      // Sube la imagen al almacenamiento de Firebase
       this.imagesService.uploadImage(this.selectedFile).then((url) => {
-        this.downloadURL = url;
+        this.downloadURL = url; // URL de la imagen subida
         console.log('Imagen subida correctamente:', this.downloadURL);
 
-        // Luego, registra al usuario con los datos del formulario y la URL de la imagen
+        // Construye los datos del usuario con la URL de la imagen
         const userData = {
           firstname: form.value.firstname,
           lastname: form.value.lastname,
@@ -41,15 +41,15 @@ export class RegistroComponent {
           password: form.value.password,
           phone: form.value.phone,
           birthdate: form.value.birthdate,
-          imgUrl: this.downloadURL // URL de la imagen subida
+          imgUrl: this.downloadURL // Añadimos la URL de la imagen
         };
 
-        // Llama al servicio de autenticación para registrar al usuario
+        // Registra al usuario a través del servicio Auth
         this.authService.register(userData).subscribe(
           (response) => {
             console.log('Usuario registrado exitosamente:', response);
             this.isLoading = false; // Finaliza el estado de carga
-            // Aquí puedes agregar lógica adicional, como redireccionar o mostrar un mensaje de éxito
+            // Aquí podrías redireccionar o mostrar un mensaje de éxito
           },
           (error) => {
             console.error('Error al registrar el usuario:', error);

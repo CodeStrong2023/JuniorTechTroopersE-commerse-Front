@@ -10,7 +10,6 @@ import { RegistroComponent } from './componentes/auth/registro/registro.componen
 import { FormsModule } from '@angular/forms';
 
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -22,8 +21,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     CoreRoutingModule,
-    FormsModule,
-        
+    FormsModule, 
+    
   ],
   exports:[
     HeaderComponent,
