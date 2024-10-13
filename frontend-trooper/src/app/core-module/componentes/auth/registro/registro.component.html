@@ -1,87 +1,66 @@
-<div class="login-container">
+<div class="register-container">
+
+   <!-- Mensaje de éxito -->
+   <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show message-top-right" role="alert">
+    <i class="bi bi-check-circle-fill"></i> {{ successMessage }}
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="showError" class="alert alert-danger alert-dismissible fade show message-top-right" role="alert">
+    <i class="bi bi-x-circle-fill"></i> {{ errorMessage }}
+  </div>
+ 
+
+  <!-- Sección Izquierda -->
   <div class="left-section">
-    <div class="registro">
-      <img class="imagen-registro" src="../../../../../assets/icons/logo/logo.png" alt="Logo">
-      <div class="title">
-        <h2>La experiencia perfecta</h2>
-        <h2>para el hospedaje perfecto</h2>
-        <h2>en tu próximo destino</h2>
-      </div>
+    <img class="background-image" src="../../../../../assets/images/login-registro/login-registro.png"
+      alt="Trooper Stay">
+    <div class="title">
+      <h2>La experiencia perfecta</h2>
+      <h2>para el hospedaje perfecto</h2>
+      <h2 class="title-gray">en tu próximo destino</h2>
     </div>
   </div>
 
+  <!-- Sección Derecha -->
   <div class="right-section">
-    <h1 class="login-title">REGISTRO</h1>
-    <div class="card">
+    <div class="register-card">
+      <h2>REGISTRO</h2>
       <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
-        
-        <!-- Campo para el Rol del Usuario -->
-        <div class="input-group">
-          <label for="user_rol">Rol de Usuario</label>
-          <input type="text" id="user_rol" name="user_rol" ngModel placeholder="Rol de Usuario" required />
+        <div class="form-group">
+          <input type="text" id="user_rol" name="user_rol" ngModel placeholder="Rol de Usuario" required>
         </div>
-
-        <!-- Campo para el Nombre de Usuario -->
-        <div class="input-group">
-          <label for="userName">Nombre de Usuario</label>
-          <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required />
+        <div class="form-group">
+          <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required>
         </div>
-
-        <!-- Campo para Nombre -->
-        <div class="input-group">
-          <label for="firstname">Nombre</label>
-          <input type="text" id="firstname" name="firstname" ngModel placeholder="Nombre" required />
+        <div class="form-group">
+          <input type="text" id="firstname" name="firstname" ngModel placeholder="Nombre" required>
+          <input type="text" id="lastname" name="lastname" ngModel placeholder="Apellido" required>
         </div>
-
-        <!-- Campo para Apellido -->
-        <div class="input-group">
-          <label for="lastname">Apellido</label>
-          <input type="text" id="lastname" name="lastname" ngModel placeholder="Apellido" required />
+        <div class="form-group">
+          <input type="email" id="email" name="email" ngModel placeholder="Email" required>
         </div>
-
-        <!-- Campo para Email -->
-        <div class="input-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" ngModel placeholder="Email" required />
+        <div class="form-group">
+          <input type="password" id="password" name="password" ngModel placeholder="Contraseña" required>
         </div>
-
-        <!-- Campo para Contraseña -->
-        <div class="input-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" name="password" ngModel placeholder="Contraseña" required />
+        <div class="form-group">
+          <input type="tel" id="telefono" name="phone" ngModel placeholder="Número de Teléfono" required>
         </div>
-
-        <!-- Campo para Número de Teléfono -->
-        <div class="input-group">
-          <label for="telefono">Número de Teléfono</label>
-          <input type="tel" id="telefono" name="phone" ngModel placeholder="Número de Teléfono" required />
+        <div class="form-group">
+          <input type="date" id="birthdate" name="birthdate" ngModel required>
         </div>
-
-        <!-- Campo para Fecha de Nacimiento -->
-        <div class="input-group">
-          <label for="birthdate">Fecha de Nacimiento</label>
-          <input type="date" id="birthdate" name="birthdate" ngModel required />
+        <div class="form-group">
+          <input type="number" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación X" required>
+          <input type="number" id="ubication_y" name="ubication_y" ngModel placeholder="Ubicación Y" required>
         </div>
-
-        <!-- Campo para Ubicación X -->
-        <div class="input-group">
-          <label for="ubication_x">Ubicación X</label>
-          <input type="number" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación X" required />
-        </div>
-
-        <!-- Campo para Ubicación Y -->
-        <div class="input-group">
-          <label for="ubication_y">Ubicación Y</label>
-          <input type="number" id="ubication_y" name="ubication_y" ngModel placeholder="Ubicación Y" required />
-        </div>
-
-        <!-- Campo para Subir Imagen -->
-        <div class="input-group">
+        <div class="form-group">
           <label for="imgUrl">Subir Imagen</label>
-          <input type="file" />
+          <input type="file" id="imgUrl">
         </div>
-
-        <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
+        <div class="button-group">
+          <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
+          <button type="reset">Cancelar</button>
+        </div>
       </form>
     </div>
   </div>

@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { RegisterUser } from '../../../../shared/model/register-user';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { ImagesService } from '../../../../shared/services/images-service/images.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -14,7 +15,13 @@ export class RegistroComponent {
   isLoading: boolean = false;
   defaultImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsHsf7pQFE45aJ_-rkWcO_nkBoa5gYSN39g&s'; // URL por defecto
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  // Variables para los mensajes
+  successMessage: string = '';
+  errorMessage: string = '';
+  showSuccess: boolean = false;
+  showError: boolean = false;
 
   // Envía el formulario
   onSubmit(form: NgForm) {
@@ -40,15 +47,28 @@ export class RegistroComponent {
         (response) => {
           console.log('Usuario registrado exitosamente:', response);
           this.isLoading = false; // Finaliza el estado de carga
-          // Aquí puedes agregar lógica adicional, como redireccionar o mostrar un mensaje de éxito
+          this.successMessage = 'Registro exitoso.';
+          this.showSuccess = true;
+          this.hideMessages(); // Oculta los mensajes después de un tiempo
+          this.router.navigate(['/login']); // Redirige al usuario al login
         },
         (error) => {
           console.error('Error al registrar el usuario:', error);
+          this.errorMessage = 'Error al registrar el usuario.';
+          this.showError = true;
           this.isLoading = false; // Finaliza el estado de carga
         }
       );
     } else {
       console.error('Formulario inválido.');
     }
+  }
+
+  // Oculta los mensajes después de un tiempo
+  hideMessages() {
+    setTimeout(() => {
+      this.showSuccess = false;
+      this.showError = false;
+    }, 5000); // Oculta después de 5 segundos
   }
 }
