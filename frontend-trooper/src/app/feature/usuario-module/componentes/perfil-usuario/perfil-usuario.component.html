@@ -1,78 +1,30 @@
 <app-header></app-header>
 
-<div class="perfil-container">
-  <!-- Card de la foto de perfil -->
+<div class="perfil-container" *ngIf="!isLoading; else loading">
   <div class="card perfil-card">
-    <img src="../../../../../assets/images/perfil-usuario/foto-perfil.png" alt="Foto de Perfil" class="perfil-img">
-    <h3>María Perez</h3>
-    <p>San Rafael Mendoza Argentina</p>
+    <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.png'" alt="Foto de Perfil" class="perfil-img">
+    <h3>{{ userProfile?.firstname }} {{ userProfile?.lastname }}</h3>
+    <p>{{ userProfile?.ubication_x }}, {{ userProfile?.ubication_y }}</p>
     <button class="edit-btn">
-      <i class="bi bi-pencil"></i> <!-- Bootstrap Icon de lápiz -->
+      <i class="bi bi-pencil"></i>
     </button>
   </div>
 
-  <!-- Card de alojamientos cargados -->
-  <div class="card alojamientos-card">
-    <h3>Alojamientos Cargados</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Calendario</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cabaña Rogelio</td>
-          <td>Abrir</td>
-          <td>Disponible</td>
-        </tr>
-        <tr>
-          <td>Cabaña Descanso</td>
-          <td>Abrir</td>
-          <td>Disponible</td>
-        </tr>
-        <tr>
-          <td>Cabaña Cielo Azul</td>
-          <td>Abrir</td>
-          <td>Disponible</td>
-        </tr>
-        <tr>
-          <td>Cabaña Ámbar</td>
-          <td>Abrir</td>
-          <td>Ocupado</td>
-        </tr>
-      </tbody>
-    </table>
-     <!-- Botón de Agregar más -->
-  <a class="add-btn" (click)="irANuevoHospedaje()">
-    <i class="bi bi-plus"></i>
-  </a>
-  </div>
-
-  <!-- Card de información de contacto -->
   <div class="card contacto-card">
     <h3>Info de Contacto</h3>
     <ul>
-      <li><i class="bi bi-telephone"></i> +54260505678987</li>
-      <li><i class="bi bi-envelope"></i> mariaperez.com</li>
-      <li><i class="bi bi-browser"></i> cabañas.rogelio</li>
-      <li><i class="bi bi-geo-alt"></i> San Rafael</li>
+      <li><i class="bi bi-telephone"></i> {{ userProfile?.phone }}</li>
+      <li><i class="bi bi-envelope"></i> {{ userProfile?.email }}</li>
+      <li><i class="bi bi-geo-alt"></i> {{ userProfile?.ubication_x }}, {{ userProfile?.ubication_y }}</li>
     </ul>
     <button class="edit-btn">
-      <i class="bi bi-pencil"></i> <!-- Bootstrap Icon de lápiz -->
+      <i class="bi bi-pencil"></i>
     </button>
   </div>
-   <!-- Card de Mis Reservas -->
-   <div class="reservas-card">
-    <h3>Mis Reservas</h3>
-    <!-- Contenido de reservas -->
-    <p>Reserva 1</p>
-    <p>Reserva 2</p>
-    
-    
 </div>
-</div>
+
+<ng-template #loading>
+  <p>Cargando perfil...</p>
+</ng-template>
 
 <app-footer></app-footer>

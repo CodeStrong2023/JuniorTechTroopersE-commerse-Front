@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../../../../shared/model/user-profile';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 
 
 @Component({
@@ -7,10 +8,26 @@ import { Router } from '@angular/router';
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.css'
 })
-export class PerfilUsuarioComponent {
-  constructor(private router: Router) {}
+export class PerfilUsuarioComponent implements OnInit {
+  userProfile: UserProfile | null = null;
+  isLoading: boolean = true; // Para mostrar un spinner mientras se carga la info
 
-  irANuevoHospedaje() {
-    this.router.navigate(['/hospedaje/nuevo']);  
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile(): void {
+    this.authService.getProfile().subscribe(
+      (profile: UserProfile) => {
+        this.userProfile = profile;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error al cargar el perfil de usuario:', error);
+        this.isLoading = false;
+      }
+    );
   }
 }

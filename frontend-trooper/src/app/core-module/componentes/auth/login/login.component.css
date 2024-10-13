@@ -1,256 +1,208 @@
-/* Pantallas grandes */
+section {
+  background-size: contain; /* Ajusta el tamaño de la imagen */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .login-container {
   display: flex;
+  flex-wrap: wrap;
   height: 100vh;
   justify-content: space-between;
 }
 
+/* Sección Izquierda */
 .left-section {
-  width: 80%;
-  height: auto;
+  width: 50%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
 }
 
-.registro {
-  position: relative;
-  top: 3px;
-  left: 50px;
-}
-
-.imagen-login {
-  display: block;
-  width: 100%;
-  opacity: 0.3;
+.background-image {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  opacity: 0.4;
 }
 
 .title {
-  width: 100%;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  position: relative;
   text-align: center;
-  font-size: 30px;
+  color: #b0c929;
+  font-family: sans-serif;
+  padding: 0 2rem;
+  z-index: 1;
 }
 
 .title h2 {
-  margin: 2px;
-  font-weight: 300;
-  font-size: 1.5em;
-  font-family: var(--font-text);
-  color: #ffffff;
+  margin: 0;
+  font-weight: 400;
+  font-size: 2vw; /* Tamaño adaptativo para pantallas grandes */
 }
 
-.title h2:nth-child(1),
-.title h2:nth-child(2) {
-  color: #b0c929;
+.title-gray {
+  color: #f5f5f5;
 }
 
-.title h2:nth-child(3) {
-  color: #ffffff;
-}
-
+/* Sección Derecha */
 .right-section {
   width: 50%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: 300px;
+  padding: 2rem;
 }
 
-.login-title {
-  font-size: 2.5rem;
-  font-family: var(--font-title2);
-  color: var(--color-card);
-  margin-bottom: 1rem;
-  text-align: left;
-  font-weight: 300;
-}
-
-.card {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.login-card {
   background-color: #fdfdfd07;
   backdrop-filter: blur(0.05rem);
   padding: 2rem;
   border-radius: 10px;
-  width: 700px;
-  text-align: center;
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.486);
+  width: 80%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card form {
+.login-title {
+  color: #b0c929;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.input-group {
-  display: flex;
-  justify-content: space-between;
-  gap: -1.7rem;
-}
-
-.input-group input {
+.form-group input {
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.75rem;
   border: none;
   border-radius: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
-  background-color: #f5f5f5;
-}
-
-.card label {
-  color: #b0c929;
-  font-family: var(--font-text);
-  font-size: 14px;
-  margin-bottom: -1rem;
-  align-self: flex-start;
-}
-
-.card input {
-  margin-bottom: 1rem;
-  padding: 0.7rem;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
+  font-size: 1rem;
   background-color: #f5f5f5;
   box-sizing: border-box;
 }
 
 .button-group {
   display: flex;
-  justify-content: center;
-  gap: 4rem;
-  margin-top: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.card button {
-  padding: 0.75rem;
-  width: 140px;
+label {
+  color: white; /* Cambia el color de las etiquetas */
+}
+
+
+.login-card button {
+  width: 48%;
+  padding: 1rem;
   background-color: #b0c929;
   border: none;
-  border-radius: 9px;
-  color: var(--color-background);
-  font-weight: 500;
-  font-family: var(--font-text);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-self: center;
 }
 
-.submit-registro {
-  background-color: var(--color-background);
-}
-
-.card button:hover {
-  background-color: #41410415;
-  box-shadow: 0 2px 12px var(--color-button);
-  color: var(--color-button);
+.login-card button:hover {
+  background-color: #97a81b;
 }
 
 /* Media Queries */
 
-/* Pantallas medianas (tablets) */
+/* Tablets */
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 1rem;
+    height: auto; /* Permite que el contenedor crezca de acuerdo al contenido */
   }
 
-  .left-section {
+  .left-section, .right-section {
     width: 100%;
-    text-align: center;
+    height: auto;
   }
 
-  .right-section {
-    width: 100%;
-    left: 0;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .title {
-    font-size: 1.2rem;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -20%);
-  }
-
-  .card {
+  .login-card {
     width: 90%;
-    padding: 1.5rem;
-    margin-top: 2rem;
   }
 
-  .button-group {
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.5rem;
+  .title h2 {
+    font-size: 5vw; /* Aumentar el tamaño en pantallas medianas */
   }
 }
 
-/* Pantallas pequeñas (móviles) */
+/* Smartphones */
 @media (max-width: 480px) {
   .login-container {
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     padding: 1rem;
+    height: auto;
+    margin-top: 15px;
   }
 
-  .left-section {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .right-section {
-    width: 100%;
-    text-align: center;
-    margin: 0;
-    padding: 1rem;
-  }
-
-  .title {
-    font-size: 1rem;
-    top: 10%;
-  }
-
-  .card {
+  .login-card {
     width: 95%;
     padding: 1rem;
-    margin-top: 3rem;
   }
 
   .login-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
-  .input-group input {
+  .form-group input {
     padding: 0.5rem;
     font-size: 1rem;
   }
 
   .button-group {
     flex-direction: column;
-    gap: 1rem;
   }
 
-  .card button {
+  .login-card button {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     font-size: 1rem;
+  }
+
+  .background-image{
+    width: 10%;
+    height: 10%;
+  }
+ 
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem; /* Ajusta el tamaño del título */
+    top: -20px; /* Ajusta la posición del título */
+  }
+
+  .card {
+    width: 90%; /* Hacer la card más pequeña en pantallas pequeñas */
+    top: 0;
+    margin: 0 auto;
+  }
+
+  section {
+    background-size: cover; /* Ajustar el tamaño del fondo para pantallas pequeñas */
+  }
+
+  label {
+    font-size: 1rem; /* Ajustar el tamaño de las etiquetas */
+  }
+
+  input {
+    width: 100%; /* Asegurar que los inputs se ajusten al ancho de la pantalla */
   }
 }

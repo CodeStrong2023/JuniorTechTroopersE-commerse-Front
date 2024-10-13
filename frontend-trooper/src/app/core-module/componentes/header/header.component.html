@@ -19,20 +19,27 @@
               </li>
           </ul>
           <div class="navbar-buttons ms-auto">
+            <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
               <a class="btn btn-login" routerLink="/login">Iniciar sesión</a>
               <a class="btn btn-register" routerLink="/register">Registrarse</a>
+            </ng-container>
+          
+            <ng-template #loggedInTemplate>
+              <a class="btn btn-login" (click)="logout()">Cerrar sesión</a>
               <div class="user-menu dropdown">
-                  <button class="btn btn-user dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="user-icon"></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                      <li><a class="dropdown-item" routerLink="/perfil-usuario">Perfil</a></li>
-                      <li><a class="dropdown-item" routerLink="/perfil-usuario">Mis Reservas</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-                  </ul>
+                <button class="btn btn-user dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="user-icon"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <li><a class="dropdown-item" routerLink="/perfil-usuario">Perfil</a></li>
+                  <li><a class="dropdown-item" routerLink="/perfil-usuario">Mis Reservas</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item btn btn-login" (click)="logout()">Cerrar Sesión</a></li>
+                </ul>
               </div>
+            </ng-template>
           </div>
+          
       </div>
   </div>
 </nav>
