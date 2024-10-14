@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './componentes/about/about.component';
+import { TestUploadComponent } from './componentes/test-upload/test-upload.component';
 
 
 
@@ -20,6 +21,7 @@ import { AboutComponent } from './componentes/about/about.component';
     InicioComponent,
     ContactoComponent,
     AboutComponent,
+    TestUploadComponent,
    
   ],
   imports: [

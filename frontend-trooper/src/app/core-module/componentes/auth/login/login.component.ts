@@ -26,7 +26,7 @@ export class LoginComponent {
       },
       error => {
         console.error('Error durante el login:', error);
-        // Aquí podrías manejar los errores y mostrar un mensaje en la UI
+        
       }
     );
   }
