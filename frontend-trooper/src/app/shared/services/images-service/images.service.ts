@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +8,16 @@ import { Observable } from 'rxjs';
 // Servicio para subir imágenes a Firebase Storage
 export class ImagesService {
 
-  constructor(private storage: AngularFireStorage) { }
+  constructor() { }
 
-  // Método para subir la imagen y obtener la URL de descarga
-  uploadImage(file: File, path: string): Observable<string> {
-    const filePath = `${path}/${file.name}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
 
-    return new Observable<string>((observer) => {
-      task.snapshotChanges().pipe(
-        finalize(() => {
-          fileRef.getDownloadURL().subscribe((url) => {
-            observer.next(url); // Retorna la URL
-            observer.complete();
-          }, error => observer.error(error));
-        })
-      ).subscribe();
+  // Método para subir una imagen a Firebase Storage
+  uploadImage(file: File): Promise<string> {
+    const storage = getStorage();
+    const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
+
+    return uploadBytes(storageRef, file).then((snapshot) => {
+      return getDownloadURL(snapshot.ref);
     });
   }
 }

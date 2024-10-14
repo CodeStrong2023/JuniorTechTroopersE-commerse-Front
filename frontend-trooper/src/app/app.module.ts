@@ -7,7 +7,8 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from '../enviroments/enviroment';
 
 
 
@@ -27,9 +28,11 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
   ],
   providers: [
     provideClientHydration(),
-    provideFirebaseApp(() => initializeApp({"projectId":"trooperstay","appId":"1:720990543501:web:416617640bb3665f240cc4","storageBucket":"trooperstay.appspot.com","apiKey":"AIzaSyBNRXWH1O0pP0nH701Ja3LmmVqr7dqyXBY","authDomain":"trooperstay.firebaseapp.com","messagingSenderId":"720990543501","measurementId":"G-KR06K737NR"})),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    provideFirebaseApp(() => initializeApp({"projectId":"trooper-stay","appId":"1:52197168029:web:e237e1341e71e458955574","storageBucket":"trooper-stay.appspot.com","apiKey":"AIzaSyDRGz14sohYuP3A0spsJrzIgHoLq5HASIk","authDomain":"trooper-stay.firebaseapp.com","messagingSenderId":"52197168029","measurementId":"G-HH5PB5P4NK"})),
+    provideFirestore(() => getFirestore())
   ],
   bootstrap: [AppComponent]
 })
