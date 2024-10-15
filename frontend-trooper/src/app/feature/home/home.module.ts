@@ -11,6 +11,7 @@ import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './componentes/about/about.component';
 import { TestUploadComponent } from './componentes/test-upload/test-upload.component';
+import { HospedajesTendenciaComponent } from './componentes/hospedajes-tendencia/hospedajes-tendencia.component';
 
 
 
@@ -22,6 +23,7 @@ import { TestUploadComponent } from './componentes/test-upload/test-upload.compo
     ContactoComponent,
     AboutComponent,
     TestUploadComponent,
+    HospedajesTendenciaComponent,
    
   ],
   imports: [
