@@ -8,6 +8,7 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
 import { LoginComponent } from './componentes/auth/login/login.component';
 import { RegistroComponent } from './componentes/auth/registro/registro.component';
 import { FormsModule } from '@angular/forms';
+import { ButtonHomeComponent } from './componentes/button-home/button-home.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     FiltroComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ButtonHomeComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { FormsModule } from '@angular/forms';
   exports:[
     HeaderComponent,
     FooterComponent,
-    FiltroComponent
+    FiltroComponent,
+    ButtonHomeComponent
   ]
 })
 export class CoreModule { }

@@ -1,0 +1,22 @@
+.back-to-home-btn {
+    position: fixed;
+    bottom: 20px;   /* Distancia desde la parte inferior */
+    right: 20px;    /* Distancia desde la parte derecha */
+    z-index: 9999;  /* Elevado para superponerse a otros componentes */
+    border-radius: 50%; /* Para hacer el botón circular */
+    padding: 10px 15px;  
+    font-size: 1.3em; /* Tamaño del icono dentro del botón, ajustado */
+    background-color: var(--color-button); /* Color de fondo (variable) */
+    color: var(--color-background); /* Color del ícono (variable) */
+    border: none; /* Sin borde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto flotante */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .back-to-home-btn:hover {
+    background-color: rgba(65, 65, 4, 0.1); /* Color de fondo con transparencia */
+    box-shadow: 0 2px 12px var(--color-button); /* Mayor sombra al hacer hover */
+    color: var(--color-button); /* Cambia el color del icono al hacer hover */
+  }
+  
