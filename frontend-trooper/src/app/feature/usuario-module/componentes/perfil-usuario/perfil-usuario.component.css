@@ -19,7 +19,7 @@ h3 {
 }
 
 /* Card de Perfil */
-.perfil-card {
+.perfil-card, .contacto-card, .alojamientos-card, .reservas-card {
   background-color: #fdfdfd07;
   backdrop-filter: blur(0.05rem);
   border-radius: 10px;
@@ -28,10 +28,8 @@ h3 {
   max-width: 609px;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  position: relative;
   margin-bottom: 20px;
+  position: relative;
 }
 
 /* Imagen de perfil */
@@ -43,45 +41,16 @@ h3 {
   align-self: center;
 }
 
-/* Card de Información de Contacto */
-.contacto-card {
-  background-color: #fdfdfd07;
-  backdrop-filter: blur(0.05rem);
-  border-radius: 10px;
-  padding: 20px;
-  color: #fff;
-  max-width: 609px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 10px;
+/* Listas sin viñetas */
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-/* Card de Alojamientos */
-.alojamientos-card {
-  background-color: #fdfdfd07;
-  backdrop-filter: blur(0.05rem);
-  border-radius: 10px;
-  padding: 20px;
-  color: #fff;
-  width: 100%;
-  max-width: 609px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-/* Card de Mis Reservas */
-.reservas-card {
-  background-color: #fdfdfd07;
-  backdrop-filter: blur(0.05rem);
-  border-radius: 10px;
-  padding: 20px;
-  color: #fff;
-  width: 100%;
-  max-width: 609px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  position: relative;
+ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre icono y texto */
 }
 
 /* Botón de edición */
@@ -105,7 +74,6 @@ h3 {
   background-color: #8dda5a;
 }
 
-/* Icono dentro del botón */
 .edit-btn i {
   font-size: 15px;
   color: black;
@@ -122,15 +90,14 @@ h3 {
   border-radius: 8px;
   position: absolute;
   bottom: 20px;
-  right: 25px; /* Posiciona el botón dentro de la card, a la derecha */
+  right: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 14px;
 }
 
-/* Icono dentro del botón */
-.add-btn i { 
+.add-btn i {
   font-size: 18px;
   color: black;
 }
@@ -148,14 +115,8 @@ h3 {
     max-width: 100%;
   }
 
-  .edit-btn {
+  .edit-btn, .add-btn {
     bottom: 10px;
     right: 10px;
-  }
-
-  .add-btn {
-    
-    bottom: 10px;
-    right: 70px;
   }
 }
