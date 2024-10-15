@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="perfil-container" *ngIf="!isLoading; else loading">
+<div class="perfil-container" *ngIf="!isLoading; else loading" data-aos="zoom-in">
   <!-- Card de Perfil -->
   <div class="card perfil-card">
     <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.png'" alt="Foto de Perfil" class="perfil-img">
