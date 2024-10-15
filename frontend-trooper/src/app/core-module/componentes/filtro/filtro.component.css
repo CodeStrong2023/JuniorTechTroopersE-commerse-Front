@@ -1,6 +1,6 @@
 .banner-content {
     position: relative;
-    z-index: 2;
+    z-index: 2; /* Este z-index puede estar debajo del del menú desplegable */
     color: white;
     text-align: center;    
     transform: translateY(-50%);
@@ -16,9 +16,10 @@
     background-color: rgba(5, 5, 5, 0.377); /* Fondo transparente */
     padding: 10px;
     border-radius: 5px;
-    width: 60%; /* Ajuste de ancho para que sea más estrecho */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    width: 60%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: visible; /* Permitir que los elementos internos sobresalgan */
+    position: relative; /* Para controlar bien el posicionamiento de los hijos */
 }
 
 .input-container {
@@ -41,11 +42,11 @@
     padding: 10px 10px 10px 35px;
     margin: 0;
     border-radius: 5px;
-    border: 1px solid #ccc; /* Borde gris claro */
+    border: 1px solid #ccc;
     font-size: 14px;
     width: 100%;
-    color: #050505; /* Texto oscuro */
-    background-color: #fff; /* Fondo blanco */
+    color: #050505;
+    background-color: #fff;
     box-sizing: border-box;
 }
 
@@ -54,7 +55,7 @@
     margin: 0;
     border-radius: 5px;
     border: none;
-    background-color: #d4e017; /* Ajusta el color al tono de la imagen */
+    background-color: #d4e017;
     color: black;
     font-size: 16px;
     display: flex;
@@ -66,7 +67,7 @@
 }
 
 .search-box button:hover {
-    background-color: #c0cc10; /* Color más oscuro al pasar el ratón */
+    background-color: #c0cc10;
     color: black;
 }
 
@@ -92,41 +93,41 @@
 
 /* Estilos del menú desplegable */
 .input-container ul {
-    list-style: none; /* Quitar el estilo de lista */
+    list-style: none;
     margin: 0;
-    padding: 5px; /* Ajustar el padding */
+    padding: 5px;
     position: absolute;
-    background: #f8f7f7; /* Fondo claro */
-    border: 1px solid #000000; /* Borde negro */
-    max-height: 200px; /* Ajustar la altura máxima */
+    background: #f8f7f7;
+    border: 1px solid #000000;
+    max-height: 200px;
     border-radius: 20px;
     overflow-y: auto;
     width: 100%;
     z-index: 9999; /* Asegura que el menú esté por encima de otros elementos */
     display: flex;
-    flex-direction: column; /* Alinear los elementos hacia abajo */
+    flex-direction: column;
 }
 
 .input-container ul li {
     padding: 10px;
     cursor: pointer;
-    background: none; /* Eliminar fondo */
-    color: #000; /* Letras negras */
-    border-bottom: 1px solid #e0e0e0; /* Línea separadora */
+    background: none;
+    color: #000;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .input-container ul li:last-child {
-    border-bottom: none; /* Quitar línea al último elemento */
+    border-bottom: none;
 }
 
 .input-container ul li:hover {
-    background-color: #f0f0f0; /* Fondo al pasar el ratón */
+    background-color: #f0f0f0;
 }
 
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .search-box {
-        width: 90%; /* Ajusta el ancho para dispositivos móviles */
+        width: 90%;
         flex-wrap: wrap;
     }
 
@@ -136,6 +137,6 @@
     }
 
     .input-container ul {
-        z-index: 9999; /* Asegura que el menú esté por encima en móviles también */
+        z-index: 9999;
     }
 }
