@@ -6,12 +6,17 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
+// Servicio que se encarga de la autenticación de los usuarios (registro, login, perfil y logout)
 export class AuthService {
 
+  // Variables que almacenan las URLs de la API
   private baseUrl = 'http://localhost:8080/auth';
   private profileUrl = 'http://localhost:8080/users/perfil';
+  // Variable que almacena el token del usuario
   private token: string | null = null;
 
+  // Constructor que inyecta el servicio HttpClient para realizar peticiones HTTP
   constructor(private http: HttpClient) {}
 
   // Método para registrar un usuario
@@ -61,6 +66,7 @@ export class AuthService {
     this.token = null;
     localStorage.removeItem('jwt_token');
   }
+  // Método para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     return !!this.getToken();  // Devuelve true si el token existe
   }

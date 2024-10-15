@@ -1,4 +1,4 @@
-<div class="login-container">
+<div class="login-container" data-aos="zoom-in">
   <div class="left-section">
     <img class="background-image" src="../../../../../assets/icons/logo/logo.png" alt="Logo">
     <div class="title">
@@ -11,20 +11,53 @@
   <div class="right-section">
     <div class="login-card">
       <h2 class="login-title">LOGIN</h2>
-      <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && !loginForm.controls['email']?.valid}">
           <label for="email">Nombre de usuario</label>
-          <input type="email" id="email" placeholder="Ingresa tu email" [(ngModel)]="credentials.username" name="email" required />
+          <input
+            type="email"
+            id="email"
+            placeholder="Ingresa tu nombre de usuario"
+            [(ngModel)]="credentials.username"
+            name="email"
+            required
+          />
+          <div *ngIf="loginForm.submitted && !loginForm.controls['email']?.valid" class="error-bubble">
+            Campo obligatorio
+          </div>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && !loginForm.controls['password']?.valid}">
           <label for="password">Contraseña</label>
-          <input type="password" id="password" placeholder="Ingresa tu contraseña" [(ngModel)]="credentials.password" name="password" required />
+          <div class="password-container">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              placeholder="Ingresa tu contraseña"
+              [(ngModel)]="credentials.password"
+              name="password"
+              required
+            />
+            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'" (click)="togglePasswordVisibility()"></i>
+          </div>
+          <div *ngIf="loginForm.submitted && !loginForm.controls['password']?.valid" class="error-bubble">
+            Campo obligatorio
+          </div>
         </div>
+
         <div class="button-group">
           <button type="submit">Iniciar Sesión</button>
           <button class="submit-registro" type="button" routerLink="/register">Registrarse</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="showSuccessMessage" class="alert alert-success d-flex align-items-center" role="alert">
+    <i class="bi bi-check-circle"></i>
+    <div>
+      Inicio de sesión exitoso
     </div>
   </div>
 </div>

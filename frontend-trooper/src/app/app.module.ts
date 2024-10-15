@@ -9,6 +9,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../enviroments/enviroment';
+import { CoreModule } from './core-module/core.module';
 
 
 
@@ -22,6 +23,7 @@ import { environment } from '../enviroments/enviroment';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    CoreModule
     
     
     

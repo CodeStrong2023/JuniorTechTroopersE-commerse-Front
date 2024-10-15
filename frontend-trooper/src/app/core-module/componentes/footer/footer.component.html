@@ -1,16 +1,41 @@
 <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-left">
-        <p><a routerLink="/contacto">Contacta con nosotros</a></p>
-      </div>
-      <div class="footer-center">
-        <p>&copy; 2024 JUNIOR TECH TROOPERS <br> Argentina</p>
-      </div>
-      <div class="footer-right">
-        <img class="logo-footer" src="../../../../assets/icons/logo/logo.png">
+  <div class="footer-content">
+    <div class="footer-left">
+      <p><a routerLink="/contacto">Contacta con nosotros</a></p>
+      <p><a routerLink="/acerca">Sobre nosotros</a></p>
+      <p><a href="#destinos"(click)="openTermsModal()">Términos y Condiciones</a></p>
+    </div>
+    <div class="footer-center">
+      <p>&copy; 2024 JUNIOR TECH TROOPERS <br> Argentina</p>
+      <div class="social-icons">
+        <a href="https://juniortechtroopers.com.ar/"><i class="bi bi-globe"></i></a>
+        <a href="mailto:juniortechtroopers@gmail.com"><i class="bi bi-envelope"></i></a>
+        <a href="https://www.youtube.com/@JuniorTechTroopers"><i class="bi bi-youtube"></i></a>
       </div>
     </div>
-  </footer>
-  
-    
-  
+    <div class="footer-right">
+      <img class="logo-footer" src="../../../../assets/icons/logo/logo.png" alt="Junior Tech Troopers Logo">
+    </div>
+  </div>
+</footer>
+
+<!-- Modal de Términos y Condiciones -->
+<div class="terms-modal" *ngIf="isTermsModalOpen">
+  <div class="terms-content">
+    <h2>Términos y Condiciones</h2>
+    <p>
+      Bienvenido a Junior Tech Troopers. Al utilizar nuestro sitio web, aceptas cumplir con los siguientes términos y condiciones. 
+      <br><br>
+      1. Uso del sitio: Este sitio está destinado para uso personal y no comercial. No puedes modificar, distribuir o reproducir el contenido sin nuestro permiso.
+      <br><br>
+      2. Responsabilidad: No nos hacemos responsables por los daños o pérdidas que puedan surgir del uso de nuestro sitio.
+      <br><br>
+      3. Cambios en los términos: Nos reservamos el derecho de modificar estos términos en cualquier momento, notificando a los usuarios de los cambios.
+    </p>
+    <div class="terms-checkbox">
+      <input type="checkbox" id="accept-terms" (change)="onTermsChecked($event)">
+      <label for="accept-terms">He leído y acepto los Términos y Condiciones</label>
+    </div>
+    <button [disabled]="!termsAccepted" (click)="acceptTerms()">Aceptar</button>
+  </div>
+</div>

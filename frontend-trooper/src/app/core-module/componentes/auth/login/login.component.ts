@@ -7,26 +7,36 @@ import { AuthService } from '../../../../shared/services/auth/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  // Objeto para almacenar las credenciales de usuario
   credentials = {
     username: '',
     password: ''
   };
+  showPassword = false;
+  showSuccessMessage = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  // Método para mostrar/ocultar la contraseña
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
   // Método para manejar el envío del formulario
-  onSubmit() {
-    // Llamamos al método login del servicio de autenticación
+  onSubmit(form: any) {
+    if (form.invalid) {
+      return;
+    }
+
     this.authService.login(this.credentials).subscribe(
       response => {
         console.log('Login exitoso:', response);
-        // Redirigimos al usuario al perfil después del login exitoso
-        this.router.navigate(['/perfil-usuario']);
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.router.navigate(['/perfil-usuario']);
+        }, 2000); // Redirige después de 2 segundos
       },
       error => {
         console.error('Error durante el login:', error);
-        
       }
     );
   }

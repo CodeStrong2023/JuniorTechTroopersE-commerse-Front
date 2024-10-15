@@ -1,25 +1,50 @@
 <app-header></app-header>
 
-<div class="perfil-container" *ngIf="!isLoading; else loading">
+<div class="perfil-container" *ngIf="!isLoading; else loading" data-aos="zoom-in">
+  <!-- Card de Perfil -->
   <div class="card perfil-card">
     <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.png'" alt="Foto de Perfil" class="perfil-img">
     <h3>{{ userProfile?.firstname }} {{ userProfile?.lastname }}</h3>
-    <p>{{ userProfile?.ubication_x }}, {{ userProfile?.ubication_y }}</p>
+    <p>Argentina</p>
     <button class="edit-btn">
       <i class="bi bi-pencil"></i>
     </button>
   </div>
 
+  <!-- Card de Información de Contacto -->
   <div class="card contacto-card">
     <h3>Info de Contacto</h3>
     <ul>
       <li><i class="bi bi-telephone"></i> {{ userProfile?.phone }}</li>
       <li><i class="bi bi-envelope"></i> {{ userProfile?.email }}</li>
-      <li><i class="bi bi-geo-alt"></i> {{ userProfile?.ubication_x }}, {{ userProfile?.ubication_y }}</li>
+      <li><i class="bi bi-calendar"></i> Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}</li>
+      <li><i class="bi bi-geo-alt"></i> Argentina</li>
     </ul>
     <button class="edit-btn">
       <i class="bi bi-pencil"></i>
     </button>
+  </div>
+
+  <!-- Card de Alojamientos Cargados -->
+  <div class="card alojamientos-card">
+    <h3>Alojamientos Cargados</h3>
+    <ul>
+      <li><i class="bi bi-house-door"></i> Alojamiento 1 - Descripción breve</li>
+      <li><i class="bi bi-house-door"></i> Alojamiento 2 - Descripción breve</li>
+      <li><i class="bi bi-house-door"></i> Alojamiento 3 - Descripción breve</li>
+    </ul>
+    <button class="add-btn">
+      <i class="bi bi-plus-lg"></i>
+    </button>
+  </div>
+
+  <!-- Card de Mis Reservas -->
+  <div class="card reservas-card">
+    <h3>Mis Reservas</h3>
+    <ul>
+      <li><i class="bi bi-calendar-check"></i> Reserva 1 - Detalles</li>
+      <li><i class="bi bi-calendar-check"></i> Reserva 2 - Detalles</li>
+    </ul>
   </div>
 </div>
 

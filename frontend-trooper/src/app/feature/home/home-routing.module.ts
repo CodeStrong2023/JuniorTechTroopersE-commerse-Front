@@ -8,7 +8,7 @@ import { TestUploadComponent } from './componentes/test-upload/test-upload.compo
 const routes: Routes = [
   {path:'', component: InicioComponent},
   {path:'contacto', component: ContactoComponent},
-  {path: 'acerca', component: TestUploadComponent}
+  {path: 'acerca', component: AboutComponent}
   
 ];
 

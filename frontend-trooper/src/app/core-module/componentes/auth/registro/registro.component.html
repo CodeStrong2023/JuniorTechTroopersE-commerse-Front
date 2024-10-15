@@ -1,4 +1,4 @@
-<div class="register-container">
+<div class="register-container" data-aos="zoom-in">
 
    <!-- Mensaje de éxito -->
    <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show message-top-right" role="alert">
@@ -27,9 +27,7 @@
     <div class="register-card">
       <h2>REGISTRO</h2>
       <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
-        <div class="form-group">
-          <input type="text" id="user_rol" name="user_rol" ngModel placeholder="Rol de Usuario" required>
-        </div>
+        
         <div class="form-group">
           <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required>
         </div>
@@ -50,8 +48,7 @@
           <input type="date" id="birthdate" name="birthdate" ngModel required>
         </div>
         <div class="form-group">
-          <input type="number" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación X" required>
-          <input type="number" id="ubication_y" name="ubication_y" ngModel placeholder="Ubicación Y" required>
+          <input type="text" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación" required>
         </div>
         <div class="form-group">
           <label for="imgUrl">Subir Imagen</label>
