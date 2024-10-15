@@ -1,0 +1,63 @@
+.lo-que-ofrecemos-container {
+    padding: 50px;
+    text-align: center;    
+  }
+  
+  h2 {
+    font-family: var(--font-title1);
+    color: var(--color-button);
+    margin-bottom: 30px;
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card i {
+    font-size: 40px;
+    color: var(--color-button);
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    font-family: var(--font-title2);
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-family: var(--font-text);
+    color: #555;
+  }
+  
+  /* Responsivo */
+  @media screen and (max-width: 768px) {
+    .cards-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+  }
+  
