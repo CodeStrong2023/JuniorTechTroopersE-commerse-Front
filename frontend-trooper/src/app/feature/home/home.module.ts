@@ -13,6 +13,7 @@ import { AboutComponent } from './componentes/about/about.component';
 import { TestUploadComponent } from './componentes/test-upload/test-upload.component';
 import { HospedajesTendenciaComponent } from './componentes/hospedajes-tendencia/hospedajes-tendencia.component';
 import { ServiciosComponent } from './componentes/servicios/servicios.component';
+import { DestinosComponent } from './componentes/destinos/destinos.component';
 
 
 
@@ -26,6 +27,7 @@ import { ServiciosComponent } from './componentes/servicios/servicios.component'
     TestUploadComponent,
     HospedajesTendenciaComponent,
     ServiciosComponent,
+    DestinosComponent,
    
   ],
   imports: [
