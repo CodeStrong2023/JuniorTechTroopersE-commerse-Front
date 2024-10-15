@@ -14,7 +14,12 @@ export class FiltroService {
 
   getAutocompleteSuggestions(query: string): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}?nombre=${query}&max=10`).pipe(
-      map(response => response.localidades) // La API devuelve las localidades en el campo 'localidades'
+      map(response => 
+        response.localidades.map((localidad: any) => ({
+          nombre: localidad.nombre,
+          provincia: localidad.provincia.nombre 
+        }))
+      )
     );
   }
 }

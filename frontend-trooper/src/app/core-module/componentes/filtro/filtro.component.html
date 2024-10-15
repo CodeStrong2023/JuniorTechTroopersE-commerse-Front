@@ -5,12 +5,12 @@
             <input type="text" 
                    placeholder="¿A dónde vas?" 
                    (input)="onSearchLocation($event)" 
-                   [value]="selectedLocation?.nombre"/>
+                   [value]="selectedLocation?.nombre + ', ' + selectedLocation?.provincia"/>
             <!-- Lista de sugerencias -->
             <ul *ngIf="suggestions.length > 0">
                 <li *ngFor="let suggestion of suggestions" 
                     (click)="selectSuggestion(suggestion)">
-                    {{ suggestion.nombre }}
+                    {{ suggestion.nombre }} - {{ suggestion.provincia }}
                 </li>
             </ul>
         </div>
