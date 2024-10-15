@@ -21,55 +21,50 @@ export class RegistroComponent {
     private imagesService: ImagesService // Inyecta el servicio de imágenes
   ) {}
 
-  // Variables para los mensajes
   successMessage: string = '';
   errorMessage: string = '';
   showSuccess: boolean = false;
   showError: boolean = false;
 
-  // Maneja la selección del archivo de imagen
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] || null; // Asigna el archivo seleccionado
   }
 
-  // Envía el formulario
   onSubmit(form: NgForm) {
     if (form.valid && this.selectedFile) {
-      this.isLoading = true; // Inicia el estado de carga
+      this.isLoading = true;
 
-      // Subir la imagen a Firebase
+      // Subir la imagen a Firebase (o el servicio que estés usando)
       this.imagesService.uploadImage(this.selectedFile).then(
         (downloadURL) => {
-          // Una vez que la imagen esté subida, se registra el usuario con la URL de la imagen
+          // Construye el objeto RegisterUser con los valores del formulario
           const userData: RegisterUser = {
-            user_rol: '6b5d77ac-4101-487c-910e-334c1e1f7342', // ID del rol de usuario
-            userName: form.value.firstname.toLowerCase(), // o cualquier lógica para generar el username
+            userName: form.value.firstname.toLowerCase(), // Puedes ajustar la lógica
             password: form.value.password,
-            imgUrl: downloadURL, // URL obtenida de Firebase
+            imgUrl: downloadURL, // URL obtenida
             firstname: form.value.firstname,
             lastname: form.value.lastname,
             email: form.value.email,
             birthdate: form.value.birthdate,
             phone: form.value.phone,
-            ubication_x: form.value.ubication_x, // Usar valores ingresados
-            ubication_y: form.value.ubication_y,
+            ubication_x: form.value.ubication_x, // Solo un campo de ubicación
           };
 
           // Llama al servicio de autenticación para registrar al usuario
           this.authService.register(userData).subscribe(
             (response) => {
               console.log('Usuario registrado exitosamente:', response);
-              this.isLoading = false; // Finaliza el estado de carga
+              this.isLoading = false;
               this.successMessage = 'Registro exitoso.';
               this.showSuccess = true;
-              this.hideMessages(); // Oculta los mensajes después de un tiempo
-              this.router.navigate(['/login']); // Redirige al usuario al login
+              this.hideMessages();
+              this.router.navigate(['/login']);
             },
             (error) => {
               console.error('Error al registrar el usuario:', error);
               this.errorMessage = 'Error al registrar el usuario.';
               this.showError = true;
-              this.isLoading = false; // Finaliza el estado de carga
+              this.isLoading = false;
             }
           );
         },
@@ -85,11 +80,10 @@ export class RegistroComponent {
     }
   }
 
-  // Oculta los mensajes después de un tiempo
   hideMessages() {
     setTimeout(() => {
       this.showSuccess = false;
       this.showError = false;
-    }, 5000); // Oculta después de 5 segundos
+    }, 5000); 
   }
 }

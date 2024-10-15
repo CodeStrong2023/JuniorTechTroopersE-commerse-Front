@@ -1,5 +1,5 @@
 .footer {
-    position: relative;
+    position:relative;
     /* O 'absolute' si es necesario */
     z-index: 0;
     /* Asegura que esté detrás de las cards */
