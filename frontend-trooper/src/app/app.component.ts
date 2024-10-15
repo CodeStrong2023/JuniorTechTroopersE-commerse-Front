@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import * as AOS from 'aos';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend-trooper';
+  title = 'frontend-trooper';  
+
+  ngOnInit() {
+    AOS.init();
+    window.addEventListener('load', AOS.refresh);
+  }
 }
