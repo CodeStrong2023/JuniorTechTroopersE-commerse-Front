@@ -14,7 +14,18 @@ export class HospedajesTendenciaComponent implements OnInit {
       imagenUrl: '../../../../../assets/images/tendencias/cabania.jpg',
       url: '/detalles/cabana-montana-verde'
     },
-    // Agrega más hospedajes aquí
+    {
+      titulo: 'Cabaña Montaña Verde',
+      descripcion: 'San Rafael | Disfruta de vistas panorámicas a la montaña desde nuestra encantadora cabaña.',
+      imagenUrl: '../../../../../assets/images/tendencias/cabania.jpg',
+      url: '/detalles/cabana-montana-verde'
+    },
+    {
+      titulo: 'Cabaña Montaña Verde',
+      descripcion: 'San Rafael | Disfruta de vistas panorámicas a la montaña desde nuestra encantadora cabaña.',
+      imagenUrl: '../../../../../assets/images/tendencias/cabania.jpg',
+      url: '/detalles/cabana-montana-verde'
+    },
   ];
 
   constructor() { }
