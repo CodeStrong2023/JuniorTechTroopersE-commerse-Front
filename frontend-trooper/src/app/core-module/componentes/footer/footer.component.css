@@ -1,15 +1,10 @@
 .footer {
-    position:relative;
-    /* O 'absolute' si es necesario */
-    z-index: 0;
-    /* Asegura que esté detrás de las cards */
+    position: relative;
     margin-top: 200px;
     background-color: #11111186;
     backdrop-filter: blur(10px);
-    /* Fondo oscuro */
     padding: 60px;
     color: #D0E218;
-    /* Texto en color amarillo verdoso */
     text-align: center;
     font-weight: 200;
     font-size: 14px;
@@ -19,47 +14,112 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.footer-left,
-.footer-center,
-.footer-right {
+.footer-left, .footer-center, .footer-right {
     flex: 1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-.footer-left p,
-.footer-center p,
-.footer-right p {
-    margin: 0;
+.footer-left p, .footer-center p, .footer-right p {
+    margin: 5px 0;
 }
 
-a{
+a {
     text-decoration: none;
     color: #D0E218;
 }
 
-a:hover{
+a:hover {
     transition: 0.6s;
     color: #fff;
+}
+
+.logo-footer {
+    width: 150px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #D0E218;
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    transition: 0.6s;
 }
 
 .footer-center p {
     text-align: center;
 }
-.logo-footer{
-    width: 150px;
-}
+
+/* Estilos del modal de términos */
+.terms-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .terms-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .terms-checkbox {
+    margin-top: 20px;
+  }
+  
+  .terms-checkbox label {
+    margin-left: 10px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #D0E218;
+    border: none;
+    border-radius: 5px;
+    cursor: not-allowed;
+  }
+  
+  button:enabled {
+    background-color: #6B4E73;
+    cursor: pointer;
+  }
+  
+  button:enabled:hover {
+    background-color: #fff;
+    color: #6B4E73;
+    transition: 0.3s;
+  }
+  
 
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
     }
-
-    .footer-left,
-    .footer-center,
-    .footer-right {
+    .footer-left, .footer-center, .footer-right {
         margin: 10px 0;
     }
 }

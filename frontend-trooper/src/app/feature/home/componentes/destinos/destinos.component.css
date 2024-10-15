@@ -5,9 +5,9 @@
 
   .destinos-title {
     font-family: var(--font-title1);
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
-    color: #fff;
+    color: var(--color-button);
     margin-bottom: 20px;
     z-index: 10; /* Asegura que el título esté por encima del carousel */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
