@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 /* Contenedor principal */
 .register-container {
   display: flex;
@@ -32,8 +36,7 @@
 }
 
 .title h2 {
-  font-size: 2rem;
-  font-family: sans-serif;
+  font-size: 2rem;  
   margin: 0.5rem 0;
 }
 
@@ -211,8 +214,8 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: var(--color-card-2); /* Fondo del botón */
-  color: var(--color-white); /* Color del texto */
+  background-color: var(--color-white); /* Fondo del botón */
+  color: var(--color-text); /* Color del texto */
   border: 1px solid var(--color-card); /* Borde */
   border-radius: 5px;
   cursor: pointer;
@@ -236,13 +239,13 @@
 
 
 
-.custom-file-upload {
+.custom-file-upload {  
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-.file-input {
+.file-input {  
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
