@@ -230,7 +230,7 @@
 }
 
 .upload-button:hover {
-  background-color: var(--color-card); /* Color de hover */
+  background-color: #99cc00; /* Color de hover */
 }
 
 .upload-button:active {
