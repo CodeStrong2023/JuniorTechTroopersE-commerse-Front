@@ -12,8 +12,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;  
-  padding: 2rem; 
+  position: relative;
+  padding: 2rem;
 }
 
 .background-image {
@@ -32,7 +32,6 @@
 }
 
 .title h2 {
-  
   font-size: 2rem;
   font-family: sans-serif;
   margin: 0.5rem 0;
@@ -47,7 +46,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   padding: 2rem;
 }
 
@@ -86,14 +85,15 @@
   box-sizing: border-box;
 }
 
-/* Para inputs lado a lado */
-.form-group input[type="text"],
-.form-group input[type="number"] {
-  flex: 1;
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 .form-group input[type="file"] {
-  padding: 0.5rem;
+  display: none;
 }
 
 .button-group {
@@ -129,14 +129,11 @@
   gap: 0.5rem;
 }
 
-.alert {
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.25rem;
+.error-message {
+  color: red;
+  font-size: 0.875rem;
 }
 
-.alert i {
-  font-size: 1.5rem;
-}
 
 /* Media Queries */
 
