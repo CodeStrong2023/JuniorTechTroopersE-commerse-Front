@@ -12,7 +12,7 @@
     <div class="login-card">
       <h2 class="login-title">LOGIN</h2>
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && !loginForm.controls['email']?.valid}">
+        <div class="form-group" [ngClass]="{'has-error': !loginForm.controls['email']?.valid}">
           <label for="email">Nombre de usuario</label>
           <input
             type="email"
@@ -21,13 +21,14 @@
             [(ngModel)]="credentials.username"
             name="email"
             required
+            (blur)="validateField(loginForm, 'email')"
           />
-          <div *ngIf="loginForm.submitted && !loginForm.controls['email']?.valid" class="error-bubble">
+          <div *ngIf="!loginForm.controls['email']?.valid && showEmailError" class="error-bubble">
             Campo obligatorio
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="{'has-error': loginForm.submitted && !loginForm.controls['password']?.valid}">
+        <div class="form-group" [ngClass]="{'has-error': !loginForm.controls['password']?.valid}">
           <label for="password">Contraseña</label>
           <div class="password-container">
             <input
@@ -37,10 +38,11 @@
               [(ngModel)]="credentials.password"
               name="password"
               required
+              (blur)="validateField(loginForm, 'password')"
             />
             <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'" (click)="togglePasswordVisibility()"></i>
           </div>
-          <div *ngIf="loginForm.submitted && !loginForm.controls['password']?.valid" class="error-bubble">
+          <div *ngIf="!loginForm.controls['password']?.valid && showPasswordError" class="error-bubble">
             Campo obligatorio
           </div>
         </div>
@@ -56,8 +58,12 @@
   <!-- Mensaje de éxito -->
   <div *ngIf="showSuccessMessage" class="alert alert-success d-flex align-items-center" role="alert">
     <i class="bi bi-check-circle"></i>
-    <div>
-      Inicio de sesión exitoso
-    </div>
+    <div>Inicio de sesión exitoso</div>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="showErrorMessage" class="alert alert-danger d-flex align-items-center" role="alert">
+    <i class="bi bi-x-circle"></i>
+    <div>Error en el inicio de sesión</div>
   </div>
 </div>

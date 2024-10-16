@@ -13,6 +13,11 @@ export class LoginComponent {
   };
   showPassword = false;
   showSuccessMessage = false;
+  showErrorMessage = false;
+
+  // Controlar visibilidad de las burbujas de error
+  showEmailError = false;
+  showPasswordError = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -31,13 +36,25 @@ export class LoginComponent {
       response => {
         console.log('Login exitoso:', response);
         this.showSuccessMessage = true;
+        this.showErrorMessage = false;
         setTimeout(() => {
           this.router.navigate(['/perfil-usuario']);
         }, 2000); // Redirige después de 2 segundos
       },
       error => {
         console.error('Error durante el login:', error);
+        this.showErrorMessage = true;
+        this.showSuccessMessage = false;
       }
     );
+  }
+
+  // Validar campo al hacer clic fuera del input
+  validateField(form: any, field: string) {
+    if (field === 'email') {
+      this.showEmailError = form.controls['email'] && !form.controls['email'].valid;
+    } else if (field === 'password') {
+      this.showPasswordError = form.controls['password'] && !form.controls['password'].valid;
+    }
   }
 }
