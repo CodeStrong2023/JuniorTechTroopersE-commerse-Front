@@ -8,5 +8,5 @@ export interface UserProfile {
   email: string;
   birthdate: string; 
   phone: string;
-  ubication_x: string; // Cambiado de number a string
+  locality: string; // Cambiado de number a string
 }

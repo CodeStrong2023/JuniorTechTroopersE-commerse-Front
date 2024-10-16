@@ -5,7 +5,7 @@
   <div class="card perfil-card">
     <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.png'" alt="Foto de Perfil" class="perfil-img">
     <h3>{{ userProfile?.firstname }} {{ userProfile?.lastname }}</h3>
-    <p>Argentina</p>
+    <p>{{userProfile?.locality}}</p>
     <button class="edit-btn">
       <i class="bi bi-pencil"></i>
     </button>
@@ -18,7 +18,7 @@
       <li><i class="bi bi-telephone"></i> {{ userProfile?.phone }}</li>
       <li><i class="bi bi-envelope"></i> {{ userProfile?.email }}</li>
       <li><i class="bi bi-calendar"></i> Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}</li>
-      <li><i class="bi bi-geo-alt"></i> {{userProfile?.ubication_x}}</li>
+      <li><i class="bi bi-geo-alt"></i> {{userProfile?.locality}}</li>
     </ul>
     <button class="edit-btn">
       <i class="bi bi-pencil"></i>

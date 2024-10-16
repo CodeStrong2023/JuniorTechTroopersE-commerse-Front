@@ -96,15 +96,15 @@
         <div class="form-group">
           <input
             type="text"
-            id="ubication_x"
-            name="ubication_x"
+            id="locality"
+            name="locality"
             [(ngModel)]="ubicationQuery"
             (input)="onUbicationInput()"
             placeholder="Ubicación"
             required
             autocomplete="off"
           />
-          <div *ngIf="registroForm.controls['ubication_x']?.invalid && registroForm.controls['ubication_x']?.touched" class="error-bubble">
+          <div *ngIf="registroForm.controls['locality']?.invalid && registroForm.controls['locality']?.touched" class="error-bubble">
             La ubicación es obligatoria.
           </div>
         
@@ -129,7 +129,7 @@
 
         <div class="button-group">
           <button type="submit">Registrarse</button>
-          <button type="reset">Cancelar</button>
+          <button type="reset" routerLink="/login">Cancelar</button>
         </div>
       </form>
     </div>

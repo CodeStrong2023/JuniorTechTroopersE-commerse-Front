@@ -77,7 +77,7 @@ export class RegistroComponent {
             email: form.value.email,
             birthdate: form.value.birthdate,
             phone: form.value.phone,
-            ubication_x: form.value.ubication_x,
+            locality: form.value.locality,
           };
   
           //Si el registro es exitoso, redirigir
