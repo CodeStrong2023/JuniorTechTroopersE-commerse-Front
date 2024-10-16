@@ -1,10 +1,10 @@
 .banner-content {
     position: relative;
-    z-index: 2; /* Este z-index puede estar debajo del del menú desplegable */
+    z-index: 2;
     color: white;
-    text-align: center;    
+    text-align: center;
     transform: translateY(-50%);
-    width: 100%;    
+    width: 100%;
 }
 
 .search-box {
@@ -18,14 +18,14 @@
     border-radius: 5px;
     width: 60%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: visible; /* Permitir que los elementos internos sobresalgan */
-    position: relative; /* Para controlar bien el posicionamiento de los hijos */
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .input-container {
     position: relative;
     flex-grow: 1;
-    z-index: 100; /* Asegura que el input esté por encima */
 }
 
 .input-container i {
@@ -71,41 +71,22 @@
     color: black;
 }
 
-/* Ajustes de iconos */
-.icon-bed::before,
-.icon-calendar::before,
-.icon-search::before {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    content: '';
-}
-
-.icon-bed::before {
-    background-image: url('../../../../assets/icons/filtro/cama.png');
-}
-
-.icon-calendar::before {
-    background-image: url('../../../../assets/icons/filtro/calendario.png');
-}
-
 /* Estilos del menú desplegable */
 .input-container ul {
     list-style: none;
     margin: 0;
     padding: 5px;
     position: absolute;
+    top: 100%; /* Se coloca justo debajo del input */
+    left: 0;
     background: #f8f7f7;
     border: 1px solid #000000;
     max-height: 200px;
-    border-radius: 20px;
+    border-radius: 5px;
     overflow-y: auto;
     width: 100%;
-    z-index: 9999; /* Asegura que el menú esté por encima de otros elementos */
-    display: flex;
-    flex-direction: column;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-container ul li {
@@ -124,6 +105,25 @@
     background-color: #f0f0f0;
 }
 
+/* Ajustes de iconos */
+.icon-bed::before,
+.icon-calendar::before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.icon-bed::before {
+    background-image: url('../../../../assets/icons/filtro/cama.png');
+}
+
+.icon-calendar::before {
+    background-image: url('../../../../assets/icons/filtro/calendario.png');
+}
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .search-box {
@@ -137,6 +137,6 @@
     }
 
     .input-container ul {
-        z-index: 9999;
+        z-index: 10000;
     }
 }

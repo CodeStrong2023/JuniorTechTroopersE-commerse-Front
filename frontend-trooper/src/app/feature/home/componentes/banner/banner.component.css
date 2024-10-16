@@ -81,6 +81,23 @@
 
     .banner-logo {
         margin-top: 20px;
-        height: 80px; /* Ajusta aún más el tamaño del logo */
+        height: 100px; /* Ajusta aún más el tamaño del logo */
+    }
+
+    
+}
+
+
+@media (max-width: 768px) {
+    .filtro {
+        top: 70%; /* Lleva el filtro más arriba en pantallas medianas */
+        padding: 0 10px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .filtro {
+        top: 60%; /* Aún más arriba en pantallas muy pequeñas */
+        padding: 0 5px; 
     }
 }

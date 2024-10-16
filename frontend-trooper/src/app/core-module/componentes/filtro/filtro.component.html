@@ -1,25 +1,27 @@
 <div class="banner-content">
     <div class="search-box">
-        <div class="input-container">
-            <i class="icon-bed"></i>
-            <input type="text" 
-                   placeholder="¿A dónde vas?" 
-                   (input)="onSearchLocation($event)" 
-                   [value]="selectedLocation?.nombre + ', ' + selectedLocation?.provincia"/>
-            <!-- Lista de sugerencias -->
-            <ul *ngIf="suggestions.length > 0">
-                <li *ngFor="let suggestion of suggestions" 
-                    (click)="selectSuggestion(suggestion)">
-                    {{ suggestion.nombre }} - {{ suggestion.provincia }}
-                </li>
-            </ul>
-        </div>
-        <div class="input-container">
-            <i class="icon-calendar"></i>
-            <input type="date" placeholder="Comprobar disponibilidad" />
-        </div>
-        <button class="search-button">
-            Buscar
-        </button>
+      <div class="input-container">
+        <i class="icon-bed"></i>
+        <input
+          type="text"
+          placeholder="¿A dónde vas?"
+          (input)="onSearchLocation($event)"
+          [value]="selectedLocation?.nombre + ', ' + selectedLocation?.provincia"
+        />
+        <!-- Lista de sugerencias -->
+        <ul *ngIf="suggestions.length > 0">
+          <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+            {{ suggestion.nombre }} - {{ suggestion.provincia }}
+          </li>
+        </ul>
+      </div>
+      <div class="input-container">
+        <i class="icon-calendar"></i>
+        <input type="date" placeholder="Comprobar disponibilidad" />
+      </div>
+      <button class="search-button">
+        Buscar
+      </button>
     </div>
-</div>
+  </div>
+  
