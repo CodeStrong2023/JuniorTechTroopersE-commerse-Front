@@ -55,7 +55,7 @@
     margin: 0;
     border-radius: 5px;
     border: none;
-    background-color: #d4e017;
+    background-color: var(--color-button);
     color: black;
     font-size: 16px;
     display: flex;
@@ -67,8 +67,8 @@
 }
 
 .search-box button:hover {
-    background-color: #c0cc10;
-    color: black;
+    background-color: #414104b4;   
+    color: var(--color-button);
 }
 
 /* Estilos del menú desplegable */
