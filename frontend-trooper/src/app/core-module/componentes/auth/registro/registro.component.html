@@ -29,14 +29,22 @@
       <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
         
         <div class="form-group">
-          <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required>
+          <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required #userName="ngModel">
+          <div *ngIf="userName.invalid && userName.touched" class="error-message">
+            El nombre de usuario es obligatorio.
+          </div>
         </div>
+
+        
         <div class="form-group">
           <input type="text" id="firstname" name="firstname" ngModel placeholder="Nombre" required>
           <input type="text" id="lastname" name="lastname" ngModel placeholder="Apellido" required>
         </div>
         <div class="form-group">
-          <input type="email" id="email" name="email" ngModel placeholder="Email" required>
+          <input type="email" id="email" name="email" ngModel placeholder="Email" required email #email="ngModel">
+          <div *ngIf="email.invalid && email.touched" class="error-message">
+            El email debe ser válido (con  y un dominio como .com).
+          </div>
         </div>
         <div class="form-group">
           <input type="password" id="password" name="password" ngModel placeholder="Contraseña" required>

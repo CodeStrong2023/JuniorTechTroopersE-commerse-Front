@@ -118,7 +118,6 @@
   background-color: #97a81b;
 }
 
-/* Estilos para los mensajes */
 .message-top-right {
   position: fixed;
   top: 20px;
@@ -133,6 +132,7 @@
   color: red;
   font-size: 0.875rem;
 }
+
 
 
 /* Media Queries */

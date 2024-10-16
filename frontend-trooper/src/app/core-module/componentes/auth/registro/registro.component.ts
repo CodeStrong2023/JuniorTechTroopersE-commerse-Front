@@ -13,66 +13,60 @@ import { Router } from '@angular/router';
 export class RegistroComponent {
   selectedFile: File | null = null;
   isLoading: boolean = false;
-  defaultImgUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqsHsf7pQFE45aJ_-rkWcO_nkBoa5gYSN39g&s'; // URL por defecto
-
-  constructor(
-    private authService: AuthService, 
-    private router: Router,
-    private imagesService: ImagesService // Inyecta el servicio de imágenes
-  ) {}
-
   successMessage: string = '';
   errorMessage: string = '';
   showSuccess: boolean = false;
   showError: boolean = false;
 
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private imagesService: ImagesService
+  ) {}
+
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0] || null; // Asigna el archivo seleccionado
+    this.selectedFile = event.target.files[0] || null;
   }
 
   onSubmit(form: NgForm) {
     if (form.valid && this.selectedFile) {
       this.isLoading = true;
 
-      // Subir la imagen a Firebase (o el servicio que estés usando)
       this.imagesService.uploadImage(this.selectedFile).then(
         (downloadURL) => {
-          // Construye el objeto RegisterUser con los valores del formulario
           const userData: RegisterUser = {
-            userName: form.value.firstname.toLowerCase(), // Puedes ajustar la lógica
+            userName: form.value.userName.toLowerCase(),
             password: form.value.password,
-            imgUrl: downloadURL, // URL obtenida
+            imgUrl: downloadURL,
             firstname: form.value.firstname,
             lastname: form.value.lastname,
             email: form.value.email,
             birthdate: form.value.birthdate,
             phone: form.value.phone,
-            ubication_x: form.value.ubication_x, // Solo un campo de ubicación
+            ubication_x: form.value.ubication_x,
           };
 
-          // Llama al servicio de autenticación para registrar al usuario
           this.authService.register(userData).subscribe(
             (response) => {
-              console.log('Usuario registrado exitosamente:', response);
               this.isLoading = false;
               this.successMessage = 'Registro exitoso.';
               this.showSuccess = true;
               this.hideMessages();
-              this.router.navigate(['/login']);
+              setTimeout(() => this.router.navigate(['/login']), 3000); // Redirige al login tras 3 segundos
             },
             (error) => {
-              console.error('Error al registrar el usuario:', error);
               this.errorMessage = 'Error al registrar el usuario.';
               this.showError = true;
               this.isLoading = false;
+              this.hideMessages();
             }
           );
         },
         (error) => {
-          console.error('Error al subir la imagen:', error);
           this.errorMessage = 'Error al subir la imagen.';
           this.showError = true;
           this.isLoading = false;
+          this.hideMessages();
         }
       );
     } else {
@@ -84,6 +78,6 @@ export class RegistroComponent {
     setTimeout(() => {
       this.showSuccess = false;
       this.showError = false;
-    }, 5000); 
+    }, 5000);
   }
 }
