@@ -93,19 +93,33 @@
           </div>
         </div>
 
-        <!-- Otros campos (ubicación, teléfono, imagen, etc.) -->
         <div class="form-group">
-          <input type="text" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación" required>
-          <div *ngIf="registroForm.controls['ubication_x']?.invalid && registroForm.controls['ubication_x']?.touched"
-            class="error-bubble">
+          <input
+            type="text"
+            id="ubication_x"
+            name="ubication_x"
+            [(ngModel)]="ubicationQuery"
+            (input)="onUbicationInput()"
+            placeholder="Ubicación"
+            required
+            autocomplete="off"
+          />
+          <div *ngIf="registroForm.controls['ubication_x']?.invalid && registroForm.controls['ubication_x']?.touched" class="error-bubble">
             La ubicación es obligatoria.
           </div>
+        
+          <!-- Lista desplegable para sugerencias de autocompletado -->
+          <ul *ngIf="filteredLocations.length > 0" class="suggestions-list">
+            <li *ngFor="let location of filteredLocations" (click)="selectLocation(location)">
+              {{ location.nombre }}, {{ location.provincia }}
+            </li>
+          </ul>
         </div>
 
         <div class="form-group">
           <div>
             <label for="imgUrl" class="upload-button">
-              <i class="bi bi-paperclip"></i> Subir imagen
+              <i class="bi bi-paperclip"></i> Subir foto de perfil
             </label>
             <input type="file" id="imgUrl" (change)="onFileSelected($event)">
           </div>

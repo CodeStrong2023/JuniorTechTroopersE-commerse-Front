@@ -254,6 +254,29 @@
   z-index: -1;
 }
 
+/* Estilo de la lista de sugerencias */
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
 
 /* Media Queries */
 

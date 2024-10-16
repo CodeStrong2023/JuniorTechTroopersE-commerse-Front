@@ -4,6 +4,7 @@ import { RegisterUser } from '../../../../shared/model/register-user';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { ImagesService } from '../../../../shared/services/images-service/images.service';
 import { Router } from '@angular/router';
+import { FiltroService } from '../../../../shared/services/filtro.service';
 
 @Component({
   selector: 'app-registro',
@@ -21,16 +22,46 @@ export class RegistroComponent {
   passwordsMatch: boolean = false; // Para verificar coincidencia de contraseñas
   isAdult: boolean = true; // Para verificar si el usuario es mayor de edad
 
+   // Autocompletado
+   ubicationQuery: string = '';
+   filteredLocations: any[] = [];  // Almacena las sugerencias
+
   constructor(
     private authService: AuthService, 
     private router: Router,
-    private imagesService: ImagesService
+    private imagesService: ImagesService,
+    private filtroService: FiltroService
   ) {}
 
+
+   // Escuchar el input de ubicación
+   onUbicationInput() {
+    if (this.ubicationQuery.length > 2) {
+      this.filtroService.getAutocompleteSuggestions(this.ubicationQuery).subscribe(
+        (suggestions) => {
+          this.filteredLocations = suggestions;
+        },
+        (error) => {
+          console.error('Error al obtener sugerencias de ubicación:', error);
+        }
+      );
+    } else {
+      this.filteredLocations = [];
+    }
+  }
+
+  // Manejar la selección de una ubicación
+  selectLocation(location: any) {
+    this.ubicationQuery = `${location.nombre}, ${location.provincia}`;
+    this.filteredLocations = [];  // Ocultar las sugerencias
+  }
+
+  //Método para seleccionar un archivo
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] || null;
   }
 
+  //Método para manejar el envío del formulario
   onSubmit(form: NgForm) {
     if (form.valid && this.selectedFile && this.passwordsMatch && this.isAdult) {
       this.isLoading = true;
@@ -49,6 +80,7 @@ export class RegistroComponent {
             ubication_x: form.value.ubication_x,
           };
   
+          //Si el registro es exitoso, redirigir
           this.authService.register(userData).subscribe(
             (response) => {
               this.isLoading = false;
@@ -57,6 +89,7 @@ export class RegistroComponent {
               this.hideMessages();
               setTimeout(() => this.router.navigate(['/login']), 3000);
             },
+            //Si el registro falla, mostrar mensaje de error
             (error) => {
               this.isLoading = false;
               this.errorMessage = 'Error al registrar el usuario. El usuario ya existe. Intentelo de nuevo';             
@@ -65,6 +98,7 @@ export class RegistroComponent {
             }
           );
         },
+        //Si la subida de la imagen falla, mostrar mensaje de error
         (error) => {
           this.errorMessage = 'Error al subir la imagen.';
           this.showError = true;
