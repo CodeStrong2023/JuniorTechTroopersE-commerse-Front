@@ -59,9 +59,9 @@ export class RegistroComponent {
             },
             (error) => {
               this.isLoading = false;
-              this.errorMessage = 'Error al registrar el usuario.';
+              this.errorMessage = 'Error al registrar el usuario. El usuario ya existe. Intentelo de nuevo';             
               this.showError = true;
-              this.hideMessages();  // Ocultar mensajes después de un tiempo
+              this.hideMessages();  
             }
           );
         },

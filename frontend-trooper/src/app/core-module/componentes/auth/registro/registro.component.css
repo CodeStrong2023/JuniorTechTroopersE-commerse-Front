@@ -206,6 +206,52 @@
 }
 
 
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--color-card-2); /* Fondo del botón */
+  color: var(--color-white); /* Color del texto */
+  border: 1px solid var(--color-card); /* Borde */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--font-title2);
+  width: 100%; /* Botón al 100% */
+  text-align: center;
+}
+
+.upload-button i {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.upload-button:hover {
+  background-color: var(--color-card); /* Color de hover */
+}
+
+.upload-button:active {
+  background-color: #99cc00; /* Color de clic */
+}
+
+
+
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
 /* Media Queries */
 
 /* Tablets */
