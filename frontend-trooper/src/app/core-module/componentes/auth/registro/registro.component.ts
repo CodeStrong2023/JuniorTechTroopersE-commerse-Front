@@ -17,6 +17,9 @@ export class RegistroComponent {
   errorMessage: string = '';
   showSuccess: boolean = false;
   showError: boolean = false;
+  showPassword: boolean = false;
+  passwordsMatch: boolean = false; // Para verificar coincidencia de contraseñas
+  isAdult: boolean = true; // Para verificar si el usuario es mayor de edad
 
   constructor(
     private authService: AuthService, 
@@ -29,9 +32,9 @@ export class RegistroComponent {
   }
 
   onSubmit(form: NgForm) {
-    if (form.valid && this.selectedFile) {
+    if (form.valid && this.selectedFile && this.passwordsMatch && this.isAdult) {
       this.isLoading = true;
-
+  
       this.imagesService.uploadImage(this.selectedFile).then(
         (downloadURL) => {
           const userData: RegisterUser = {
@@ -45,20 +48,20 @@ export class RegistroComponent {
             phone: form.value.phone,
             ubication_x: form.value.ubication_x,
           };
-
+  
           this.authService.register(userData).subscribe(
             (response) => {
               this.isLoading = false;
               this.successMessage = 'Registro exitoso.';
               this.showSuccess = true;
               this.hideMessages();
-              setTimeout(() => this.router.navigate(['/login']), 3000); // Redirige al login tras 3 segundos
+              setTimeout(() => this.router.navigate(['/login']), 3000);
             },
             (error) => {
+              this.isLoading = false;
               this.errorMessage = 'Error al registrar el usuario.';
               this.showError = true;
-              this.isLoading = false;
-              this.hideMessages();
+              this.hideMessages();  // Ocultar mensajes después de un tiempo
             }
           );
         },
@@ -70,7 +73,17 @@ export class RegistroComponent {
         }
       );
     } else {
-      console.error('Formulario inválido o archivo no seleccionado.');
+      if (!this.passwordsMatch) {
+        this.errorMessage = 'Las contraseñas no coinciden.';
+        this.showError = true;
+      } else if (!this.isAdult) {
+        this.errorMessage = 'Debes ser mayor de edad para registrarte.';
+        this.showError = true;
+      } else {
+        this.errorMessage = 'Por favor, completa todos los campos correctamente.';
+        this.showError = true;
+      }
+      this.hideMessages();
     }
   }
 
@@ -79,5 +92,28 @@ export class RegistroComponent {
       this.showSuccess = false;
       this.showError = false;
     }, 5000);
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  // Verificar coincidencia de contraseñas
+  checkPasswords(password: string, confirmPassword: string) {
+    this.passwordsMatch = password === confirmPassword;
+  }
+  
+
+  // Verificar si el usuario es mayor de edad
+  checkAge(birthdate: string) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    const age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+      this.isAdult = age > 18;
+    } else {
+      this.isAdult = age >= 18;
+    }
   }
 }
