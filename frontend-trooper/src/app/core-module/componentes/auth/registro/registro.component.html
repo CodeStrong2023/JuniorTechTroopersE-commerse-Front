@@ -1,7 +1,7 @@
 <div class="register-container" data-aos="zoom-in">
 
-   <!-- Mensaje de éxito -->
-   <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show message-top-right" role="alert">
+  <!-- Mensaje de éxito -->
+  <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show message-top-right" role="alert">
     <i class="bi bi-check-circle-fill"></i> {{ successMessage }}
   </div>
 
@@ -9,7 +9,7 @@
   <div *ngIf="showError" class="alert alert-danger alert-dismissible fade show message-top-right" role="alert">
     <i class="bi bi-x-circle-fill"></i> {{ errorMessage }}
   </div>
- 
+
 
   <!-- Sección Izquierda -->
   <div class="left-section">
@@ -27,37 +27,116 @@
     <div class="register-card">
       <h2>REGISTRO</h2>
       <form #registroForm="ngForm" (ngSubmit)="onSubmit(registroForm)">
-        
+
+        <!-- Nombre de Usuario -->
         <div class="form-group">
           <input type="text" id="userName" name="userName" ngModel placeholder="Nombre de Usuario" required>
+          <div *ngIf="registroForm.controls['userName']?.invalid && registroForm.controls['userName']?.touched"
+            class="error-bubble">
+            El nombre de usuario es obligatorio.
+          </div>
         </div>
+
+        <!-- Nombre y Apellido -->
         <div class="form-group">
           <input type="text" id="firstname" name="firstname" ngModel placeholder="Nombre" required>
+          <div *ngIf="registroForm.controls['firstname']?.invalid && registroForm.controls['firstname']?.touched"
+            class="error-bubble">
+            El nombre es obligatorio.
+          </div>
+
           <input type="text" id="lastname" name="lastname" ngModel placeholder="Apellido" required>
+          <div *ngIf="registroForm.controls['lastname']?.invalid && registroForm.controls['lastname']?.touched"
+            class="error-bubble">
+            El apellido es obligatorio.
+          </div>
         </div>
+
         <div class="form-group">
-          <input type="email" id="email" name="email" ngModel placeholder="Email" required>
+          <input type="text" id="phone" name="phone" ngModel placeholder="Telefono" required>
+          <div *ngIf="registroForm.controls['phone']?.invalid && registroForm.controls['phone']?.touched"
+            class="error-bubble">
+            El telefono es obligatorio
+          </div>
         </div>
+        <!-- Email -->
         <div class="form-group">
-          <input type="password" id="password" name="password" ngModel placeholder="Contraseña" required>
+          <input type="email" id="email" name="email" ngModel placeholder="Correo electrónico" required email
+            #email="ngModel">
+          <div *ngIf="email.invalid && email.touched" class="error-bubble">
+            El email debe ser válido (ejemplo: usuario&#64;dominio.com).
+          </div>
         </div>
+
+        <!-- Contraseña y Confirmación de Contraseña -->
+        <div class="form-group password-container">
+          <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" ngModel
+            placeholder="Contraseña" required
+            (ngModelChange)="checkPasswords(registroForm.value.password, registroForm.value.confirmPassword)">
+          <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'" (click)="togglePasswordVisibility()"></i>
+          <div *ngIf="registroForm.controls['password']?.invalid && registroForm.controls['password']?.touched"
+            class="error-bubble">
+            La contraseña es obligatoria.
+          </div>
+        </div>
+
+        <div class="form-group password-container">
+          <input [type]="showPassword ? 'text' : 'password'" id="confirmPassword" name="confirmPassword" ngModel
+            placeholder="Repetir Contraseña" required
+            (ngModelChange)="checkPasswords(registroForm.value.password, registroForm.value.confirmPassword)">
+
+          <div *ngIf="registroForm.controls['confirmPassword']?.touched && !passwordsMatch" class="error-bubble">
+            Las contraseñas no coinciden.
+          </div>
+          <i *ngIf="registroForm.controls['confirmPassword']?.touched && passwordsMatch" class="bi bi-check-circle"></i>
+          <i *ngIf="registroForm.controls['confirmPassword']?.touched && !passwordsMatch" class="bi bi-x-circle"></i>
+        </div>
+
+        <!-- Fecha de nacimiento (validación de mayor de edad) -->
         <div class="form-group">
-          <input type="tel" id="telefono" name="phone" ngModel placeholder="Número de Teléfono" required>
+          <input type="date" id="birthdate" name="birthdate" ngModel required (ngModelChange)="checkAge($event)">
+          <div *ngIf="!isAdult && registroForm.controls['birthdate']?.touched" class="error-bubble">
+            Debes ser mayor de edad para registrarte.
+          </div>
         </div>
+
         <div class="form-group">
-          <input type="date" id="birthdate" name="birthdate" ngModel required>
-        </div>
-        <div class="form-group">
-          <input type="text" id="ubication_x" name="ubication_x" ngModel placeholder="Ubicación" required>
-        </div>
-        <div class="form-group">
-          <label for="imgUrl">Subir Imagen</label>
-          <input type="file" id="imgUrl" (change)="onFileSelected($event)">
-        </div>
+          <input
+            type="text"
+            id="locality"
+            name="locality"
+            [(ngModel)]="ubicationQuery"
+            (input)="onUbicationInput()"
+            placeholder="Ubicación"
+            required
+            autocomplete="off"
+          />
+          <div *ngIf="registroForm.controls['locality']?.invalid && registroForm.controls['locality']?.touched" class="error-bubble">
+            La ubicación es obligatoria.
+          </div>
         
+          <!-- Lista desplegable para sugerencias de autocompletado -->
+          <ul *ngIf="filteredLocations.length > 0" class="suggestions-list">
+            <li *ngFor="let location of filteredLocations" (click)="selectLocation(location)">
+              {{ location.nombre }}, {{ location.provincia }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <div>
+            <label for="imgUrl" class="upload-button">
+              <i class="bi bi-paperclip"></i> Subir foto de perfil
+            </label>
+            <input type="file" id="imgUrl" (change)="onFileSelected($event)">
+          </div>
+        </div>
+
+
+
         <div class="button-group">
-          <button type="submit" [disabled]="!registroForm.valid">Registrarse</button>
-          <button type="reset">Cancelar</button>
+          <button type="submit">Registrarse</button>
+          <button type="reset" routerLink="/login">Cancelar</button>
         </div>
       </form>
     </div>

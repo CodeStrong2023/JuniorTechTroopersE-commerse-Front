@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 /* Contenedor principal */
 .register-container {
   display: flex;
@@ -12,8 +16,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;  
-  padding: 2rem; 
+  position: relative;
+  padding: 2rem;
 }
 
 .background-image {
@@ -32,9 +36,7 @@
 }
 
 .title h2 {
-  
-  font-size: 2rem;
-  font-family: sans-serif;
+  font-size: 2rem;  
   margin: 0.5rem 0;
 }
 
@@ -47,7 +49,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   padding: 2rem;
 }
 
@@ -86,14 +88,15 @@
   box-sizing: border-box;
 }
 
-/* Para inputs lado a lado */
-.form-group input[type="text"],
-.form-group input[type="number"] {
-  flex: 1;
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 .form-group input[type="file"] {
-  padding: 0.5rem;
+  display: none;
 }
 
 .button-group {
@@ -118,7 +121,6 @@
   background-color: #97a81b;
 }
 
-/* Estilos para los mensajes */
 .message-top-right {
   position: fixed;
   top: 20px;
@@ -129,14 +131,152 @@
   gap: 0.5rem;
 }
 
+/* Ajuste del ícono del ojo dentro del input */
+.password-container {
+  position: relative;
+}
+
+.password-container i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Burbujas de error */
+.error-bubble {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.5rem;
+  border-radius: 5px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: max-content;
+  font-size: 0.8rem;
+  z-index: 1000;
+}
+
+/* Ícono del ojo para mostrar/ocultar contraseña */
+.bi-eye, .bi-eye-slash {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Mensaje de éxito en la esquina superior derecha */
 .alert {
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.25rem;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .alert i {
-  font-size: 1.5rem;
+  margin-right: 10px;
 }
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Ajustes generales de estilo */
+.form-group {
+  position: relative;
+}
+
+/* Iconos de verificación y error */
+.bi-check-circle {
+  color: green;
+  margin-left: 5px;
+}
+
+.bi-x-circle {
+  color: red;
+  margin-left: 5px;
+}
+
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--color-white); /* Fondo del botón */
+  color: var(--color-text); /* Color del texto */
+  border: 1px solid var(--color-card); /* Borde */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--font-title2);
+  width: 100%; /* Botón al 100% */
+  text-align: center;
+}
+
+.upload-button i {
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.upload-button:hover {
+  background-color: #99cc00; /* Color de hover */
+}
+
+.upload-button:active {
+  background-color: #99cc00; /* Color de clic */
+}
+
+
+
+.custom-file-upload {  
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input {  
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* Estilo de la lista de sugerencias */
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
 
 /* Media Queries */
 

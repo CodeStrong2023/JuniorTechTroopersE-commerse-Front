@@ -8,5 +8,5 @@ export interface RegisterUser {
   email: string;
   birthdate: string; // Formato 'YYYY-MM-DD'
   phone: string;
-  ubication_x: string; 
+  locality: string; 
 }
