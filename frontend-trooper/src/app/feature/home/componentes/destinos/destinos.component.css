@@ -38,6 +38,8 @@
   
   .carousel-caption .btn {
     background-color: var(--color-button);
+    font-family: var(--font-title2);
+    color:black;
     border: none;
     padding: 10px 20px;
     font-size: 1.2rem;
@@ -46,7 +48,9 @@
   }
   
   .carousel-caption .btn:hover {
-    background-color: #8dda5a;
+    background-color: #41410415;
+    box-shadow: 0 2px 12px var(--color-button);
+    color: var(--color-button);
   }
   
   .carousel-control-prev-icon,
