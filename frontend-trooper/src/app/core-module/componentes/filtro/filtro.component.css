@@ -1,10 +1,14 @@
+* {
+    font-family: var(--font-title2);
+}
+
 .banner-content {
     position: relative;
-    z-index: 2; /* Este z-index puede estar debajo del del menú desplegable */
+    z-index: 2;
     color: white;
-    text-align: center;    
+    text-align: center;
     transform: translateY(-50%);
-    width: 100%;    
+    width: 100%;
 }
 
 .search-box {
@@ -13,19 +17,19 @@
     align-items: center;
     gap: 10px;
     margin: 30px auto 0;
-    background-color: rgba(5, 5, 5, 0.377); /* Fondo transparente */
+    background-color: rgba(5, 5, 5, 0.377);
     padding: 10px;
     border-radius: 5px;
     width: 60%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: visible; /* Permitir que los elementos internos sobresalgan */
-    position: relative; /* Para controlar bien el posicionamiento de los hijos */
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .input-container {
     position: relative;
     flex-grow: 1;
-    z-index: 100; /* Asegura que el input esté por encima */
 }
 
 .input-container i {
@@ -50,12 +54,37 @@
     box-sizing: border-box;
 }
 
+/* Estilo personalizado para el campo de fecha */
+.search-box input[type="date"] {
+    padding: 10px 10px 10px 35px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-box input[type="date"]:hover,
+.search-box input[type="date"]:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-color: #555;
+}
+
+/* Estilo para el calendario desplegable */
+.search-box input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+    cursor: pointer;
+}
+
 .search-box button {
     padding: 10px 20px;
     margin: 0;
     border-radius: 5px;
     border: none;
-    background-color: #d4e017;
+    background-color: var(--color-button);
     color: black;
     font-size: 16px;
     display: flex;
@@ -67,28 +96,8 @@
 }
 
 .search-box button:hover {
-    background-color: #c0cc10;
-    color: black;
-}
-
-/* Ajustes de iconos */
-.icon-bed::before,
-.icon-calendar::before,
-.icon-search::before {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    content: '';
-}
-
-.icon-bed::before {
-    background-image: url('../../../../assets/icons/filtro/cama.png');
-}
-
-.icon-calendar::before {
-    background-image: url('../../../../assets/icons/filtro/calendario.png');
+    background-color: #414104b4;
+    color: var(--color-button);
 }
 
 /* Estilos del menú desplegable */
@@ -97,15 +106,16 @@
     margin: 0;
     padding: 5px;
     position: absolute;
+    top: 100%;
+    left: 0;
     background: #f8f7f7;
     border: 1px solid #000000;
     max-height: 200px;
-    border-radius: 20px;
+    border-radius: 5px;
     overflow-y: auto;
     width: 100%;
-    z-index: 9999; /* Asegura que el menú esté por encima de otros elementos */
-    display: flex;
-    flex-direction: column;
+    z-index: 10000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-container ul li {
@@ -124,6 +134,25 @@
     background-color: #f0f0f0;
 }
 
+/* Ajustes de iconos */
+.icon-bed::before,
+.icon-calendar::before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+.icon-bed::before {
+    background-image: url('../../../../assets/icons/filtro/cama.png');
+}
+
+.icon-calendar::before {
+    background-image: url('../../../../assets/icons/filtro/calendario.png');
+}
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {
     .search-box {
@@ -137,6 +166,6 @@
     }
 
     .input-container ul {
-        z-index: 9999;
+        z-index: 10000;
     }
 }

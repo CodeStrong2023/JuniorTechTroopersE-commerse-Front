@@ -2,14 +2,11 @@
     <div class="search-box">
         <div class="input-container">
             <i class="icon-bed"></i>
-            <input type="text" 
-                   placeholder="¿A dónde vas?" 
-                   (input)="onSearchLocation($event)" 
-                   [value]="selectedLocation?.nombre + ', ' + selectedLocation?.provincia"/>
+            <input type="text" placeholder="¿A dónde vas?" (input)="onSearchLocation($event)"
+                [value]="selectedLocation ? (selectedLocation.nombre + ', ' + selectedLocation.provincia) : ''" />
             <!-- Lista de sugerencias -->
             <ul *ngIf="suggestions.length > 0">
-                <li *ngFor="let suggestion of suggestions" 
-                    (click)="selectSuggestion(suggestion)">
+                <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
                     {{ suggestion.nombre }} - {{ suggestion.provincia }}
                 </li>
             </ul>

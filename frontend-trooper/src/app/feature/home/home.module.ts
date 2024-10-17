@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './componentes/about/about.component';
-import { TestUploadComponent } from './componentes/test-upload/test-upload.component';
+import { TestUploadComponent } from './componentes/trooper-stay/test-upload.component';
 import { HospedajesTendenciaComponent } from './componentes/hospedajes-tendencia/hospedajes-tendencia.component';
 import { ServiciosComponent } from './componentes/servicios/servicios.component';
 import { DestinosComponent } from './componentes/destinos/destinos.component';

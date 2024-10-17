@@ -69,7 +69,7 @@ export class RegistroComponent {
       this.imagesService.uploadImage(this.selectedFile).then(
         (downloadURL) => {
           const userData: RegisterUser = {
-            userName: form.value.userName.toLowerCase(),
+            userName: form.value.userName,
             password: form.value.password,
             imgUrl: downloadURL,
             firstname: form.value.firstname,
@@ -121,6 +121,7 @@ export class RegistroComponent {
     }
   }
 
+  // Método para ocultar los mensajes de éxito o error
   hideMessages() {
     setTimeout(() => {
       this.showSuccess = false;
@@ -128,6 +129,7 @@ export class RegistroComponent {
     }, 5000);
   }
 
+  // Mostrar u ocultar la contraseña
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }

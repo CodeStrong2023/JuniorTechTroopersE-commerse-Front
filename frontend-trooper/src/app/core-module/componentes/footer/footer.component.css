@@ -94,6 +94,10 @@ a:hover {
     margin-left: 10px;
   }
   
+  a{
+    cursor: pointer;
+  }
+
   button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -113,6 +117,8 @@ a:hover {
     color: #6B4E73;
     transition: 0.3s;
   }
+
+  
   
 
 @media (max-width: 768px) {

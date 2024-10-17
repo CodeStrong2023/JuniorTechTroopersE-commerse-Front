@@ -118,7 +118,9 @@
 }
 
 .register-card button:hover {
-  background-color: #97a81b;
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 .message-top-right {
@@ -234,7 +236,7 @@
 }
 
 .upload-button:active {
-  background-color: #99cc00; /* Color de clic */
+  background-color: #99cc00; /* Color de click */
 }
 
 

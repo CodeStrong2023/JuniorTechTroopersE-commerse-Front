@@ -6,19 +6,19 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse custom-navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-3">
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/acerca">Acerca de</a>
+                  <a class="nav-link" routerLink="/acerca" (click)="setActive($event)">Acerca de</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#tendencias">Alojamientos</a>
+                  <a class="nav-link" href="#tendencias" (click)="setActive($event)">Alojamientos</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" routerLink="/contacto">Contacto</a>
+                  <a class="nav-link" routerLink="/contacto" (click)="setActive($event)">Contacto</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#destinos">Destinos</a>
+                <a class="nav-link" href="#destinos" (click)="setActive($event)">Destinos</a>
               </li>
           </ul>
           <div class="navbar-buttons ms-auto">
@@ -37,7 +37,7 @@
                   <li><a class="dropdown-item" routerLink="/perfil-usuario">Perfil</a></li>
                   <li><a class="dropdown-item" routerLink="/perfil-usuario">Mis Reservas</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item btn btn-login" (click)="logout()">Cerrar Sesión</a></li>
+                  <li><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
                 </ul>
               </div>
             </ng-template>

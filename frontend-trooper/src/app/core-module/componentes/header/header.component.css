@@ -12,13 +12,18 @@
     margin-top: 3px;
 }
 
-.collapsenavbar-collapse {
-    background-color: #000;
-}
+
+
 
 .navbar-logo {
     height: 50px;
     width: auto;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    
 }
 
 .navbar-nav {
@@ -29,15 +34,38 @@
 }
 
 .nav-link {
-    color: #353535;
+    color: #030303;
     font-weight: 500;
     margin-right: 15px;
     padding: 10px 0;
     font-family: var(--font-title2);
+    position: relative;
+    display: inline-block; /* Ajusta el tamaño del link al contenido */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--color-background);
+    transform: scale(1.1); /* Efecto de zoom */
+    color: #1e1f1e;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 3px; /* Ajusta la distancia entre el link y la línea */
+    left: 0;
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background-color: var(--color-button);
+    transition: width 0.3s ease;
+}
+
+.nav-link.active::after, .nav-link:hover::after {
+    width: 100%; 
+}
+
+.active-link {
+    color: var(--color-button); /* Cambia el color del link activo */
 }
 
 .navbar-buttons {
@@ -71,9 +99,11 @@
     background-color: var(--color-background);
 }
 
+
 .user-menu {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .user-menu .btn-user {
@@ -85,6 +115,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+    
+}
+
+
+.user-menu .btn-user:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    
+}
+
+
+
+.user-menu .dropdown-menu {
+    position: absolute; /* Mantiene el dropdown dentro de los límites del .user-menu */
+    right: 0; /* Asegura que el menú se alinee a la derecha */
+    top: 100%; /* Desplaza el menú justo debajo del botón */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+    visibility: hidden; /* Oculto inicialmente */
+}
+
+.user-menu .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+
+.user-menu .dropdown-menu.hide {
+    opacity: 0; /* Invisible al cerrar */
+    transform: translateY(-10px); /* Desplazado hacia arriba al cerrar */
+    visibility: hidden; /* Oculto después de la animación */
 }
 
 .user-icon {
@@ -93,6 +157,70 @@
     height: 20px;
     width: 20px;
     display: inline-block;
+}
+
+.dropdown-item {    
+    transition: transform 0.3s ease, color 0.3s ease; 
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    font-weight: 500;
+    color: #242524;
+}
+
+
+
+/* Media queries para pantallas medianas */
+@media (max-width: 1024px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Alinear los links a la izquierda */
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Alinear los botones a la izquierda */
+        width: 100%;
+        padding-left: 30px;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .btn-login,
+    .btn-register,
+    .user-menu {
+        width: calc(100% - 40px);
+        /* Adaptar los botones al tamaño de la pantalla */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .user-menu {
+        justify-content: flex-start;
+    }
+
+    .custom-navbar-collapse {
+        background-color: #fcfafae7;
+        backdrop-filter: blur(30px);       
+        border-radius: 10px;
+        height: auto;        
+    }
+
+    .dropdown-item btn btn-login{
+        width: 100%;
+    }
 }
 
 
@@ -135,4 +263,21 @@
     .user-menu {
         justify-content: flex-start;
     }
+
+    .custom-navbar-collapse {
+        background-color: #fcfafae7;
+        backdrop-filter: blur(30px);       
+        border-radius: 10px;
+    }
+}
+
+.custom-navbar-collapse.collapsing {
+    height: 0;
+    opacity: 0;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-navbar-collapse.show {
+    opacity: 1;
+    transition: height 0.3s ease, opacity 0.3s ease;
 }
