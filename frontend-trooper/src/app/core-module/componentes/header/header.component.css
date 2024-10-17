@@ -93,9 +93,11 @@
     background-color: var(--color-background);
 }
 
+
 .user-menu {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .user-menu .btn-user {
@@ -109,6 +111,30 @@
     justify-content: center;
 }
 
+.user-menu .dropdown-menu {
+    position: absolute; /* Mantiene el dropdown dentro de los límites del .user-menu */
+    right: 0; /* Asegura que el menú se alinee a la derecha */
+    top: 100%; /* Desplaza el menú justo debajo del botón */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+    visibility: hidden; /* Oculto inicialmente */
+}
+
+.user-menu .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+
+.user-menu .dropdown-menu.hide {
+    opacity: 0; /* Invisible al cerrar */
+    transform: translateY(-10px); /* Desplazado hacia arriba al cerrar */
+    visibility: hidden; /* Oculto después de la animación */
+}
+
 .user-icon {
     background-image: url('../../../../assets/icons/user/user.png');
     background-size: cover;
@@ -116,7 +142,6 @@
     width: 20px;
     display: inline-block;
 }
-
 
 
 /* Media queries para pantallas pequeñas */
