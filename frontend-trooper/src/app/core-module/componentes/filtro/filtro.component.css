@@ -1,3 +1,7 @@
+* {
+    font-family: var(--font-title2);
+}
+
 .banner-content {
     position: relative;
     z-index: 2;
@@ -13,7 +17,7 @@
     align-items: center;
     gap: 10px;
     margin: 30px auto 0;
-    background-color: rgba(5, 5, 5, 0.377); /* Fondo transparente */
+    background-color: rgba(5, 5, 5, 0.377);
     padding: 10px;
     border-radius: 5px;
     width: 60%;
@@ -50,6 +54,31 @@
     box-sizing: border-box;
 }
 
+/* Estilo personalizado para el campo de fecha */
+.search-box input[type="date"] {
+    padding: 10px 10px 10px 35px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.search-box input[type="date"]:hover,
+.search-box input[type="date"]:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-color: #555;
+}
+
+/* Estilo para el calendario desplegable */
+.search-box input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(50%);
+    cursor: pointer;
+}
+
 .search-box button {
     padding: 10px 20px;
     margin: 0;
@@ -67,7 +96,7 @@
 }
 
 .search-box button:hover {
-    background-color: #414104b4;   
+    background-color: #414104b4;
     color: var(--color-button);
 }
 
@@ -77,7 +106,7 @@
     margin: 0;
     padding: 5px;
     position: absolute;
-    top: 100%; /* Se coloca justo debajo del input */
+    top: 100%;
     left: 0;
     background: #f8f7f7;
     border: 1px solid #000000;

@@ -270,3 +270,14 @@
         border-radius: 10px;
     }
 }
+
+.custom-navbar-collapse.collapsing {
+    height: 0;
+    opacity: 0;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-navbar-collapse.show {
+    opacity: 1;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
