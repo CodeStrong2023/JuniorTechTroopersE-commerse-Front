@@ -1,0 +1,83 @@
+.how-trooper-works {  
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  min-height: auto;
+  margin-top: 100px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.step-card {
+  background-color: var(--color-card);
+  border-radius: 50%;
+  width: 210px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+  color: var(--color-white);
+  font-family: var(--font-title2);
+  transition: transform 0.3s ease;
+}
+
+.step-card i {
+  font-size: 50px; /* Tamaño mediano del ícono */
+  margin-bottom: 10px;
+  color: var(--color-button);
+}
+
+.step-card p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.step-card:hover {
+  transform: scale(1.1); /* Efecto hover de agrandar */
+}
+
+.arrow {
+  font-size: 40px;
+  color: var(--color-white);
+}
+
+.description {
+  margin-top: 40px;
+  font-size: 20px;
+  max-width: 800px;
+  font-family: var(--font-text);
+  color: var(--color-white);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .steps {
+      flex-direction: column;
+  }
+
+  .step-card {
+      margin: 20px 0;
+  }
+
+  .arrow {
+      display: none;
+  }
+}
