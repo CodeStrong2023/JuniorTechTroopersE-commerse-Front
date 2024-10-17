@@ -14,7 +14,6 @@
     left: 0;
 }
 
-
 .banner-header {
     position: relative;
     display: flex;
@@ -26,78 +25,96 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 25vh; /* Ajusta para bajar el título y el logo */
+    margin-top: 25vh;
 }
 
 .banner-title {
-    color: rgba(48, 46, 46, 0.9);
-    font-size: 2.0vw; /* Usa vw para hacerlo responsive */
-    text-align: left;
+    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(45deg, #000000, #585857);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2vw;
+    text-align: center;
     max-width: 600px;
     line-height: 1.2;
-    margin: 0; /* Elimina los márgenes */
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8),
+                 4px 4px 8px rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 2s ease-in-out;
 }
 
 .banner-logo {
-    height: 15vw; /* Usa vw para que se ajuste según el tamaño de la pantalla */
+    height: 12vw;
     width: auto;
-    max-height: 200px; /* Establece un límite máximo */
+    max-height: 150px;
+    animation: fadeInScale 2s ease-in-out;
+}
+
+span {    
+    font-weight: 500; /* Opción de hacer el texto más grueso */
 }
 
 .filtro {
     position: absolute;
     top: 60%;
     width: 100%;
-    z-index: 5; /* Asegura que el filtro esté sobre otros elementos */
+    z-index: 5;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .banner-title {
-        font-size: 5vw; /* Ajusta el tamaño del texto en pantallas pequeñas */
+        font-size: 5vw;
         max-width: 400px;
     }
 
     .banner-logo {
-        height: 100px; /* Ajusta el tamaño del logo en pantallas pequeñas */
-        position: relative; /* Cambia la posición a relativa para evitar que se superponga */
+        height: 100px;
+        position: relative;
     }
 
     .filtro {
-        top: 80%; /* Ajusta la distancia en pantallas pequeñas */
-        padding: 0 10px; /* Ajusta el padding para pantallas más pequeñas */
+        top: 60%;
+        padding: 0 10px;
     }
 }
 
 @media (max-width: 480px) {
     .banner-title {
-        font-size: 6vw; /* Aumenta aún más el tamaño del texto en pantallas muy pequeñas */
+        font-size: 6vw;
     }
 
     .banner-header {
-        flex-direction: column; /* Cambia el layout para pantallas muy pequeñas */
+        flex-direction: column;
         align-items: center;
-        margin-top: 20vh; /* Ajusta el margen superior para pantallas pequeñas */
+        margin-top: 20vh;
     }
 
     .banner-logo {
         margin-top: 20px;
-        height: 100px; /* Ajusta aún más el tamaño del logo */
-    }
-
-    
-}
-
-
-@media (max-width: 768px) {
-    .filtro {
-        top: 70%; /* Lleva el filtro más arriba en pantallas medianas */
-        padding: 0 10px; 
-    }
-}
-
-@media (max-width: 480px) {
-    .filtro {
-        top: 60%; /* Aún más arriba en pantallas muy pequeñas */
-        padding: 0 5px; 
+        height: 100px;
     }
 }

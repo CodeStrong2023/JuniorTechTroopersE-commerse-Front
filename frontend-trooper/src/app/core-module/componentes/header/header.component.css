@@ -18,6 +18,12 @@
 .navbar-logo {
     height: 50px;
     width: auto;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    
 }
 
 .navbar-nav {
@@ -109,7 +115,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+    
 }
+
+
+.user-menu .btn-user:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+    
+}
+
+
 
 .user-menu .dropdown-menu {
     position: absolute; /* Mantiene el dropdown dentro de los límites del .user-menu */
@@ -142,6 +158,71 @@
     width: 20px;
     display: inline-block;
 }
+
+.dropdown-item {    
+    transition: transform 0.3s ease, color 0.3s ease; 
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    font-weight: 500;
+    color: #242524;
+}
+
+
+
+/* Media queries para pantallas medianas */
+@media (max-width: 1024px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Alinear los links a la izquierda */
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Alinear los botones a la izquierda */
+        width: 100%;
+        padding-left: 30px;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .btn-login,
+    .btn-register,
+    .user-menu {
+        width: calc(100% - 40px);
+        /* Adaptar los botones al tamaño de la pantalla */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .user-menu {
+        justify-content: flex-start;
+    }
+
+    .custom-navbar-collapse {
+        background-color: #fcfafae7;
+        backdrop-filter: blur(30px);       
+        border-radius: 10px;
+        height: auto;        
+    }
+
+    .dropdown-item btn btn-login{
+        width: 100%;
+    }
+}
+
 
 
 /* Media queries para pantallas pequeñas */
