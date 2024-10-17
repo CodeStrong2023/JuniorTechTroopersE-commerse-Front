@@ -118,7 +118,9 @@ label {
 }
 
 .login-card button:hover {
-  background-color: #97a81b;
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 /* Ajuste del ícono del ojo dentro del input */
