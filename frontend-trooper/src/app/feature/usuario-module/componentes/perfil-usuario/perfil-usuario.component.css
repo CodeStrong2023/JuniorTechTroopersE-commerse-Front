@@ -57,9 +57,9 @@ ul li {
 .edit-btn {
   background-color: var(--color-button);
   border: none;
-  width: 52px;
-  height: 35px;
-  color: white;
+  width: 45px;
+  height: 28px;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 8px;
   position: absolute;
@@ -68,24 +68,28 @@ ul li {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto flotante */  
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .edit-btn:hover {
-  background-color: #8dda5a;
+  background-color: rgba(65, 65, 4, 0.1); /* Color de fondo con transparencia */
+  box-shadow: 0 2px 12px var(--color-button); /* Mayor sombra al hacer hover */
+  color: var(--color-button); /* Cambia el color del icono al hacer hover */
 }
 
 .edit-btn i {
-  font-size: 15px;
-  color: black;
+  font-size: 16px;  
 }
 
+
+
 /* Botón de "Agregar más" */
-.add-btn {
-  background-color: var(--color-button);
+.add-btn {  
   border: none;
-  width: 50px;
-  height: 35px;
-  color: white;
+  width: 45px;
+  height: 28px;
+  color: rgb(0, 0, 0);
   cursor: pointer;
   border-radius: 8px;
   position: absolute;
@@ -95,12 +99,26 @@ ul li {
   align-items: center;
   justify-content: center;
   font-size: 14px;
+  font-weight: bold;
+  background-color: var(--color-button);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto flotante */  
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-btn:hover{
+  background-color: rgba(65, 65, 4, 0.1); /* Color de fondo con transparencia */
+  box-shadow: 0 2px 12px var(--color-button); /* Mayor sombra al hacer hover */
+  color: var(--color-button); /* Cambia el color del icono al hacer hover */
 }
 
 .add-btn i {
   font-size: 18px;
-  color: black;
+  
 }
+
+
+
+
 
 /* Responsivo */
 @media screen and (max-width: 768px) {
