@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 .reservation-container {
   padding: 50px;
   max-width: 1200px;
