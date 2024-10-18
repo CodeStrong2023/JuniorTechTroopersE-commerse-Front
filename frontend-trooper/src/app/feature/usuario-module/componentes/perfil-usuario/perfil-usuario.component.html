@@ -33,9 +33,9 @@
       <li><i class="bi bi-house-door"></i> Alojamiento 2 - Descripción breve</li>
       <li><i class="bi bi-house-door"></i> Alojamiento 3 - Descripción breve</li>
     </ul>
-    <button class="add-btn">
-      <i class="bi bi-plus-lg"></i>
-    </button>
+    <a class="add-btn" routerLink="/hospedaje/nuevo">
+      <i class="bi bi-house-add-fill"></i>
+    </a>
   </div>
 
   <!-- Card de Mis Reservas -->
@@ -48,8 +48,12 @@
   </div>
 </div>
 
+<!-- Loading template -->
 <ng-template #loading>
-  <p>Cargando perfil...</p>
+  <div class="loader">
+    <div class="loader-text">Cargando perfil...</div>
+    <div class="loader-bar"></div>
+  </div>
 </ng-template>
 
 <app-footer></app-footer>
