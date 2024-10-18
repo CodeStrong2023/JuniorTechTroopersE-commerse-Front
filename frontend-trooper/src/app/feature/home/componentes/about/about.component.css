@@ -28,7 +28,7 @@
 }
 
 .about-card {
-    background-color: var(--color-card-2);
+    background-color: rgba(7, 7, 7, 0.53);
     padding: 30px;
     border-radius: 15px;
     max-width: 1100px;
@@ -42,6 +42,11 @@
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 40px;
+    font-family: var(--font-title2);
+}
+
+span{
+    color: var(--color-button);
 }
 
 .offer-title {
