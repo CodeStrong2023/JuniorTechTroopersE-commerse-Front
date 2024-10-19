@@ -22,7 +22,7 @@
 }
 
 .place-card {
-  background-color: var(--color-card-2); /* Uso de variable para el fondo de la card */
+  background-color: rgba(7, 7, 7, 0.53);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
