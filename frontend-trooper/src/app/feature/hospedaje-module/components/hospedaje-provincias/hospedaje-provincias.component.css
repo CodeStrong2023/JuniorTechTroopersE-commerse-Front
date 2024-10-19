@@ -157,7 +157,8 @@ footer {
     position: relative;
     z-index: 2;
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 100px
+   
   }
   
   .filter-title-main {
@@ -187,6 +188,7 @@ footer {
   @media (max-width: 600px) {
     .filter-title-main {
       font-size: 2rem;
+      margin-bottom: 200px;
     }
   
     .filter-title-highlight {
