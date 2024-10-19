@@ -15,8 +15,8 @@
   .tendencias-header h2 {
     font-size: 55px;
     font-family: var(--font-title2);
-    font-weight: lighter;
-    color: rgba(255, 255, 255, 0.1);
+    font-weight: medium;
+    color: rgba(184, 176, 176, 0.74);
     text-align: center;
     margin: 0;
   }
