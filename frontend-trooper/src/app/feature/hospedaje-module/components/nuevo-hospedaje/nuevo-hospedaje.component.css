@@ -103,10 +103,13 @@ input[type="file"] {
   font-weight: bold;
   text-align: center;
   font-family: var(--font-title2); /* Fuente desde variables */
+  transition: background-color 0.3s ease; /* Transición de color al hacer hover */
 }
 
 .reserve-button:hover {
-  background-color: #99cc00; /* No hay variable, se mantiene este color de hover */
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 .cancel-button {
@@ -114,8 +117,16 @@ input[type="file"] {
 }
 
 .cancel-button:hover {
-  background-color: #ff4d4d; /* Hover del botón cancelar */
+  background-color: #410604b6;
+  box-shadow: 0 2px 12px #f81616;
+  color: var(--color-white);
 }
+
+
+
+
+
+
 
 
 .custom-file-upload {
