@@ -1,6 +1,6 @@
-# TrooperStays
+# TrooperStay
 
-TrooperStays es una plataforma de reservas de alojamiento que permite a los usuarios encontrar y alquilar departamentos, habitaciones de hotel y cabañas de manera sencilla. El frontend de esta plataforma está construido utilizando Angular y se complementa con una experiencia de usuario optimizada mediante HTML, CSS, TypeScript y Bootstrap.
+TrooperStay es una plataforma de reservas de alojamiento que permite a los usuarios encontrar y alquilar departamentos, habitaciones de hotel y cabañas de manera sencilla. El frontend de esta plataforma está construido utilizando Angular y se complementa con una experiencia de usuario optimizada mediante HTML, CSS, TypeScript y Bootstrap.
 
 ## 🚀 Características
 
