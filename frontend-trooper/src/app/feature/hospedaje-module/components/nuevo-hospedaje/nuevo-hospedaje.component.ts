@@ -18,6 +18,8 @@ export class NuevoHospedajeComponent {
   filteredLocations: Array<{ nombre: string, provincia: string }> = []; // Resultados filtrados
   
   selectedFiles: File[] = [];
+  previewUrl: string = '';
+  // Objeto para almacenar las características del hospedaje
   hospedaje: any = {  
     wifi: false,
     tv: false,
@@ -26,6 +28,12 @@ export class NuevoHospedajeComponent {
     heating: false,
     pool: false
   };
+
+  //Variables para mostrar mensajes de éxito o error
+  showSuccess: boolean = false;
+  showError: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
 
   constructor(
     private hospedajeService: HospedajeService,
@@ -37,6 +45,16 @@ export class NuevoHospedajeComponent {
 
   onFileSelected(event: any) {
     this.selectedFiles = event.target.files;
+    // Mostrar previsualización de la primera imagen seleccionada
+  if (this.selectedFiles.length > 0) {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.previewUrl = e.target.result;
+    };
+    reader.readAsDataURL(this.selectedFiles[0]);
+  } else {
+    this.previewUrl = 'src/assets/images/hospedaje-pordefecto/hospedaje.png';  // Imagen por defecto si no se selecciona ninguna
+  }
   }
 
   async onSubmit(nuevoHospedajeForm: NgForm) {
@@ -49,10 +67,10 @@ export class NuevoHospedajeComponent {
     if (this.selectedFiles.length > 0) {
       for (let file of this.selectedFiles) {
         try {
-          const downloadURL = await this.imagesService.uploadImage(file);  // Ya no necesitas `toPromise`
-          uploadedImages.push(downloadURL);  // Asegúrate de que el servicio devuelva la URL correcta
+          const downloadURL = await this.imagesService.uploadImage(file);  
+          uploadedImages.push(downloadURL);  
         } catch (error) {
-          console.error('Error al subir la imagen:', error);
+          this.showErrorMessage('Error al subir la imagen.');
         }
       }
     }
@@ -78,12 +96,12 @@ export class NuevoHospedajeComponent {
     console.log('Nombre del hospedaje:', nuevoHospedajeForm.value.nombreHospedaje);
     // Llamada al servicio para crear el hospedaje
     this.hospedajeService.createHospedaje(hospedajeData).subscribe({
-      next: (response) => {
-        console.log('Hospedaje creado:', response);
-        this.router.navigate(['/perfil-usuario']);  // Redirigir a la página de lista de hospedajes
+      next: (response) => {        
+        this.showSuccessMessage('Hospedaje creado exitosamente.');        
+        setTimeout(() => this.router.navigate(['/perfil-usuario']), 3000);
       },
       error: (error) => {
-        console.error('Error al crear hospedaje:', error);
+        this.showErrorMessage('Hubo un error al crear el hospedaje.');
       }
     });
   }
@@ -104,6 +122,20 @@ export class NuevoHospedajeComponent {
     this.ubicationQuery = `${location.nombre}, ${location.provincia}`;
     this.filteredLocations = []; // Limpiar resultados después de seleccionar
   }
+
+  showSuccessMessage(message: string) {
+    this.successMessage = message;
+    this.showSuccess = true;
+    setTimeout(() => this.showSuccess = false, 5000);
+  }
+
+  showErrorMessage(message: string) {
+    this.errorMessage = message;
+    this.showError = true;
+    setTimeout(() => this.showError = false, 5000);
+  }
+
+ 
 
   // Método para cancelar la creación del hospedaje
   onCancel() {

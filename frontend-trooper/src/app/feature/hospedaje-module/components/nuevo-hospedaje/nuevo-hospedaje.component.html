@@ -1,8 +1,18 @@
 <div class="reservation-container" data-aos="fade-up">
   <h1 class="title">Crear nuevo hospedaje</h1>
+  <!-- Mensaje de éxito -->
+  <div *ngIf="showSuccess" class="alert success alert-dismissible fade show message-top-right" role="alert">
+    <i class="bi bi-check-circle-fill"></i> {{ successMessage }}
+  </div>
 
+  <!-- Mensaje de error -->
+  <div *ngIf="showError" class="alert error alert-dismissible fade show message-top-right" role="alert">
+    <i class="bi bi-x-circle-fill"></i> {{ errorMessage }}
+  </div>
   <div class="reservation-content">
     <div class="place-card">
+
+
       <h2>Detalles del Hospedaje</h2>
 
       <form #nuevoHospedajeForm="ngForm" (ngSubmit)="onSubmit(nuevoHospedajeForm)">
@@ -74,6 +84,10 @@
               <i class="bi bi-paperclip"></i> Subir imagen
             </label>
             <input type="file" id="image-upload" class="file-input" (change)="onFileSelected($event)">
+          </div>
+          <!-- Mostrar previsualización de la imagen seleccionada -->
+          <div *ngIf="selectedFiles.length > 0">
+            <img [src]="previewUrl" alt="Previsualización" style="max-width: 100%; margin-top: 10px;">
           </div>
         </div>
 
