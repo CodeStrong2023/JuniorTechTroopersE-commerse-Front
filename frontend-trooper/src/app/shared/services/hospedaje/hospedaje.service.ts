@@ -2,36 +2,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Hospedaje } from '../../model/hospedaje';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HospedajeService {
 
-  //Variable que almacena la URL de la API
-  private apiUrl = 'http://localhost:8080/hospedaje';  
+  private baseUrl = 'http://localhost:8080/hospedaje';  // URL de la API de hospedajes
 
-  //Injectamos el servicio HttpClient
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   // Método para crear un nuevo hospedaje
-  createHospedaje(hospedaje: Hospedaje, token: string): Observable<any> {
+  createHospedaje(hospedaje: any): Observable<any> {
+    const token = this.authService.getToken(); // Obtiene el token del AuthService
+
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
+    }
+
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
 
-    // Realizamos la petición POST
-    return this.http.post(this.apiUrl, hospedaje, { headers });
-  }
-
-  // Método para obtener la lista de hospedajes
-  getHospedajes(token: string): Observable<Hospedaje[]> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    //Retornamos la petición GET
-    return this.http.get<Hospedaje[]>(this.apiUrl, { headers });
+    // Realiza la petición POST para crear el hospedaje
+    return this.http.post(this.baseUrl, hospedaje, { headers });
   }
 }
