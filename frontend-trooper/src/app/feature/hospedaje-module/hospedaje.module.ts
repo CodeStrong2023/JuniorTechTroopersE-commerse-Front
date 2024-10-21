@@ -7,20 +7,24 @@ import { CoreModule } from '../../core-module/core.module';
 import { DetalleHospedajeComponent } from './components/detalle-hospedaje/detalle-hospedaje.component';
 import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hospedaje.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     HospedajeProvinciasComponent,
     DetalleHospedajeComponent,
-    CarritoComponent,       
+    CarritoComponent,
+    NuevoHospedajeComponent       
   ],
   imports: [
     CommonModule,
     HospedajeRoutingModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+    
+    
   ]
 })
 export class HospedajeModule { }
