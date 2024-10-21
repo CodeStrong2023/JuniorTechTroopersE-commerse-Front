@@ -168,6 +168,6 @@ showErrorMessage(message: string) {
   onCancel() {
     // Lógica para cancelar la operación, por ejemplo, redirigir a otra página o limpiar el formulario.
     this.showErrorMessage('Creación de hospedaje cancelada.');
-    setTimeout(() => this.router.navigate(['/perfil-usuario']), 2000);
+    setTimeout(() => this.router.navigate(['/perfil-usuario']), 1000);
   }
 }
