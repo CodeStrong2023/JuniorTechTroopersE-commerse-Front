@@ -24,7 +24,7 @@ export class NuevoHospedajeComponent {
 
   // Propiedades del hospedaje
   hospedaje: Hospedaje = {
-    name: '',
+    nombreHospedaje: '',
     capacity: 0,
     description: '',
     price: 0,
@@ -32,7 +32,7 @@ export class NuevoHospedajeComponent {
     wifi: false,
     tv: false,
     garage: false,
-    airConditioning: false,
+    air_conditioning: false,
     heating: false,
     pool: false,
     images: []
@@ -72,8 +72,8 @@ export class NuevoHospedajeComponent {
     if (this.selectedFile) {
       this.isLoading = true;
       this.imagesService.uploadImage(this.selectedFile).then((downloadURL) => {
-        this.hospedaje.images.push({ imgUrl: downloadURL });
-        this.submitForm(form); 
+        this.hospedaje.images.push({ imgUrlHospedajeImg: downloadURL });
+        this.submitForm(form);
       }).catch((error) => {
         this.isLoading = false;
         this.errorMessage = 'Error al subir la imagen';
@@ -81,18 +81,27 @@ export class NuevoHospedajeComponent {
         console.error(error);
       });
     } else {
-      this.submitForm(form); 
+      this.submitForm(form);
     }
   }
 
   submitForm(form: NgForm) {
     if (form.valid) {
+      // Limpiar valores por defecto si no se han modificado
+      if (!this.hospedaje.nombreHospedaje) delete this.hospedaje.nombreHospedaje;
+      if (this.hospedaje.capacity === 0) delete this.hospedaje.capacity;
+      if (!this.hospedaje.description) delete this.hospedaje.description;
+      if (this.hospedaje.price === 0) delete this.hospedaje.price;
+      if (!this.hospedaje.locality) delete this.hospedaje.locality;
+
+      // Enviar los datos al backend
       this.hospedajeService.createHospedaje(this.hospedaje).subscribe(
         (response) => {
           this.isLoading = false;
           this.showSuccess = true;
           this.successMessage = 'Hospedaje registrado exitosamente';
           form.reset();
+          this.hospedaje.images = []; // Limpiar imágenes después de un envío exitoso
         },
         (error) => {
           this.isLoading = false;
