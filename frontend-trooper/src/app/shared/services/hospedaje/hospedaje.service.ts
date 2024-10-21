@@ -29,4 +29,20 @@ export class HospedajeService {
     // Realiza la petición POST para crear el hospedaje
     return this.http.post(this.baseUrl, hospedaje, { headers });
   }
+
+  // Método para obtener los hospedajes del usuario autenticado
+  getHospedajesByUser(): Observable<Hospedaje[]> {
+    const token = this.authService.getToken(); // Obtiene el token del AuthService
+
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Añade el token en los headers
+    });
+
+    // Realiza la petición GET para obtener los hospedajes
+    return this.http.get<Hospedaje[]>(this.baseUrl, { headers });
+  }
 }

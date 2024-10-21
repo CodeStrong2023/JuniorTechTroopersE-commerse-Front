@@ -82,7 +82,37 @@ ul li {
   font-size: 16px;  
 }
 
+.alojamientos-card {
+  width: 100%;
+  
+  padding: 20px;  
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.alojamientos-list-container {
+  max-height: 200px; /* Ajusta este valor según el espacio disponible */
+  overflow-y: auto;
+}
+
+.alojamientos-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.alojamientos-list li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.mini-img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+}
 
 /* Botón de "Agregar más" */
 .add-btn {  

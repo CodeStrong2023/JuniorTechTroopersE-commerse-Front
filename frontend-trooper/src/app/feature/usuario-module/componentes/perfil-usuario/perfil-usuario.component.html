@@ -26,17 +26,21 @@
   </div>
 
   <!-- Card de Alojamientos Cargados -->
-  <div class="card alojamientos-card">
-    <h3>Alojamientos Cargados</h3>
-    <ul>
-      <li><i class="bi bi-house-door"></i> Alojamiento 1 - Descripción breve</li>
-      <li><i class="bi bi-house-door"></i> Alojamiento 2 - Descripción breve</li>
-      <li><i class="bi bi-house-door"></i> Alojamiento 3 - Descripción breve</li>
+<!-- Card de Alojamientos Cargados -->
+<div class="card alojamientos-card">
+  <h3>Alojamientos Cargados</h3>
+  <div class="alojamientos-list-container">
+    <ul class="alojamientos-list">
+      <li *ngFor="let hospedaje of hospedajes">
+        <img [src]="getImageUrl(hospedaje)" class="mini-img" alt="Imagen del hospedaje">
+        {{ hospedaje.name }} - {{ hospedaje.locality }}
+      </li>
     </ul>
-    <a class="add-btn" routerLink="/hospedaje/nuevo">
-      <i class="bi bi-house-add-fill"></i>
-    </a>
   </div>
+  <a class="add-btn" routerLink="/hospedaje/nuevo">
+    <i class="bi bi-house-add-fill"></i>
+  </a>
+</div>
 
   <!-- Card de Mis Reservas -->
   <div class="card reservas-card">
