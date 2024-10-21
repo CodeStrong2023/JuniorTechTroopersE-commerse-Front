@@ -253,6 +253,35 @@ input[type="file"] {
 }
 
 
+/* Estilo de la lista de sugerencias */
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el menú */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Estilo de cada elemento de la lista */
+.suggestions-list li {
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave en hover */
+}
+
+/* Cambio de color al hacer hover sobre un elemento */
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+
 /* Media queries para pantallas pequeñas */
 @media (max-width: 768px) {
   .reservation-container {
