@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { Hospedaje } from '../../../../shared/model/hospedaje';
+import { FiltroService } from '../../../../shared/services/filtro.service';
 import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
+import { ImagesService } from '../../../../shared/services/images-service/images.service';
 
 @Component({
   selector: 'app-nuevo-hospedaje',
@@ -9,70 +11,104 @@ import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaj
   styleUrl: './nuevo-hospedaje.component.css'
 })
 export class NuevoHospedajeComponent {
-  hospedajeForm: FormGroup;
-  selectedImage: File | null = null;  // Almacena la imagen seleccionada
+  selectedFile: File | null = null;
+  isLoading: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
+  showSuccess: boolean = false;
+  showError: boolean = false;
+
+  // Autocompletado
+  ubicationQuery: string = '';
+  filteredLocations: any[] = [];
+
+  // Propiedades del hospedaje
+  hospedaje: Hospedaje = {
+    name: '',
+    capacity: 0,
+    description: '',
+    price: 0,
+    locality: '',
+    wifi: false,
+    tv: false,
+    garage: false,
+    airConditioning: false,
+    heating: false,
+    pool: false,
+    images: []
+  };
 
   constructor(
-    private fb: FormBuilder,
     private hospedajeService: HospedajeService,
-    private router: Router
-  ) {
-    // Crear el formulario con validaciones
-    this.hospedajeForm = this.fb.group({
-      name: ['', Validators.required],
-      capacity: ['', Validators.required],
-      description: ['', Validators.required],
-      price: [0, [Validators.required, Validators.min(0)]],
-      location: ['', Validators.required],
-      services: this.fb.group({
-        wifi: [false],
-        tv: [false],
-        garage: [false],
-        air_conditioning: [false],
-        heating: [false],
-        pool: [false]
-      }),
-      image: [null, Validators.required]  // Campo para la imagen
-    });
-  }
+    private imagesService: ImagesService,
+    private filtroService: FiltroService
+  ) {}
 
-  // Método para manejar el evento de cambio de imagen
-  onImageSelected(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.selectedImage = file;  // Asignar la imagen seleccionada
+  onUbicationInput() {
+    if (this.ubicationQuery.length > 2) {
+      this.filtroService.getAutocompleteSuggestions(this.ubicationQuery).subscribe(
+        (suggestions) => {
+          this.filteredLocations = suggestions;
+        },
+        (error) => {
+          console.error('Error al obtener sugerencias de ubicación:', error);
+        }
+      );
+    } else {
+      this.filteredLocations = [];
     }
   }
 
-  // Método para manejar la creación del hospedaje
-  createHospedaje(): void {
-    if (this.hospedajeForm.invalid) {
-      return;  // Si el formulario no es válido, no enviar
+  selectLocation(location: any) {
+    this.hospedaje.locality = `${location.nombre}, ${location.provincia}`;
+    this.filteredLocations = [];
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] || null;
+  }
+
+  uploadImageAndSubmit(form: NgForm) {
+    if (this.selectedFile) {
+      this.isLoading = true;
+      this.imagesService.uploadImage(this.selectedFile).then((downloadURL) => {
+        this.hospedaje.images.push({ imgUrl: downloadURL });
+        this.submitForm(form); 
+      }).catch((error) => {
+        this.isLoading = false;
+        this.errorMessage = 'Error al subir la imagen';
+        this.showError = true;
+        console.error(error);
+      });
+    } else {
+      this.submitForm(form); 
     }
+  }
 
-    const formData = new FormData();
-    formData.append('name', this.hospedajeForm.value.name);
-    formData.append('capacity', this.hospedajeForm.value.capacity);
-    formData.append('description', this.hospedajeForm.value.description);
-    formData.append('price', this.hospedajeForm.value.price);
-    formData.append('location', this.hospedajeForm.value.location);
-    formData.append('services', JSON.stringify(this.hospedajeForm.value.services));
-
-    if (this.selectedImage) {
-      formData.append('image', this.selectedImage);  // Agregar la imagen seleccionada
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      this.hospedajeService.createHospedaje(this.hospedaje).subscribe(
+        (response) => {
+          this.isLoading = false;
+          this.showSuccess = true;
+          this.successMessage = 'Hospedaje registrado exitosamente';
+          form.reset();
+        },
+        (error) => {
+          this.isLoading = false;
+          this.showError = true;
+          this.errorMessage = 'Error al registrar el hospedaje';
+          console.error(error);
+        }
+      );
     }
+  }
 
-    // Llamar al servicio para crear el hospedaje
-    this.hospedajeService.createHospedaje(formData).subscribe({
-      next: () => {
-        // Redirigir o mostrar un mensaje de éxito
-        alert('Hospedaje creado con éxito');
-        this.router.navigate(['/hospedajes']);  // Redirigir a la lista de hospedajes
-      },
-      error: (err) => {
-        console.error('Error al crear el hospedaje:', err);
-        alert('Error al crear el hospedaje');
-      }
-    });
+  onSubmit(form: NgForm) {
+    if (this.selectedFile) {
+      this.uploadImageAndSubmit(form);
+    } else {
+      this.submitForm(form);
+    }
   }
 }

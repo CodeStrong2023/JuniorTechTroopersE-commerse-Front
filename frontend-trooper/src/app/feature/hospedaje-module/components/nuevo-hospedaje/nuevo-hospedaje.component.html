@@ -1,81 +1,90 @@
-
 <div class="reservation-container" data-aos="fade-up">
-    <h1 class="title">Crear nuevo hospedaje</h1>
-  
-    <div class="reservation-content">
-      <!-- Formulario de Creación de Hospedaje -->
-      <div class="place-card">
-        <h2>Detalles del Hospedaje</h2>
-  
-        <form>
-          <!-- Nombre -->
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Nombre del hospedaje" required>
+  <h1 class="title">Crear nuevo hospedaje</h1>
+
+  <div class="reservation-content">
+    <!-- Formulario de Creación de Hospedaje -->
+    <div class="place-card">
+      <h2>Detalles del Hospedaje</h2>
+
+      <form #nuevoHospedajeForm="ngForm" (ngSubmit)="onSubmit(nuevoHospedajeForm)">
+        <!-- Nombre -->
+        <div class="form-group">
+          <input type="text" id="name" name="name" ngModel placeholder="Nombre del hospedaje" required>
+          <div *ngIf="nuevoHospedajeForm.controls['name']?.invalid && nuevoHospedajeForm.controls['name']?.touched" class="error-bubble">
+            El nombre del hospedaje es obligatorio.
           </div>
-  
-          <!-- Capacidad -->
-          <div class="form-group">
-            <label for="capacity">Capacidad</label>
-            <select id="capacity" name="capacity" required>
-              <option value="1">1 huésped</option>
-              <option value="2">2 huéspedes</option>
-              <option value="3">3 huéspedes</option>
-              <option value="4">4 huéspedes</option>
-              <option value="5">5 huéspedes</option>
-              <option value="6">6 huéspedes</option>
-              <option value="7">7 huéspedes</option>
-              <option value="8">8 huéspedes</option>
-            </select>
+        </div>
+
+        <!-- Capacidad -->
+        <div class="form-group">
+          <select id="capacity" name="capacity" ngModel required>
+            <option value="" disabled selected>Seleccione la capacidad</option>
+            <option value="1">1 huésped</option>
+            <option value="2">2 huéspedes</option>
+            <option value="3">3 huéspedes</option>
+            <option value="4">4 huéspedes</option>
+            <option value="5">5 huéspedes</option>
+            <option value="6">6 huéspedes</option>
+            <option value="7">7 huéspedes</option>
+            <option value="8">8 huéspedes</option>
+          </select>
+          <div *ngIf="nuevoHospedajeForm.controls['capacity']?.invalid && nuevoHospedajeForm.controls['capacity']?.touched" class="error-bubble">
+            La capacidad es obligatoria.
           </div>
-  
-          <!-- Descripción -->
-          <div class="form-group">
-            <label for="description">Descripción</label>
-            <textarea id="description" name="description" rows="4" placeholder="Describe el hospedaje" required></textarea>
+        </div>
+
+        <!-- Descripción -->
+        <div class="form-group">
+          <textarea id="description" name="description" ngModel rows="4" placeholder="Describe el hospedaje" required></textarea>
+          <div *ngIf="nuevoHospedajeForm.controls['description']?.invalid && nuevoHospedajeForm.controls['description']?.touched" class="error-bubble">
+            La descripción es obligatoria.
           </div>
-  
-          <!-- Precio -->
-          <div class="form-group">
-            <label for="price">Precio por noche</label>
-            <input type="number" id="price" name="price" placeholder="$" min="0" required>
+        </div>
+
+        <!-- Precio -->
+        <div class="form-group">
+          <input type="number" id="price" name="price" ngModel placeholder="Precio por noche" min="0" required>
+          <div *ngIf="nuevoHospedajeForm.controls['price']?.invalid && nuevoHospedajeForm.controls['price']?.touched" class="error-bubble">
+            El precio es obligatorio y debe ser un número positivo.
           </div>
-  
-          <!-- Ubicación -->
-          <div class="form-group">
-            <label for="location">Ubicación</label>
-            <input type="text" id="location" name="location" placeholder="Ubicación del hospedaje" required>
+        </div>
+
+        <!-- Ubicación -->
+        <div class="form-group">
+          <input type="text" id="location" name="location" ngModel placeholder="Ubicación del hospedaje" required>
+          <div *ngIf="nuevoHospedajeForm.controls['location']?.invalid && nuevoHospedajeForm.controls['location']?.touched" class="error-bubble">
+            La ubicación es obligatoria.
           </div>
-  
-          <!-- Servicios -->
-          <h3>Servicios Disponibles</h3>
-          <div class="services">
-            <label><input type="checkbox" name="wifi"> Wifi</label>
-            <label><input type="checkbox" name="tv"> TV</label>
-            <label><input type="checkbox" name="garage"> Garage</label>
-            <label><input type="checkbox" name="air_conditioning"> Aire acondicionado</label>
-            <label><input type="checkbox" name="heating"> Calefacción</label>
-            <label><input type="checkbox" name="pool"> Pileta</label>
+        </div>
+
+        <!-- Servicios -->
+        <h3>Servicios Disponibles</h3>
+        <div class="services">
+          <label><input type="checkbox" name="wifi" ngModel> Wifi</label>
+          <label><input type="checkbox" name="tv" ngModel> TV</label>
+          <label><input type="checkbox" name="garage" ngModel> Garage</label>
+          <label><input type="checkbox" name="airConditioning" ngModel> Aire acondicionado</label>
+          <label><input type="checkbox" name="heating" ngModel> Calefacción</label>
+          <label><input type="checkbox" name="pool" ngModel> Pileta</label>
+        </div>
+
+        <!-- Imagen -->
+        <div class="form-group">
+          <label for="image-upload">Subir imagen</label>
+          <div class="custom-file-upload">
+            <label for="image-upload" class="upload-button">
+              <i class="bi bi-paperclip"></i> Subir imagen
+            </label>
+            <input type="file" id="image-upload" class="file-input" (change)="onFileSelected($event)">
           </div>
-  
-          <!-- Imagen -->
-          <div class="form-group">
-            <label for="image-upload">Subir imagen</label>
-            <div class="custom-file-upload">
-              <label for="image-upload" class="upload-button">
-                <i class="bi bi-paperclip"></i> Subir imagen
-              </label>
-              <input type="file" id="image-upload" class="file-input">
-            </div>
-          </div>
-  
-          <!-- Botones -->
-          <div class="form-buttons">
-            <button type="submit" class="reserve-button">Listo</button>
-            <button type="button" class="cancel-button">Cancelar</button>
-          </div>
-        </form>
-      </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="form-buttons">
+          <button type="submit" class="reserve-button" [disabled]="!nuevoHospedajeForm.valid">Listo</button>
+          <button type="button" class="cancel-button">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
-
+</div>
