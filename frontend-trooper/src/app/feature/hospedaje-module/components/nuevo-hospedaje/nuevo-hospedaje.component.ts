@@ -35,13 +35,24 @@ export class NuevoHospedajeComponent {
   successMessage: string = '';
   errorMessage: string = '';
 
+  // Cálculo de posición del scroll
+  viewportTop: number = 0;
+  viewportRight: number = 0;
+
   constructor(
     private hospedajeService: HospedajeService,
     private imagesService: ImagesService,
     private authService: AuthService,
     private router: Router,
     private filtroService: FiltroService
-  ) {}
+  ) {
+    window.addEventListener('scroll', this.updateViewportPosition.bind(this));  // Escuchar el scroll
+  }
+
+  updateViewportPosition() {
+    this.viewportTop = window.pageYOffset || document.documentElement.scrollTop;
+    this.viewportRight = window.innerWidth - 10; // Mantener el mensaje siempre a la derecha
+  }
 
   onFileSelected(event: any) {
     this.selectedFiles = event.target.files;
@@ -123,17 +134,33 @@ export class NuevoHospedajeComponent {
     this.filteredLocations = []; // Limpiar resultados después de seleccionar
   }
 
-  showSuccessMessage(message: string) {
-    this.successMessage = message;
-    this.showSuccess = true;
-    setTimeout(() => this.showSuccess = false, 5000);
+ // Mostrar mensaje de éxito en la posición visible del usuario
+ showSuccessMessage(message: string) {
+  this.successMessage = message;
+  this.showSuccess = true;
+
+  // Asignar el estilo dinámico basado en la posición de scroll del usuario
+  const alertElement = document.querySelector('.alert') as HTMLElement;
+  if (alertElement) {
+    alertElement.style.top = `${this.viewportTop + 10}px`;  // Colocar mensaje 10px debajo de la posición de scroll
+    alertElement.style.right = `${this.viewportRight}px`;    // Siempre pegado al borde derecho
   }
 
-  showErrorMessage(message: string) {
-    this.errorMessage = message;
-    this.showError = true;
-    setTimeout(() => this.showError = false, 5000);
+  setTimeout(() => this.showSuccess = false, 5000);
+}
+
+showErrorMessage(message: string) {
+  this.errorMessage = message;
+  this.showError = true;
+
+  const alertElement = document.querySelector('.alert') as HTMLElement;
+  if (alertElement) {
+    alertElement.style.top = `${this.viewportTop + 10}px`;  // Colocar mensaje 10px debajo de la posición de scroll
+    alertElement.style.right = `${this.viewportRight}px`;   // Siempre pegado al borde derecho
   }
+
+  setTimeout(() => this.showError = false, 5000);
+}
 
  
 
