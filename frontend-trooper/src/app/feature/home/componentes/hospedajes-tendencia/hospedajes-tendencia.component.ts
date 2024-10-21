@@ -19,7 +19,7 @@ export class HospedajesTendenciaComponent implements OnInit {
    // Método para obtener los hospedajes desde el servicio
    getHospedajes(): void {
     this.homeService.getHospedajes().subscribe((data: Home[]) => {
-      this.hospedajes = data.slice(0, 3); // Limitar a 3 hospedajes
+      this.hospedajes = data.slice(0, 20); // Limitar a 3 hospedajes
     });
   }
 
