@@ -18,7 +18,7 @@ export class NuevoHospedajeComponent {
   filteredLocations: Array<{ nombre: string, provincia: string }> = []; // Resultados filtrados
   
   selectedFiles: File[] = [];
-  hospedaje: any = {
+  hospedaje: any = {  
     wifi: false,
     tv: false,
     garage: false,
@@ -59,7 +59,7 @@ export class NuevoHospedajeComponent {
 
     // Crear objeto del hospedaje con los campos requeridos
     const hospedajeData = {
-      nombreHospedaje: nuevoHospedajeForm.value.nombreHospedaje,
+      name: nuevoHospedajeForm.value.name,
       capacity: nuevoHospedajeForm.value.capacity,
       description: nuevoHospedajeForm.value.description,
       price: nuevoHospedajeForm.value.price,
@@ -75,7 +75,7 @@ export class NuevoHospedajeComponent {
       userToken: this.authService.getToken(),
       images: uploadedImages.map((imgUrl) => ({ imgUrlHospedajeImg: imgUrl }))  // Ajustar al formato esperado
     };
-
+    console.log('Nombre del hospedaje:', nuevoHospedajeForm.value.nombreHospedaje);
     // Llamada al servicio para crear el hospedaje
     this.hospedajeService.createHospedaje(hospedajeData).subscribe({
       next: (response) => {

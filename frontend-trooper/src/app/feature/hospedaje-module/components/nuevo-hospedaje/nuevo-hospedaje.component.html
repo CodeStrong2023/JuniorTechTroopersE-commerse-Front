@@ -8,7 +8,7 @@
       <form #nuevoHospedajeForm="ngForm" (ngSubmit)="onSubmit(nuevoHospedajeForm)">
         <!-- Nombre -->
         <div class="form-group">
-          <input type="text" id="name" name="name" ngModel placeholder="Nombre del hospedaje" required>
+          <input type="text" id="name" name="name" [(ngModel)]="hospedaje.name" placeholder="name" required>
           <div *ngIf="nuevoHospedajeForm.controls['name']?.invalid && nuevoHospedajeForm.controls['name']?.touched" class="error-bubble">
             El nombre del hospedaje es obligatorio.
           </div>

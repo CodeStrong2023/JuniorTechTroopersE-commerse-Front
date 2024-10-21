@@ -3,7 +3,7 @@ export interface Image {
 }
 
 export interface Hospedaje {
-  nombreHospedaje: string; 
+  name: string; 
   capacity: number;
   description: string;
   price: number;
