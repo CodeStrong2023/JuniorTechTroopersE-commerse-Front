@@ -1,6 +1,5 @@
 <app-header></app-header>
-
-<div class="perfil-container" *ngIf="!isLoading; else loading" data-aos="zoom-in">
+<div class="perfil-container" *ngIf="!isProfileLoading; else loadingProfile" data-aos="zoom-in">
   <!-- Card de Perfil -->
   <div class="card perfil-card">
     <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.png'" alt="Foto de Perfil" class="perfil-img">
@@ -25,22 +24,29 @@
     </button>
   </div>
 
-  
-<!-- Card de Alojamientos Cargados -->
-<div class="card alojamientos-card">
-  <h3>Alojamientos Cargados</h3>
-  <div class="alojamientos-list-container">
-    <ul class="alojamientos-list">
-      <li *ngFor="let hospedaje of hospedajes">
-        <img [src]="getImageUrl(hospedaje)" class="mini-img" alt="Imagen del hospedaje">
-        {{ hospedaje.name }} - {{ hospedaje.locality }}
-      </li>
-    </ul>
+  <!-- Card de Alojamientos Cargados -->
+  <div class="card alojamientos-card">
+    <h3>Alojamientos Cargados</h3>
+
+    <div *ngIf="isHospedajesLoading" class="loading-spinner">
+      <svg viewBox="25 25 50 50">
+        <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+    </div>
+
+    <div class="alojamientos-list-container" *ngIf="!isHospedajesLoading">
+      <ul class="alojamientos-list">
+        <li *ngFor="let hospedaje of hospedajes">
+          <img [src]="getImageUrl(hospedaje)" class="mini-img" alt="Imagen del hospedaje">
+          {{ hospedaje.name }} - {{ hospedaje.locality }}
+        </li>
+      </ul>
+    </div>
+
+    <a class="add-btn" routerLink="/hospedaje/nuevo">
+      <i class="bi bi-house-add-fill"></i>
+    </a>
   </div>
-  <a class="add-btn" routerLink="/hospedaje/nuevo">
-    <i class="bi bi-house-add-fill"></i>
-  </a>
-</div>
 
   <!-- Card de Mis Reservas -->
   <div class="card reservas-card">
@@ -52,8 +58,8 @@
   </div>
 </div>
 
-<!-- Loading template -->
-<ng-template #loading>
+<!-- Usando ng-template para mostrar el spinner de carga -->
+<ng-template #loadingProfile>
   <div class="loader">
     <div class="loader-text">Cargando perfil...</div>
     <div class="loader-bar"></div>
