@@ -1,18 +1,18 @@
 <section class="tendencias-section">
-    <div class="tendencias-header">
-      <h1>Nuestros alojamientos</h1>
-      <h2>Tendencias</h2>
-    </div>
-    
-    <div class="tendencias-cards" data-aos="zoom-in">
-      <div class="tendencias-card" *ngFor="let hospedaje of hospedajes">
-        <img [src]="hospedaje.imagenUrl" alt="Imagen del hospedaje">
-        <div class="tendencias-card-content">
-          <h3>{{ hospedaje.titulo }}</h3>
-          <p>{{ hospedaje.descripcion }}</p>
-          <button (click)="visitarHospedaje(hospedaje.url)">Visitar</button>
-        </div>
+  <div class="tendencias-header">
+    <h1>Nuestros alojamientos</h1>
+    <h2>Tendencias</h2>
+  </div>
+
+  <div class="tendencias-cards" data-aos="zoom-in">
+    <div class="tendencias-card" *ngFor="let hospedaje of hospedajes">
+      <img [src]="hospedaje.img_url" alt="Imagen del hospedaje">
+      <div class="tendencias-card-content">
+        <h3>{{ hospedaje.nombreHospedaje }}</h3>
+        <p>{{ hospedaje.description }}</p>
+        <p><i class="bi bi-geo-alt-fill"></i> {{ hospedaje.locality }}</p>
+        <button>Visitar</button>
       </div>
     </div>
+  </div>
 </section>
-  
