@@ -9,8 +9,7 @@
         <!-- Nombre -->
         <div class="form-group">
           <input type="text" id="name" name="name" ngModel placeholder="Nombre del hospedaje" required>
-          <div *ngIf="nuevoHospedajeForm.controls['name']?.invalid && nuevoHospedajeForm.controls['name']?.touched"
-            class="error-bubble">
+          <div *ngIf="nuevoHospedajeForm.controls['name']?.invalid && nuevoHospedajeForm.controls['name']?.touched" class="error-bubble">
             El nombre del hospedaje es obligatorio.
           </div>
         </div>
@@ -19,29 +18,17 @@
         <div class="form-group">
           <select id="capacity" name="capacity" ngModel required>
             <option value="" disabled selected>Seleccione la capacidad</option>
-            <option value="1">1 huésped</option>
-            <option value="2">2 huéspedes</option>
-            <option value="3">3 huéspedes</option>
-            <option value="4">4 huéspedes</option>
-            <option value="5">5 huéspedes</option>
-            <option value="6">6 huéspedes</option>
-            <option value="7">7 huéspedes</option>
-            <option value="8">8 huéspedes</option>
+            <option *ngFor="let cap of [1,2,3,4,5,6,7,8]" [value]="cap">{{ cap }} huésped{{ cap > 1 ? 'es' : '' }}</option>
           </select>
-          <div
-            *ngIf="nuevoHospedajeForm.controls['capacity']?.invalid && nuevoHospedajeForm.controls['capacity']?.touched"
-            class="error-bubble">
+          <div *ngIf="nuevoHospedajeForm.controls['capacity']?.invalid && nuevoHospedajeForm.controls['capacity']?.touched" class="error-bubble">
             La capacidad es obligatoria.
           </div>
         </div>
 
         <!-- Descripción -->
         <div class="form-group">
-          <textarea id="description" name="description" ngModel rows="4" placeholder="Describe el hospedaje"
-            required></textarea>
-          <div
-            *ngIf="nuevoHospedajeForm.controls['description']?.invalid && nuevoHospedajeForm.controls['description']?.touched"
-            class="error-bubble">
+          <textarea id="description" name="description" ngModel rows="4" placeholder="Describe el hospedaje" required></textarea>
+          <div *ngIf="nuevoHospedajeForm.controls['description']?.invalid && nuevoHospedajeForm.controls['description']?.touched" class="error-bubble">
             La descripción es obligatoria.
           </div>
         </div>
@@ -49,45 +36,35 @@
         <!-- Precio -->
         <div class="form-group">
           <input type="number" id="price" name="price" ngModel placeholder="Precio por noche" min="0" required>
-          <div *ngIf="nuevoHospedajeForm.controls['price']?.invalid && nuevoHospedajeForm.controls['price']?.touched"
-            class="error-bubble">
+          <div *ngIf="nuevoHospedajeForm.controls['price']?.invalid && nuevoHospedajeForm.controls['price']?.touched" class="error-bubble">
             El precio es obligatorio y debe ser un número positivo.
           </div>
         </div>
 
         <!-- Ubicación -->
         <div class="form-group">
-          <input type="text" id="location" name="location" ngModel placeholder="Ubicación del hospedaje" required>
-          <div
-            *ngIf="nuevoHospedajeForm.controls['location']?.invalid && nuevoHospedajeForm.controls['location']?.touched"
-            class="error-bubble">
+          <input type="text" id="location" name="location" [(ngModel)]="ubicationQuery" (input)="onUbicationInput()" placeholder="Ubicación del hospedaje" required>
+          <div *ngIf="nuevoHospedajeForm.controls['location']?.invalid && nuevoHospedajeForm.controls['location']?.touched" class="error-bubble">
             La ubicación es obligatoria.
           </div>
+          <!-- Autocompletado de ubicaciones -->
+          <ul *ngIf="filteredLocations.length > 0">
+            <li *ngFor="let location of filteredLocations" (click)="selectLocation(location)">
+              {{ location.nombre }}, {{ location.provincia }}
+            </li>
+          </ul>
         </div>
 
         <!-- Servicios -->
         <h3>Servicios Disponibles</h3>
         <div class="services">
-          <label>
-            <input type="checkbox" name="wifi" [(ngModel)]="hospedaje.wifi"> Wifi
-          </label>
-          <label>
-            <input type="checkbox" name="tv" [(ngModel)]="hospedaje.tv"> TV
-          </label>
-          <label>
-            <input type="checkbox" name="garage" [(ngModel)]="hospedaje.garage"> Garage
-          </label>
-          <label>
-            <input type="checkbox" name="airConditioning" [(ngModel)]="hospedaje.airConditioning"> Aire acondicionado
-          </label>
-          <label>
-            <input type="checkbox" name="heating" [(ngModel)]="hospedaje.heating"> Calefacción
-          </label>
-          <label>
-            <input type="checkbox" name="pool" [(ngModel)]="hospedaje.pool"> Pileta
-          </label>
+          <label><input type="checkbox" name="wifi" [(ngModel)]="hospedaje.wifi"> Wifi</label>
+          <label><input type="checkbox" name="tv" [(ngModel)]="hospedaje.tv"> TV</label>
+          <label><input type="checkbox" name="garage" [(ngModel)]="hospedaje.garage"> Garage</label>
+          <label><input type="checkbox" name="air_conditioning" [(ngModel)]="hospedaje.air_conditioning"> Aire acondicionado</label>
+          <label><input type="checkbox" name="heating" [(ngModel)]="hospedaje.heating"> Calefacción</label>
+          <label><input type="checkbox" name="pool" [(ngModel)]="hospedaje.pool"> Pileta</label>
         </div>
-
 
         <!-- Imagen -->
         <div class="form-group">
@@ -103,7 +80,7 @@
         <!-- Botones -->
         <div class="form-buttons">
           <button type="submit" class="reserve-button" [disabled]="!nuevoHospedajeForm.valid">Listo</button>
-          <button type="button" class="cancel-button">Cancelar</button>
+          <button type="button" class="cancel-button" (click)="onCancel()">Cancelar</button>
         </div>
       </form>
     </div>

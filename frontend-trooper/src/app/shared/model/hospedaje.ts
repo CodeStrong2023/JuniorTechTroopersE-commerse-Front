@@ -1,9 +1,9 @@
 export interface Image {
-  imgUrlHospedajeImg: string; // Ajustado para que coincida con el backend
+  imgUrlHospedajeImg: string; 
 }
 
 export interface Hospedaje {
-  nombreHospedaje: string; // Ajustado para que coincida con el backend
+  nombreHospedaje: string; 
   capacity: number;
   description: string;
   price: number;
@@ -11,7 +11,7 @@ export interface Hospedaje {
   wifi: boolean;
   tv: boolean;
   garage: boolean;
-  air_conditioning: boolean; // Ajustado para que coincida con el backend
+  airconditioning: boolean; 
   heating: boolean;
   pool: boolean;
   images: Image[];
