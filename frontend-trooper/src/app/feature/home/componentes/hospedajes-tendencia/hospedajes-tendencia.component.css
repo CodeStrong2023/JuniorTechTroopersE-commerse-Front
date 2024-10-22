@@ -146,7 +146,7 @@ circle {
     color: white;
   }
   50% {
-    color: hsl(130, 95%, 32%);
+    color: hsl(110, 97%, 45%);
   }
 }
 
@@ -163,7 +163,7 @@ circle {
 .loading-text {
   font-size: 1.2em;
   margin-top: 10px;
-  animation: blink 1.8s infinite;
+  animation: blink 1.9s infinite;
 }
 
 .loading-spinner {
