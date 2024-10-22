@@ -80,6 +80,7 @@ export class NuevoHospedajeComponent {
         try {
           const downloadURL = await this.imagesService.uploadImage(file);  
           uploadedImages.push(downloadURL);  
+          console.log('Imagen subida:', downloadURL)
         } catch (error) {
           this.showErrorMessage('Error al subir la imagen.');
         }
@@ -102,7 +103,7 @@ export class NuevoHospedajeComponent {
       createdAd: new Date(),
       active: true,
       userToken: this.authService.getToken(),
-      images: uploadedImages.map((imgUrl) => ({ imgUrlHospedajeImg: imgUrl }))  // Ajustar al formato esperado
+      images: uploadedImages.map((imgUrl) => ({ imgUrl: imgUrl }))   
     };
     console.log('Nombre del hospedaje:', nuevoHospedajeForm.value.nombreHospedaje);
     // Llamada al servicio para crear el hospedaje

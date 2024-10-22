@@ -58,7 +58,7 @@ export class PerfilUsuarioComponent implements OnInit {
   // Función para obtener la URL de la imagen del hospedaje
   getImageUrl(hospedaje: Hospedaje): string {
     return hospedaje.images && hospedaje.images.length > 0
-      ? hospedaje.images[0].imgUrlHospedajeImg
+      ? hospedaje.images[0].imgUrl
       : 'assets/images/hospedaje-pordefecto/hospedaje.png'; // Imagen por defecto si no hay imágenes
   }
 }

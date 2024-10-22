@@ -1,5 +1,5 @@
 export interface Image {
-  imgUrlHospedajeImg: string; 
+  imgUrl: string;
 }
 
 export interface Hospedaje {
