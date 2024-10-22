@@ -14,10 +14,10 @@
   <div class="card contacto-card">
     <h3>Info de Contacto</h3>
     <ul>
-      <li><i class="bi bi-telephone"></i> {{ userProfile?.phone }}</li>
-      <li><i class="bi bi-envelope"></i> {{ userProfile?.email }}</li>
-      <li><i class="bi bi-calendar"></i> Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}</li>
-      <li><i class="bi bi-geo-alt"></i> {{userProfile?.locality}}</li>
+      <li class="phone"><i class="bi bi-telephone"></i> {{ userProfile?.phone }}</li>
+      <li class="email"><i class="bi bi-envelope"></i> {{ userProfile?.email }}</li>
+      <li class="birthdate"><i class="bi bi-calendar"></i> Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}</li>
+      <li class="location"><i class="bi bi-geo-alt"></i> {{userProfile?.locality}}</li>
     </ul>
     <button class="edit-btn">
       <i class="bi bi-pencil"></i>
