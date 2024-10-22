@@ -4,7 +4,19 @@
     <h2>Tendencias</h2>
   </div>
 
-  <div class="tendencias-cards" data-aos="zoom-in">
+   <!-- Animación de carga mientras los hospedajes se están cargando -->
+   <div *ngIf="isHospedajesLoading" class="loading-container">
+    <div class="loading-spinner">
+      <svg viewBox="25 25 50 50">
+        <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+    </div>
+    <!-- Texto de carga con animación de parpadeo -->
+    <p class="loading-text">Cargando hospedajes...</p>
+  </div>
+
+  <!-- Contenido cuando los datos estén disponibles -->
+  <div class="tendencias-cards" *ngIf="!isHospedajesLoading" data-aos="zoom-in">
     <div class="tendencias-card" *ngFor="let hospedaje of hospedajes">
       <img [src]="hospedaje.img_url" alt="Imagen del hospedaje">
       <div class="tendencias-card-content">
