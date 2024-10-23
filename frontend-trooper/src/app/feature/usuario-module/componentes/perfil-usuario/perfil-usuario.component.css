@@ -51,7 +51,15 @@ ul li {
   display: flex;
   align-items: center;
   gap: 10px; /* Espacio entre icono y texto */
+  
 }
+
+li i{
+  font-size: 20px;
+  color: rgb(43, 125, 247);
+}
+
+
 
 /* Botón de edición */
 .edit-btn {
