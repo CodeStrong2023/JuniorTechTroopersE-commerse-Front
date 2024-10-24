@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+
+
+<div class="filter-section">
+    <div class="filter-title-container">
+        <span class="filter-title-main">Buscar destino</span>
+        
+    </div>
+    <app-filtro></app-filtro>
+</div>
+
+<div class="main-container">
+    <div class="title-container">
+      <span class="title-main">El destino de tus</span>
+      <span class="title-highlight">SUEÑOS</span>
+    </div>
+  
+    <div class="cards-container">
+      <!-- Genera las cards a partir de los datos del TypeScript -->
+      <div class="card" *ngFor="let card of cards">
+        <img class="card-image" [src]="card.image" alt="{{card.title}}">
+        <div class="card-content">
+          <p class="card-title">{{ card.title }}</p>
+          <p class="card-info">
+            <span>${{ card.price | number }}</span>
+            <span>24 al 30 de abril</span>
+          </p>
+          <a class="card-action" routerLink="info">
+            RESERVAR
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <button class="btn-see-more">Ver más</button>
+  </div>
+  
+
+<app-footer></app-footer>
