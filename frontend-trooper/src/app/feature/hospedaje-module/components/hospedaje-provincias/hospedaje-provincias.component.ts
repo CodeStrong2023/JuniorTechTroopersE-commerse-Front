@@ -19,7 +19,8 @@ export class HospedajeProvinciasComponent implements OnInit{
       this.cards = destinos.map(destino => ({
         title: destino.nombreHospedaje,
         image: destino.img_url,
-        price: destino.price
+        price: destino.price,
+        hospedajeToken: destino.hospedajeToken  // Agregar el token del hospedaje
       }));
     });
   }
