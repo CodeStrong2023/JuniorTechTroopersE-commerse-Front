@@ -1,20 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DestinoDTO } from '../../../../shared/model/destino-DTO';
+import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
 
 @Component({
   selector: 'app-hospedaje-provincias',
   templateUrl: './hospedaje-provincias.component.html',
   styleUrls: ['./hospedaje-provincias.component.css']
 })
-export class HospedajeProvinciasComponent {
+export class HospedajeProvinciasComponent implements OnInit{
 
-  constructor(private router: Router) { } 
+  public cards: any[] = [];
 
-  ngOnInit(): void {}
+  constructor(private hospedajeService: HospedajeService) {}
 
-  info(){
-    this.router.navigate(['/info']);
+  ngOnInit(): void {
+    this.hospedajeService.getDestinosHospedajes().subscribe((destinos: DestinoDTO[]) => {
+      this.cards = destinos.map(destino => ({
+        title: destino.nombreHospedaje,
+        image: destino.img_url,
+        price: destino.price
+      }));
+    });
   }
-
+  
  
 }
