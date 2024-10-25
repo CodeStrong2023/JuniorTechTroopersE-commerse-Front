@@ -26,7 +26,7 @@
 
 .place-card,
 .price-card {
-  background-color: #0c2a2e;
+  background-color: rgba(7, 7, 7, 0.53);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -69,7 +69,7 @@
 }
 
 label {
-  color: #fff;
+  color: #ffffff;
   display: block;
   margin-bottom: 5px;
 }
@@ -80,15 +80,15 @@ select {
   padding: 10px;
   border: 1px solid #8a8d8d;
   border-radius: 5px;
-  background-color: #0d4f60;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .reserve-button {
   width: 100%;
   padding: 15px;
   background-color: #ccff00;
-  color: #102a40;
+  color: #000000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -174,7 +174,7 @@ p{
 .place-location {
   margin-top: 20px;
   font-size: 16px;
-  color: var(--color-text);
+  color: var(--color-white);
   display: flex;
   align-items: center;
 }
