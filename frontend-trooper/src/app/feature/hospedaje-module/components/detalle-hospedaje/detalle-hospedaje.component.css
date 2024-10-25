@@ -150,6 +150,38 @@ p{
   color: white;
 }
 
+.place-services {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap; /* Permitir que las etiquetas se ajusten en pantallas pequeñas */
+}
+
+.service-tag {
+  background-color: var(--color-card-2);
+  color: var(--color-white);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.service-tag i {
+  margin-right: 5px;
+}
+
+.place-location {
+  margin-top: 20px;
+  font-size: 16px;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+}
+
+.place-location i {
+  margin-right: 5px;
+}
 
 
 /* Media queries para dispositivos pequeños */
