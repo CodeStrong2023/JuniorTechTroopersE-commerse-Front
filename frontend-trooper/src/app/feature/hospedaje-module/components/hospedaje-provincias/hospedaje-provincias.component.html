@@ -34,7 +34,8 @@
         <div class="card-content">
           <p class="card-title">{{ card.title }}</p>
           <p class="card-info">
-            <span>${{ card.price | number }}</span>
+            <span class="price-label">Precio por noche:</span>
+            <span class="price-span">${{ card.price | number }}</span>
           </p>
           <a class="card-action" [routerLink]="['detalle-hospedaje', card.hospedajeToken]">
             RESERVAR

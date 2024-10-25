@@ -35,12 +35,15 @@ footer {
   }
   
   .sort-container {
+    margin-top:20px;
     display: flex;
     align-items: right;
   }
   
   .sort-container label {
+    margin-top: 5px;
     margin-right: 10px;
+    font-size: 15px;
     font-family: var(--font-title2);
     color: var(--color-white);
   }
@@ -108,6 +111,7 @@ footer {
     padding: 20px;
     box-shadow: 0 2px 9px #020202f6;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
 }
 
 .card:hover {
@@ -121,6 +125,11 @@ footer {
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-image {
+    transform: scale(1.05); /* Agrandar ligeramente la imagen al hacer hover */
 }
 
 .card-content {
@@ -138,20 +147,29 @@ footer {
     text-transform: uppercase;
     color: var(--color-button);
     font-family: var(--font-title2);
-    margin-bottom: 8px; /* Reducir margen inferior */
+    margin-bottom: 8px;
+    border-bottom: 2px solid #7e7c7c; /* Añadir línea debajo del título */
+    padding-bottom: 5px;
 }
-
 .card-info {
     font-weight: 700;
     text-transform: uppercase;
     color: rgba(252, 254, 255, 0.733);
     margin-bottom: 5px;
+    font-size: 1.2rem; /* Aumentar tamaño del texto */
 }
 
-.card-info span:first-child {
+.card-info .price-span {
     font-size: 1.8rem;
+    color: #dbd9d9; /* Cambiar el color del precio */
 }
 
+.price-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8); /* Color claro */
+    display: block; 
+    margin-bottom: 5px;
+  }
 
 
 .card-action {
@@ -165,6 +183,7 @@ footer {
     color: rgb(26, 25, 25);
     text-decoration: none;
     transition: background-color 0.5s ease;
+    text-align: center; /* Centrar el botón */
 }
 
 .card-action:hover {
