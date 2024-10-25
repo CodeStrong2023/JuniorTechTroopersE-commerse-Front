@@ -28,6 +28,47 @@ footer {
     margin-top: 100px;
 }
 
+  
+  .title-wrapper {
+    display: flex;
+    align-items: right;
+  }
+  
+  .sort-container {
+    display: flex;
+    align-items: right;
+  }
+  
+  .sort-container label {
+    margin-right: 10px;
+    font-family: var(--font-title2);
+    color: var(--color-white);
+  }
+  
+  .sort-container select {
+    padding: 5px;
+    font-family: var(--font-title2);
+    border: 1px solid var(--color-button);
+    border-radius: 5px;
+    background-color: #fff;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+  
+
+.sort-container select:focus {
+    outline: none;
+    border-color: var(--color-button);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Añadir sombra al hacer focus */
+    transform: scale(1.05); /* Efecto de escala al hacer focus */
+}
+
+.sort-container select:hover {
+    background-color: #0eb855;
+    color: var(--color-white);
+}
+
 .title-main {
     font-size: 45px;
     font-family: var(--font-title1);
@@ -37,7 +78,7 @@ footer {
 }
 
 .title-highlight {
-    font-size: 55px;
+    font-size: 40px;
     font-family: var(--font-title2);
     font-weight: medium;
     color: rgba(179, 175, 175, 0.76);
@@ -57,13 +98,16 @@ footer {
 .card {
     overflow: hidden;
     border-radius: 0.5rem;
+    width: 100%;
     max-width: 300px;
     height: 460px;
+    display: flex;
+    flex-direction: column;
     background-color: #07070749;
     backdrop-filter: blur(5px);
-    margin-top: 10px;
     padding: 20px;
     box-shadow: 0 2px 9px #020202f6;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .card:hover {
@@ -76,57 +120,76 @@ footer {
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
+    margin-bottom: 10px;
 }
 
 .card-content {
-    padding: 1rem;
     text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-button);
     font-family: var(--font-title2);
+    margin-bottom: 8px; /* Reducir margen inferior */
 }
 
 .card-info {
-    margin-top: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     color: rgba(252, 254, 255, 0.733);
+    margin-bottom: 5px;
 }
 
 .card-info span:first-child {
-    font-size: 2.25rem;
+    font-size: 1.8rem;
 }
 
-.card-info span:last-child {
-    margin-top: 0.5rem;
-    display: block;
-    font-size: 0.875rem;
-}
+
 
 .card-action {
-    margin-top: 1rem;
     background-color: var(--color-button);
-    padding: 1rem;
+    padding: 10px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-family: var(--font-title2);
     font-weight: 500;
     text-transform: uppercase;
     color: rgb(26, 25, 25);
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
 }
 
 .card-action:hover {
     background-color: #41410415;
     box-shadow: 0 2px 12px var(--color-button);
     color: var(--color-button);
+}
+
+
+@media (max-width: 1366px) {
+    .cards-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 .btn-see-more {
@@ -197,34 +260,9 @@ footer {
   }
   
 
-/* Media Queries */
-@media (max-width: 1366px) {
-    .cards-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
-    .title-main {
-        font-size: 3.5rem;
-    }
 
-    .title-highlight {
-        font-size: 5.5rem;
-    }
-}
 
-@media (max-width: 1200px) {
-    .cards-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .title-main {
-        font-size: 3rem;
-    }
-
-    .title-highlight {
-        font-size: 5rem;
-    }
-}
 
 @media (max-width: 900px) {
     .cards-container {

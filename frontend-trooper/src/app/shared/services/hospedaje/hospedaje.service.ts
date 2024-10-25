@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DestinoDTO } from '../../model/destino-DTO';
+import { DestinoSeleccionadoDTO } from '../../model/destino-seleccionado-DTO';
 import { Hospedaje } from '../../model/hospedaje';
 import { AuthService } from '../auth/auth.service';
 
@@ -44,5 +46,35 @@ export class HospedajeService {
 
     // Realiza la petición GET para obtener los hospedajes
     return this.http.get<Hospedaje[]>(this.baseUrl, { headers });
+  }
+
+
+   // Método para obtener los destinos de hospedajes (nueva URL)
+   getDestinosHospedajes(): Observable<DestinoDTO[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<DestinoDTO[]>(`${this.baseUrl}/destinos`, { headers });
+  }
+
+  // Método para obtener un hospedaje específico
+  getHospedajeSeleccionado(hospedajeToken: string): Observable<DestinoSeleccionadoDTO> {
+    const token = this.authService.getToken();
+
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<DestinoSeleccionadoDTO>(`${this.baseUrl}/destinos/${hospedajeToken}`, { headers });
   }
 }

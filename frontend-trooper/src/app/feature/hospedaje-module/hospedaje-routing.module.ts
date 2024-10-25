@@ -7,7 +7,7 @@ import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hosp
 
 const routes: Routes = [
   {path:'', component: HospedajeProvinciasComponent},
-  {path:'info', component: DetalleHospedajeComponent},
+  {path:'detalle-hospedaje/:hospedajeToken', component: DetalleHospedajeComponent},
   {path: 'nuevo', component: NuevoHospedajeComponent}
 
   

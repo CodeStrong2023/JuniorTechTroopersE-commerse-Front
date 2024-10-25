@@ -1,136 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DestinoDTO } from '../../../../shared/model/destino-DTO';
+import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
 
 @Component({
   selector: 'app-hospedaje-provincias',
   templateUrl: './hospedaje-provincias.component.html',
   styleUrls: ['./hospedaje-provincias.component.css']
 })
-export class HospedajeProvinciasComponent {
+export class HospedajeProvinciasComponent implements OnInit{
 
-  constructor(private router: Router) { } 
+  public cards: any[] = [];
+  defaultCards: any;
 
-  ngOnInit(): void {}
+  constructor(private hospedajeService: HospedajeService) {}
 
-  info(){
-    this.router.navigate(['/info']);
+  ngOnInit(): void {
+    this.hospedajeService.getDestinosHospedajes().subscribe((destinos: DestinoDTO[]) => {
+      this.cards = destinos.map(destino => ({
+        title: destino.nombreHospedaje,
+        image: destino.img_url,
+        price: destino.price,
+        hospedajeToken: destino.hospedajeToken  // Agregar el token del hospedaje
+      }));
+    });
+    
   }
 
-  // Lista de cards con información para mostrar en el HTML
-  cards = [
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg', // Ajusta la ruta a tus imágenes
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    // Duplico la misma card para generar un total de 16
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
-    },
-    {
-      title: 'Palm Resort',
-      price: 150000,
-      image: '../../../../../assets/images/hospedajes-provincias/ofertas-provincias.jpg',
-      offer: '7 Nights for only $300',
-      rating: 4
+  onSortChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const order = selectElement.value;
+  
+    if (order === 'asc') {
+      this.cards.sort((a, b) => a.price - b.price);
+    } else if (order === 'desc') {
+      this.cards.sort((a, b) => b.price - a.price);
+    } else {
+      // Volver a la lista por defecto (más relevantes)
+      this.cards = [...this.defaultCards]; // Clona la lista original
     }
-  ];
-
+  }
+  
+ 
 }
