@@ -4,22 +4,66 @@
   <h1 class="title">{{ hospedaje.name }} <span>{{ hospedaje.locality }}</span></h1>
 
   <div class="reservation-content">
+    <!-- Card principal con los detalles del lugar -->
     <div class="place-card">
       <h2>¿Qué ofrece este lugar?</h2>
       <p>{{ hospedaje.description }}</p>
       <img [src]="hospedaje.urlImg" alt="Imagen del lugar" class="place-image">
-      <div class="place-details">
-        <p>{{ hospedaje.capacity }} huéspedes</p>
-        <p *ngIf="hospedaje.wifi">Wifi disponible</p>
-        <p *ngIf="hospedaje.tv">TV disponible</p>
-        <p *ngIf="hospedaje.garage">Garaje disponible</p>
-        <!-- Añadir más detalles según sea necesario -->
+
+      <!-- Servicios en etiquetas con íconos -->
+      <div class="place-services">
+        <span *ngIf="hospedaje.wifi" class="service-tag">
+          <i class="bi bi-wifi"></i> Wifi
+        </span>
+        <span *ngIf="hospedaje.tv" class="service-tag">
+          <i class="bi bi-tv"></i> TV
+        </span>
+        <span *ngIf="hospedaje.garage" class="service-tag">
+          <i class="bi bi-car-front-fill"></i> Garaje
+        </span>
+        <span *ngIf="hospedaje.airConditioning" class="service-tag">
+          <i class="bi bi-snow"></i> Aire acondicionado
+        </span>
+        <span *ngIf="hospedaje.heating" class="service-tag">
+          <i class="bi bi-thermometer-half"></i> Calefacción
+        </span>
+        <span *ngIf="hospedaje.pool" class="service-tag">
+          <i class="bi bi-water"></i> Piscina
+        </span>
+        
+      </div>
+
+      <!-- Localidad con ícono rojo -->
+      <div class="place-location">
+        <i class="bi bi-geo-alt-fill text-danger"></i>
+        {{ hospedaje.locality }}
       </div>
     </div>
 
+    <!-- Card con el precio y formulario de reserva -->
     <div class="price-card">
       <h2>${{ hospedaje.price }} <span>/ noche</span></h2>
-      <!-- Formulario de reserva -->
+
+      <div class="check-in-out">
+        <div class="check-in">
+          <label for="checkin">Check-In</label>
+          <input type="date" id="checkin">
+        </div>
+        <div class="check-out">
+          <label for="checkout">Check-Out</label>
+          <input type="date" id="checkout">
+        </div>
+      </div>
+
+      <label for="guests">Viajeros</label>
+      <select id="guests">
+        <option>1 huésped</option>
+        <option>2 huéspedes</option>
+        <option>3 huéspedes</option>
+        <!-- Añadir más opciones según sea necesario -->
+      </select>
+
+      <button class="reserve-button">Reservar</button>
     </div>
   </div>
 </div>

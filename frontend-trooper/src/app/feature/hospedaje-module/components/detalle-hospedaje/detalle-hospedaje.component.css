@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 .reservation-container {
   padding: 50px;
   max-width: 1200px;
@@ -26,12 +30,16 @@
 
 .place-card,
 .price-card {
-  background-color: #0c2a2e;
+  background-color: rgba(7, 7, 7, 0.53);
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 48%;  /* Cambia a 100% en pantallas pequeñas */
-  margin-bottom: 20px;  /* Espacio entre tarjetas en pantallas pequeñas */
+  width: 48%;  
+  margin-bottom: 20px;  
+}
+
+.price-card{
+  height: 380px;
 }
 
 .place-card h2,
@@ -69,7 +77,7 @@
 }
 
 label {
-  color: #fff;
+  color: #ffffff;
   display: block;
   margin-bottom: 5px;
 }
@@ -80,24 +88,28 @@ select {
   padding: 10px;
   border: 1px solid #8a8d8d;
   border-radius: 5px;
-  background-color: #0d4f60;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .reserve-button {
   width: 100%;
   padding: 15px;
   background-color: #ccff00;
-  color: #102a40;
+  color: #000000;
   border: none;
   border-radius: 5px;
+  margin-top: 10px;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .reserve-button:hover {
-  background-color: #99cc00;
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 .cart-overlay {
@@ -150,6 +162,40 @@ p{
   color: white;
 }
 
+.place-services {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap; /* Permitir que las etiquetas se ajusten en pantallas pequeñas */
+}
+
+.service-tag {
+  background-color: var(--color-card-2);
+  color: var(--color-white);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.service-tag i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.place-location {
+  margin-top: 20px;
+  font-size: 16px;
+  color: rgb(248, 173, 112); 
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.place-location i {
+  margin-right: 5px;
+}
 
 
 /* Media queries para dispositivos pequeños */

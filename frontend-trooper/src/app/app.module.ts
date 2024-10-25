@@ -13,6 +13,7 @@ import { CoreModule } from './core-module/core.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,14 +25,14 @@ import { CoreModule } from './core-module/core.module';
     ReactiveFormsModule,
     FormsModule,
     CoreModule
-    
-    
-    
+
+
+
   ],
   providers: [
     provideClientHydration(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),    
+    provideStorage(() => getStorage()),
   ],
   bootstrap: [AppComponent]
 })
