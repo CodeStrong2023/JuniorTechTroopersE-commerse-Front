@@ -11,7 +11,11 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HospedajeService {
 
-  private baseUrl = 'http://localhost:8080/hospedaje';  // URL de la API de hospedajes
+  //Variable que almacena la URL de la API para DESARROLLO
+  //private baseUrl = 'http://localhost:8080/hospedaje';  // URL de la API de hospedajes
+
+  //Variable que almacena la URL de la API para PRODUCCIÓN
+  private baseUrl = 'https://login-o23e.onrender.com/hospedaje';  
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

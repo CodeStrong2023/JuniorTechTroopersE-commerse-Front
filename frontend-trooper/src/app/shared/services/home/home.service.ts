@@ -10,8 +10,11 @@ import { Home } from '../../model/home';
 // Servicio que se encarga de obtener los hospedajes de la sección de inicio
 export class HomeService {
 
-  //Variable que almacena la URL de la API
-  private apiUrl = 'http://localhost:8080/home';
+  //Variable que almacena la URL de la API DESARROLLO
+  //private apiUrl = 'http://localhost:8080/home';
+
+  //Variable que almacena la URL de la API PRODUCCIÓN
+  private apiUrl = 'https://login-o23e.onrender.com/home'; 
 
   //Constructor que inyecta el servicio HttpClient
   constructor(private http: HttpClient) {}
