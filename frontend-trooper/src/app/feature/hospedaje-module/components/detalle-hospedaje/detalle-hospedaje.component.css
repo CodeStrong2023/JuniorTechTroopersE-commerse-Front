@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 .reservation-container {
   padding: 50px;
   max-width: 1200px;
@@ -30,8 +34,12 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 48%;  /* Cambia a 100% en pantallas pequeñas */
-  margin-bottom: 20px;  /* Espacio entre tarjetas en pantallas pequeñas */
+  width: 48%;  
+  margin-bottom: 20px;  
+}
+
+.price-card{
+  height: 380px;
 }
 
 .place-card h2,
@@ -91,13 +99,17 @@ select {
   color: #000000;
   border: none;
   border-radius: 5px;
+  margin-top: 10px;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .reserve-button:hover {
-  background-color: #99cc00;
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 .cart-overlay {
@@ -169,12 +181,14 @@ p{
 
 .service-tag i {
   margin-right: 5px;
+  font-size: 18px;
 }
 
 .place-location {
   margin-top: 20px;
   font-size: 16px;
-  color: var(--color-white);
+  color: rgb(248, 173, 112); 
+  font-weight: bold;
   display: flex;
   align-items: center;
 }
