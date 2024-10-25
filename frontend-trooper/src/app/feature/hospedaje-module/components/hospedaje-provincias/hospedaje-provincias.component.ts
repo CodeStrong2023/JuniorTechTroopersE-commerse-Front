@@ -11,6 +11,7 @@ import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaj
 export class HospedajeProvinciasComponent implements OnInit{
 
   public cards: any[] = [];
+  defaultCards: any;
 
   constructor(private hospedajeService: HospedajeService) {}
 
@@ -23,6 +24,21 @@ export class HospedajeProvinciasComponent implements OnInit{
         hospedajeToken: destino.hospedajeToken  // Agregar el token del hospedaje
       }));
     });
+    
+  }
+
+  onSortChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const order = selectElement.value;
+  
+    if (order === 'asc') {
+      this.cards.sort((a, b) => a.price - b.price);
+    } else if (order === 'desc') {
+      this.cards.sort((a, b) => b.price - a.price);
+    } else {
+      // Volver a la lista por defecto (más relevantes)
+      this.cards = [...this.defaultCards]; // Clona la lista original
+    }
   }
   
  
