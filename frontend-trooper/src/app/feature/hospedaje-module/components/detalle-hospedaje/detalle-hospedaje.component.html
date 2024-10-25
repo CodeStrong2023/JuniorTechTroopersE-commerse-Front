@@ -21,7 +21,16 @@
         <span *ngIf="hospedaje.garage" class="service-tag">
           <i class="bi bi-car-front-fill"></i> Garaje
         </span>
-        <!-- Añadir más servicios según corresponda -->
+        <span *ngIf="hospedaje.airConditioning" class="service-tag">
+          <i class="bi bi-fan"></i> Aire acondicionado
+        </span>
+        <span *ngIf="hospedaje.heating" class="service-tag">
+          <i class="bi bi-car-front-fill"></i> Garaje
+        </span>
+        <span *ngIf="hospedaje.pool" class="service-tag">
+          <i class="bi bi-car-front-fill"></i> Garaje
+        </span>
+        
       </div>
 
       <!-- Localidad con ícono rojo -->
