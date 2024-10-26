@@ -3,36 +3,32 @@
   {{ alertMessage }}
 </div>
 <div class="banner-content">
-    
-    <div class="search-box">
-      <div class="input-container">
-        <i class="icon-bed"></i>
-        <input
-          type="text"
-          placeholder="¿A dónde vas?"
-          (input)="onSearchLocation($event)"
-          [value]="selectedLocation ? (selectedLocation.nombre + ', ' + selectedLocation.provincia) : ''"
-        />
-        <!-- Lista de sugerencias -->
-        <ul *ngIf="suggestions.length > 0">
-          <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
-            {{ suggestion.nombre }} - {{ suggestion.provincia }}
-          </li>
-        </ul>
-        <div *ngIf="showLocationError" class="error-message">
-           El campo localidad es obligatorio
-        </div>
+
+  <div class="search-box">
+    <div class="input-container">
+      <i class="icon-bed"></i>
+      <input type="text" placeholder="¿A dónde vas?" (input)="onSearchLocation($event)"
+        [value]="selectedLocation ? (selectedLocation.nombre + ', ' + selectedLocation.provincia) : ''" />
+      <!-- Lista de sugerencias -->
+      <ul *ngIf="suggestions.length > 0">
+        <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+          {{ suggestion.nombre }} - {{ suggestion.provincia }}
+        </li>
+      </ul>
+      <div *ngIf="showLocationError" class="error-message">
+        El campo localidad es obligatorio
       </div>
-      <div class="input-container">
-        <i class="icon-calendar"></i>
-        <input type="date" placeholder="Comprobar disponibilidad" (blur)="onSelectDate($event)" />
-        <div *ngIf="showDateError" class="error-message">
-           El campo fecha es obligatorio y debe ser actual o futura
-        </div>
-      </div>
-      <button class="search-button" (click)="onSearch()">
-        Buscar
-      </button>
     </div>
+    <div class="input-container">
+      <i class="icon-calendar"></i>
+      <input type="date" placeholder="Comprobar disponibilidad" (blur)="onSelectDate($event)"
+        (focus)="clearPlaceholder($event)" (blur)="restorePlaceholder($event)" />
+      <div *ngIf="showDateError" class="error-message">
+        El campo fecha es obligatorio y debe ser actual o futura
+      </div>
+    </div>
+    <button class="search-button" (click)="onSearch()">
+      Buscar
+    </button>
   </div>
-  
+</div>

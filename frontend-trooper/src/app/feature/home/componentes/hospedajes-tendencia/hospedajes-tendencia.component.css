@@ -33,14 +33,15 @@
   background-color: rgba(7, 7, 7, 0.699);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
   max-width: 700px; /* Reducido el ancho de la card */
   margin: 0 auto; /* Centrar las cards */
 }
 
 .tendencias-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 6px 20px var(--color-button);
 }
 
 .tendencias-card img {

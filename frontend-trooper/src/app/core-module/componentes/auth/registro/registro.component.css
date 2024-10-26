@@ -210,6 +210,9 @@
   margin-left: 5px;
 }
 
+.campo{
+  color:var(--color-white);
+}
 
 .upload-button {
   display: inline-flex;

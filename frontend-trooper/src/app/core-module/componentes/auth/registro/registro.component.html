@@ -94,7 +94,8 @@
 
         <!-- Fecha de nacimiento (validación de mayor de edad) -->
         <div class="form-group">
-          <input type="date" id="birthdate" name="birthdate" ngModel required (ngModelChange)="checkAge($event)">
+          <div class="campo">Fecha de nacimiento</div>
+          <input placeholder="Fecha de nacimiento" type="date" id="birthdate" name="birthdate" ngModel required (ngModelChange)="checkAge($event)">
           <div *ngIf="!isAdult && registroForm.controls['birthdate']?.touched" class="error-bubble">
             Debes ser mayor de edad para registrarte.
           </div>
