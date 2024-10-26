@@ -50,6 +50,13 @@
   object-fit: cover; /* Mantener proporciones de la imagen */
   border-radius: 10px;
   margin-right: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.tendencias-card:hover img{
+  transform: scale(1.05);
 }
 
 .tendencias-card-content {
