@@ -77,4 +77,18 @@ export class HospedajeService {
 
     return this.http.get<DestinoSeleccionadoDTO>(`${this.baseUrl}/destinos/${hospedajeToken}`, { headers });
   }
+  
+  // Método para obtener hospedajes filtrados por localidad y fecha
+  getHospedajesFiltrados(locality: string, date: string): Observable<Hospedaje[]> {
+    const token = this.authService.getToken();
+    if (!token) {
+      throw new Error('Usuario no autenticado. Por favor, inicia sesión.');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Hospedaje[]>(`${this.baseUrl}/destinos?locality=${locality}&date=${date}`, { headers });
+  }
 }
