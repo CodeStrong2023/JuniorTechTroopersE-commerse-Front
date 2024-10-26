@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DestinoDTO } from '../../../../shared/model/destino-DTO';
 import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
@@ -8,12 +8,15 @@ import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaj
   templateUrl: './hospedaje-provincias.component.html',
   styleUrls: ['./hospedaje-provincias.component.css']
 })
-export class HospedajeProvinciasComponent implements OnInit{
+export class HospedajeProvinciasComponent implements OnInit {
+
+  @ViewChild('filtradoHospedaje') filtradoHospedaje!: ElementRef;
 
   public cards: any[] = [];
   defaultCards: any;
 
-  constructor(private hospedajeService: HospedajeService, private route: ActivatedRoute) {}
+
+  constructor(private hospedajeService: HospedajeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -28,6 +31,15 @@ export class HospedajeProvinciasComponent implements OnInit{
             price: hospedaje.price,
             hospedajeToken: hospedaje.hospedajeToken // Agregar el token del hospedaje
           }));
+          // Observa cambios en los parámetros de la URL
+          this.route.fragment.subscribe((fragment) => {
+            if (fragment === 'filtrado-hospedaje') {
+              // Asegura un pequeño delay para que el elemento esté renderizado
+              setTimeout(() => {
+                this.scrollToFiltrado();
+              }, 100);
+            }
+          });
         });
       } else {
         this.hospedajeService.getDestinosHospedajes().subscribe((destinos: DestinoDTO[]) => {
@@ -41,6 +53,12 @@ export class HospedajeProvinciasComponent implements OnInit{
         });
       }
     });
+  }
+
+  scrollToFiltrado(): void {
+    if (this.filtradoHospedaje) {
+      this.filtradoHospedaje.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   onSortChange(event: Event): void {

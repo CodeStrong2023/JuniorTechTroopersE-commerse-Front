@@ -88,7 +88,7 @@ export class FiltroComponent implements OnInit{
     const date = this.selectedDate;
 
     this.showSuccessMessage('Búsqueda realizada con éxito');
-    this.router.navigate(['/hospedaje'], { queryParams: { locality, date } });
+    this.router.navigate(['/hospedaje'], { queryParams: { locality, date }, fragment: 'filtrado-hospedaje' });
   }
 
   showFieldError(field: string, message: string): void {

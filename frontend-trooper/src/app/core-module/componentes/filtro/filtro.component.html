@@ -1,8 +1,9 @@
+<div *ngIf="showAlert" class="alert" [ngClass]="{'success': alertType === 'success', 'error': alertType === 'error'}">
+  <i class="bi" [ngClass]="{'bi-check-circle': alertType === 'success', 'bi-x-circle': alertType === 'error'}"></i>
+  {{ alertMessage }}
+</div>
 <div class="banner-content">
-    <div *ngIf="showAlert" class="alert" [ngClass]="{'success': alertType === 'success', 'error': alertType === 'error'}">
-      <i class="bi" [ngClass]="{'bi-check-circle': alertType === 'success', 'bi-x-circle': alertType === 'error'}"></i>
-      {{ alertMessage }}
-    </div>
+    
     <div class="search-box">
       <div class="input-container">
         <i class="icon-bed"></i>
