@@ -2,7 +2,7 @@
 
 
 
-<div class="filter-section">
+<div class="filter-section" data-aos="zoom-in">
     <div class="filter-title-container">
         <span class="filter-title-main">Buscar destino</span>
         
@@ -10,7 +10,7 @@
     <app-filtro></app-filtro>
 </div>
 
-<div class="main-container" id="filtrado-hospedaje">
+<div class="main-container" id="filtrado-hospedaje" data-aos="zoom-in">
     <div class="title-container">
       <span class="title-main">El destino de tus</span>
       <span class="title-highlight">SUEÑOS</span>
@@ -29,7 +29,7 @@
   
     <div class="cards-container">
       <!-- Genera las cards a partir de los datos del TypeScript -->
-      <div class="card" *ngFor="let card of cards">
+      <div class="card" *ngFor="let card of cards" data-aos="fade-up">
         <img class="card-image" [src]="card.image" alt="{{card.title}}">
         <div class="card-content">
           <p class="card-title">{{ card.title }}</p>
