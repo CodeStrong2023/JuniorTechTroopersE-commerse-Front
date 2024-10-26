@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FiltroService } from '../../../shared/services/filtro.service';
 import { Hospedaje } from '../../../shared/model/hospedaje';
 import { HospedajeService } from '../../../shared/services/hospedaje/hospedaje.service';
@@ -9,16 +9,28 @@ import { Router } from '@angular/router';
   templateUrl: './filtro.component.html',
   styleUrl: './filtro.component.css'
 })
-export class FiltroComponent {
-  suggestions: any[] = []; // Almacena las sugerencias
-  selectedLocation: any = null; // La ubicación seleccionada
-  selectedDate: string = ''; // La fecha seleccionada
+export class FiltroComponent implements OnInit{
+  suggestions: any[] = [];
+  selectedLocation: any = null;
+  selectedDate: string = '';
+  alertMessage: string = '';
+  alertType: 'success' | 'error' = 'success';
+  showAlert: boolean = false;
 
   constructor(
     private filtroService: FiltroService,
     private hospedajeService: HospedajeService,
     private router: Router
     ) { }
+
+  ngOnInit(): void {
+    // Subscribirse a eventos de navegación para mostrar alertas si es necesario
+    this.router.events.subscribe(() => {
+      if (this.showAlert) {
+        setTimeout(() => this.showAlert = false, 5000); // Ocultar alerta después de 5 segundos
+      }
+    });
+  }
 
   // Método que busca localizaciones cuando el usuario escribe
   onSearchLocation(event: Event) {
@@ -52,28 +64,35 @@ export class FiltroComponent {
   }
 
   // Método para buscar hospedajes con los filtros
-  onSearch() {
-    if (this.selectedLocation && this.selectedDate) {
-      const locality = this.selectedLocation.nombre;
-      const date = this.selectedDate;
-
-      // Si estamos en la sección de /hospedajes, realizamos la búsqueda sin redirigir
-      if (this.router.url === '/hospedajes') {
-        this.hospedajeService.getHospedajesFiltrados(locality, date).subscribe(
-          (data) => {
-            // Manejar los resultados de la búsqueda aquí
-            console.log('Filtered hospedajes:', data);
-          },
-          (error) => {
-            console.error('Error fetching filtered hospedajes', error);
-          }
-        );
-      } else {
-        // Redirigir a la sección de /hospedajes con los parámetros de búsqueda
-        this.router.navigate(['/hospedajes'], { queryParams: { locality, date } });
-      }
-    } else {
-      console.error('Por favor, selecciona una ubicación y una fecha');
+  onSearch(): void {
+    if (!this.selectedLocation) {
+      this.showFieldError('localidad');
+      return;
     }
+    if (!this.selectedDate) {
+      this.showFieldError('fecha');
+      return;
+    }
+
+    const locality = this.selectedLocation.nombre;
+    const date = this.selectedDate;
+
+    // Mostrar mensaje de éxito antes de redirigir
+    this.showSuccessMessage('Búsqueda realizada con éxito');
+    this.router.navigate(['/hospedaje'], { queryParams: { locality, date } });
+  }
+
+  showFieldError(field: string): void {
+    this.alertMessage = `El campo ${field} es obligatorio`;
+    this.alertType = 'error';
+    this.showAlert = true;
+    setTimeout(() => this.showAlert = false, 5000);
+  }
+
+  showSuccessMessage(message: string): void {
+    this.alertMessage = message;
+    this.alertType = 'success';
+    this.showAlert = true;
+    setTimeout(() => this.showAlert = false, 5000);
   }
 }

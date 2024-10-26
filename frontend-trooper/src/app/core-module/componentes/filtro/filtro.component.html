@@ -1,22 +1,36 @@
 <div class="banner-content">
+    <div *ngIf="showAlert" class="alert" [ngClass]="{'success': alertType === 'success', 'error': alertType === 'error'}">
+        <i class="bi" [ngClass]="{'bi-check-circle': alertType === 'success', 'bi-x-circle': alertType === 'error'}"></i>
+        {{ alertMessage }}
+      </div>
     <div class="search-box">
-        <div class="input-container">
-            <i class="icon-bed"></i>
-            <input type="text" placeholder="¿A dónde vas?" (input)="onSearchLocation($event)"
-                [value]="selectedLocation ? (selectedLocation.nombre + ', ' + selectedLocation.provincia) : ''" />
-            <!-- Lista de sugerencias -->
-            <ul *ngIf="suggestions.length > 0">
-                <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
-                    {{ suggestion.nombre }} - {{ suggestion.provincia }}
-                </li>
-            </ul>
-        </div>
-        <div class="input-container">
-            <i class="icon-calendar"></i>
-            <input type="date" placeholder="Comprobar disponibilidad" />
-        </div>
-        <button class="search-button">
-            Buscar
-        </button>
+        <div *ngIf="!selectedLocation && showAlert && alertMessage.includes('localidad')" class="error-message">
+            <i class="bi bi-x-circle"></i> El campo localidad es obligatorio
+          </div>
+      <div class="input-container">
+        <i class="icon-bed"></i>
+        
+        <input type="text" placeholder="¿A dónde vas?" (input)="onSearchLocation($event)"
+               [value]="selectedLocation ? (selectedLocation.nombre + ', ' + selectedLocation.provincia) : ''" />
+               
+        <!-- Lista de sugerencias -->
+        <ul *ngIf="suggestions.length > 0">
+          <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+            {{ suggestion.nombre }} - {{ suggestion.provincia }}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="!selectedDate && showAlert && alertMessage.includes('fecha')" class="error-message">
+        <i class="bi bi-x-circle"></i> El campo fecha es obligatorio
+      </div>
+      <div class="input-container">
+        <i class="icon-calendar"></i>
+        <input type="date" placeholder="Comprobar disponibilidad" (change)="onSelectDate($event)" />
+        
+      </div>
+      <button class="search-button" (click)="onSearch()">
+        Buscar
+      </button>
     </div>
-</div>
+  </div>
+  
