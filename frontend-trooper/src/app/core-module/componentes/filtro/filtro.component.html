@@ -27,7 +27,7 @@
         <i class="icon-calendar"></i>
         <input type="date" placeholder="Comprobar disponibilidad" (blur)="onSelectDate($event)" />
         <div *ngIf="showDateError" class="error-message">
-           El campo fecha es obligatorio
+           El campo fecha es obligatorio y debe ser actual o futura
         </div>
       </div>
       <button class="search-button" (click)="onSearch()">

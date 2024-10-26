@@ -80,7 +80,7 @@ export class FiltroComponent implements OnInit{
       return;
     }
     if (!this.selectedDate) {
-      this.showFieldError('fecha', 'El campo fecha es obligatorio');
+      this.showFieldError('fecha', 'El campo fecha es obligatorio y debe ser actual o futura');
       return;
     }
 
