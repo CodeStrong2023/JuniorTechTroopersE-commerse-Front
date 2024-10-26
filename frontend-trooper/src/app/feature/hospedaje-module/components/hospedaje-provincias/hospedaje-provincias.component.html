@@ -3,49 +3,61 @@
 
 
 <div class="filter-section" data-aos="zoom-in">
-    <div class="filter-title-container">
-        <span class="filter-title-main">Buscar destino</span>
-        
-    </div>
-    <app-filtro></app-filtro>
+  <div class="filter-title-container">
+    <span class="filter-title-main">Buscar destino</span>
+
+  </div>
+  <app-filtro></app-filtro>
 </div>
 
 <div class="main-container" id="filtrado-hospedaje" data-aos="zoom-in">
-    <div class="title-container">
-      <span class="title-main">El destino de tus</span>
-      <span class="title-highlight">SUEÑOS</span>
+  <div class="title-container">
+    <span class="title-main">El destino de tus</span>
+    <span class="title-highlight">SUEÑOS</span>
 
-    
-    </div>
-      <!-- Select para ordenar los hospedajes -->
-      <div class="sort-container">
-        <label for="sort">Ordenar por:</label>
-        <select id="sort" (change)="onSortChange($event)">
-          <option>Más relevantes</option>
-          <option value="asc">Menor a mayor precio</option>
-          <option value="desc">Mayor a menor precio</option>
-        </select>
-      </div>
-  
-    <div class="cards-container">
-      <!-- Genera las cards a partir de los datos del TypeScript -->
-      <div class="card" *ngFor="let card of cards" data-aos="fade-up">
-        <img class="card-image" [src]="card.image" alt="{{card.title}}">
-        <div class="card-content">
-          <p class="card-title">{{ card.title }}</p>
-          <p class="card-info">
-            <span class="price-label">Precio por noche:</span>
-            <span class="price-span">${{ card.price | number }}</span>
-          </p>
-          <a class="card-action" [routerLink]="['detalle-hospedaje', card.hospedajeToken]">
-            RESERVAR
-          </a>
-        </div>
-      </div>
-    </div>
-  
-    <button class="btn-see-more">Ver más</button>
+
   </div>
-  
+  <!-- Select para ordenar los hospedajes -->
+  <div class="sort-container">
+    <label for="sort">Ordenar por:</label>
+    <select id="sort" (change)="onSortChange($event)">
+      <option>Más relevantes</option>
+      <option value="asc">Menor a mayor precio</option>
+      <option value="desc">Mayor a menor precio</option>
+    </select>
+  </div>
+
+
+  <!-- Animación de carga mientras los hospedajes se están cargando -->
+  <div *ngIf="isHospedajesLoading" class="loading-container">
+    <div class="loading-spinner">
+      <svg viewBox="25 25 50 50">
+        <circle r="20" cy="50" cx="50"></circle>
+      </svg>
+    </div>
+    <!-- Texto de carga con animación de parpadeo -->
+    <p class="loading-text">Cargando hospedajes...</p>
+  </div>
+
+  <div class="cards-container">
+    <!-- Genera las cards a partir de los datos del TypeScript -->
+    <div class="card" *ngFor="let card of cards" data-aos="fade-up">
+      <img class="card-image" [src]="card.image" alt="{{card.title}}">
+      <div class="card-content">
+        <p class="card-title">{{ card.title }}</p>
+        <p class="card-info">
+          <span class="price-label">Precio por noche:</span>
+          <span class="price-span">${{ card.price | number }}</span>
+        </p>
+        <a class="card-action" [routerLink]="['detalle-hospedaje', card.hospedajeToken]">
+          RESERVAR
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn-see-more">Ver más</button>
+</div>
+
 
 <app-footer></app-footer>

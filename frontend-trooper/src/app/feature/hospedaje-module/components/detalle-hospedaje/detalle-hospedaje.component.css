@@ -198,6 +198,76 @@ p{
 }
 
 
+  /* From Uiverse.io by barisdogansutcu */
+  svg {
+    width: 3.25em;
+    transform-origin: center;
+    animation: rotate4 2s linear infinite;
+  }
+  
+  circle {
+    fill: none;
+    stroke: hsl(110, 97%, 45%);
+    stroke-width: 2;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash4 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes rotate4 {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dash4 {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 200;
+      stroke-dashoffset: -35px;
+    }
+    100% {
+      stroke-dashoffset: -125px;
+    }
+  }
+  
+  /* Estilo de la animación de parpadeo */
+  @keyframes blink {
+    0%, 100% {
+      color: white;
+    }
+    50% {
+      color: hsl(110, 97%, 45%);
+    }
+  }
+  
+  /* Contenedor de carga */
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px; /* Ajusta la altura si es necesario */
+  }
+  
+  /* Texto de carga con animación */
+  .loading-text {
+    font-size: 1.2em;
+    margin-top: 10px;
+    animation: blink 1.9s infinite;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
 /* Media queries para dispositivos pequeños */
 @media (max-width: 768px) {
   .reservation-content {

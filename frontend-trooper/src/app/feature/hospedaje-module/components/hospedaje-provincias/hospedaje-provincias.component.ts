@@ -10,10 +10,14 @@ import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaj
 })
 export class HospedajeProvinciasComponent implements OnInit {
 
+  //Creamos una variable para redireccionar a la sección de filtrado
   @ViewChild('filtradoHospedaje') filtradoHospedaje!: ElementRef;
 
+  //Creamos una variable para almacenar los datos de los hospedajes
   public cards: any[] = [];
   defaultCards: any;
+  //Variable para saber si los hospedajes están cargando
+  isHospedajesLoading: boolean = true;
 
 
   constructor(private hospedajeService: HospedajeService, private route: ActivatedRoute) { }
@@ -25,11 +29,13 @@ export class HospedajeProvinciasComponent implements OnInit {
 
       if (locality && date) {
         this.hospedajeService.getHospedajesFiltrados(locality, date).subscribe((hospedajes: any[]) => {
+          this.isHospedajesLoading = false;
           this.cards = hospedajes.map(hospedaje => ({
             title: hospedaje.nombreHospedaje,
             image: hospedaje.img_url || 'assets/images/hospedaje-pordefecto/hospedaje.png', // Asigna imagen por defecto si img_url está vacío
             price: hospedaje.price,
             hospedajeToken: hospedaje.hospedajeToken // Agregar el token del hospedaje
+           
           }));
           // Observa cambios en los parámetros de la URL
           this.route.fragment.subscribe((fragment) => {
@@ -50,6 +56,7 @@ export class HospedajeProvinciasComponent implements OnInit {
             hospedajeToken: destino.hospedajeToken // Agregar el token del hospedaje
           }));
           this.defaultCards = [...this.cards]; // Clona la lista original
+          this.isHospedajesLoading = false;
         });
       }
     });
