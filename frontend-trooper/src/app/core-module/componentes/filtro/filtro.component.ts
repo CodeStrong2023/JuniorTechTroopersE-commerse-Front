@@ -16,30 +16,29 @@ export class FiltroComponent implements OnInit{
   alertMessage: string = '';
   alertType: 'success' | 'error' = 'success';
   showAlert: boolean = false;
+  showLocationError: boolean = false;
+  showDateError: boolean = false;
 
   constructor(
     private filtroService: FiltroService,
-    private hospedajeService: HospedajeService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    // Subscribirse a eventos de navegación para mostrar alertas si es necesario
     this.router.events.subscribe(() => {
       if (this.showAlert) {
-        setTimeout(() => this.showAlert = false, 5000); // Ocultar alerta después de 5 segundos
+        setTimeout(() => this.showAlert = false, 5000);
       }
     });
   }
 
-  // Método que busca localizaciones cuando el usuario escribe
-  onSearchLocation(event: Event) {
+  onSearchLocation(event: Event): void {
     const input = event.target as HTMLInputElement;
     const query = input.value;
-    if (query.length > 1) { // Solo buscar si el usuario ha escrito al menos 3 letras
+    if (query.length > 1) {
       this.filtroService.getAutocompleteSuggestions(query).subscribe(
         (data) => {
-          this.suggestions = data; // Asignar las sugerencias de localidades
+          this.suggestions = data;
         },
         (error) => {
           console.error('Error fetching autocomplete suggestions', error);
@@ -50,43 +49,67 @@ export class FiltroComponent implements OnInit{
     }
   }
 
-  // Método para seleccionar una sugerencia
-  selectSuggestion(suggestion: any) {
-    this.selectedLocation = suggestion; // Guardar la localización seleccionada
-    console.log('Selected location:', suggestion);
-    this.suggestions = []; // Limpiar sugerencias después de seleccionar
+  selectSuggestion(suggestion: any): void {
+    this.selectedLocation = suggestion;
+    this.suggestions = [];
+    this.showLocationError = false;
   }
 
-  // Método para capturar la fecha seleccionada
-  onSelectDate(event: Event) {
+  onSelectDate(event: Event): void {
     const input = event.target as HTMLInputElement;
-    this.selectedDate = input.value;
-  }
+    const selectedDate = new Date(input.value);
+    const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0); // Ignoramos la hora en currentDate
 
-  // Método para buscar hospedajes con los filtros
+    // Convertimos ambas fechas al formato "YYYY-MM-DD" para compararlas
+    const selectedDateString = selectedDate.toISOString().split('T')[0];
+    const currentDateString = currentDate.toISOString().split('T')[0];
+
+    if (selectedDateString < currentDateString) {
+        this.showFieldError('fecha', 'La fecha debe ser actual o futura');
+    } else {
+        this.selectedDate = input.value;
+        this.showDateError = false;
+    }
+}
+
+
   onSearch(): void {
     if (!this.selectedLocation) {
-      this.showFieldError('localidad');
+      this.showFieldError('localidad', 'El campo localidad es obligatorio');
       return;
     }
     if (!this.selectedDate) {
-      this.showFieldError('fecha');
+      this.showFieldError('fecha', 'El campo fecha es obligatorio');
       return;
     }
 
     const locality = this.selectedLocation.nombre;
     const date = this.selectedDate;
 
-    // Mostrar mensaje de éxito antes de redirigir
     this.showSuccessMessage('Búsqueda realizada con éxito');
     this.router.navigate(['/hospedaje'], { queryParams: { locality, date } });
   }
 
-  showFieldError(field: string): void {
-    this.alertMessage = `El campo ${field} es obligatorio`;
+  showFieldError(field: string, message: string): void {
+    this.alertMessage = message;
     this.alertType = 'error';
     this.showAlert = true;
-    setTimeout(() => this.showAlert = false, 5000);
+    if (field === 'localidad') {
+      this.showLocationError = true;
+    }
+    if (field === 'fecha') {
+      this.showDateError = true;
+    }
+    setTimeout(() => {
+      this.showAlert = false;
+      if (field === 'localidad') {
+        this.showLocationError = false;
+      }
+      if (field === 'fecha') {
+        this.showDateError = false;
+      }
+    }, 5000);
   }
 
   showSuccessMessage(message: string): void {

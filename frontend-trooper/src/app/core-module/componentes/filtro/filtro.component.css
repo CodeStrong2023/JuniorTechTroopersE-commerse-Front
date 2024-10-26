@@ -25,6 +25,7 @@
     overflow: visible;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
 }
 
 .input-container {
@@ -208,6 +209,23 @@
     display: flex;
     align-items: center;
     z-index: 1;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .input-container {
+      min-width: 100%;
+    }
+  
+    .search-box {
+      flex-direction: column;
+    }
+  
+    .error-message {
+      position: relative;
+      bottom: 0;
+      margin-top: 5px;
+    }
   }
 
 /* Ajustes para pantallas pequeñas */
