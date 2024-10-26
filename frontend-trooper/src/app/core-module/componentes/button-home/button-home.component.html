@@ -1,4 +1,7 @@
-<a class="btn btn-primary back-to-home-btn"  href="#home">
-    <i class="bi bi-house-door-fill"></i> <!-- Ícono de Bootstrap para casa -->
-</a>
+<a class="btn btn-primary back-to-home-btn" href="#home" (click)="goHome()" data-tooltip="Ir al inicio">
+    <i class="bi bi-house-door-fill"></i>
+  </a>
   
+  <a *ngIf="isLoggedIn" class="btn btn-primary create-hostel-btn" (click)="goToCreateHostel()" data-tooltip="Crear nuevo hospedaje">
+    <i class="bi bi-house-add"></i>
+  </a>

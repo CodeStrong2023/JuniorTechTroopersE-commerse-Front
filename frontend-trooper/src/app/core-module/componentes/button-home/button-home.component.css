@@ -1,22 +1,88 @@
 .back-to-home-btn {
     position: fixed;
-    bottom: 20px;   /* Distancia desde la parte inferior */
-    right: 20px;    /* Distancia desde la parte derecha */
-    z-index: 9999;  /* Elevado para superponerse a otros componentes */
-    border-radius: 50%; /* Para hacer el botón circular */
-    padding: 10px 15px;  
-    font-size: 1.3em; /* Tamaño del icono dentro del botón, ajustado */
-    background-color: var(--color-button); /* Color de fondo (variable) */
-    color: var(--color-background); /* Color del ícono (variable) */
-    border: none; /* Sin borde */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar un efecto flotante */
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.3em;
+    background-color: var(--color-button);
+    color: var(--color-background);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .back-to-home-btn:hover {
-    background-color: rgba(65, 65, 4, 0.1); /* Color de fondo con transparencia */
-    box-shadow: 0 2px 12px var(--color-button); /* Mayor sombra al hacer hover */
-    color: var(--color-button); /* Cambia el color del icono al hacer hover */
-  }
-  
+}
+
+.back-to-home-btn:hover {
+    background-color: rgba(65, 65, 4, 0.1);
+    box-shadow: 0 2px 12px var(--color-button);
+    color: var(--color-button);
+}
+
+.create-hostel-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    z-index: 9999;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.3em;
+    background-color: var(--color-button);
+    color: var(--color-background);
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-hostel-btn:hover {
+    background-color: rgba(65, 65, 4, 0.1);
+    box-shadow: 0 2px 12px var(--color-button);
+    color: var(--color-button);
+}
+
+
+/* Tooltip personalizado */
+.back-to-home-btn::after,
+.create-hostel-btn::after {
+    content: attr(data-tooltip); /* Obtiene el texto del data-tooltip */
+    position: absolute;
+    bottom: 100%; /* Sitúa el tooltip encima del botón */
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333333; /* Color de fondo gris oscuro */
+    color: #ffffff; /* Color del texto */
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.6em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Evita que el tooltip interfiera con el hover */
+    z-index: 10000;
+}
+
+/* Triángulo del tooltip */
+.back-to-home-btn::before,
+.create-hostel-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 90%; /* Sitúa el triángulo justo debajo del tooltip */
+    right: 50%;
+    transform: translateX(50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+/* Muestra el tooltip al hacer hover */
+.back-to-home-btn:hover::after,
+.create-hostel-btn:hover::after,
+.back-to-home-btn:hover::before,
+.create-hostel-btn:hover::before {
+    opacity: 1;
+}

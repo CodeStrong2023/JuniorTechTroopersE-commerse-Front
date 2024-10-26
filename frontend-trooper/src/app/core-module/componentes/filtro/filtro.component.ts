@@ -118,4 +118,14 @@ export class FiltroComponent implements OnInit{
     this.showAlert = true;
     setTimeout(() => this.showAlert = false, 5000);
   }
+
+  clearPlaceholder(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.placeholder = '';
+  }
+  
+  restorePlaceholder(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.placeholder = 'Comprobar disponibilidad';
+  }
 }
