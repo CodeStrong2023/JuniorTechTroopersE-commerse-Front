@@ -23,7 +23,7 @@
         <h3>{{ hospedaje.nombreHospedaje }}</h3>
         <p>{{ hospedaje.description }}</p>
         <p class="location"><i class="bi bi-geo-alt-fill"></i> {{ hospedaje.locality }}</p>
-        <button>Visitar</button>
+        <button (click)="visitarHospedaje(hospedaje.hospedajeToken)">Visitar</button>
       </div>
     </div>
   </div>

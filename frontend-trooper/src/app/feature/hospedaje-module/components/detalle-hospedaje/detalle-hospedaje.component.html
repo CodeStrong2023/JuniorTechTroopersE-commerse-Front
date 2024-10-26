@@ -1,6 +1,17 @@
 <app-header></app-header>
 
-<div class="reservation-container" *ngIf="hospedaje">
+<!-- Animación de carga mientras los hospedajes se están cargando -->
+<div *ngIf="isHospedajesLoading" class="loading-container">
+  <div class="loading-spinner">
+    <svg viewBox="25 25 50 50">
+      <circle r="20" cy="50" cx="50"></circle>
+    </svg>
+  </div>
+  <!-- Texto de carga con animación de parpadeo -->
+  <p class="loading-text">Cargando hospedaje...</p>
+</div>
+
+<div class="reservation-container" *ngIf="hospedaje" data-aos="zoom-in">
   <h1 class="title">{{ hospedaje.name }} <span>{{ hospedaje.locality }}</span></h1>
 
   <div class="reservation-content">

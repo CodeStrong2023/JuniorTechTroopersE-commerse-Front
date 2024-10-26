@@ -25,6 +25,7 @@
     overflow: visible;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
 }
 
 .input-container {
@@ -152,6 +153,80 @@
 .icon-calendar::before {
     background-image: url('../../../../assets/icons/filtro/calendario.png');
 }
+
+
+/* Mensaje de éxito en la esquina superior derecha */
+.alert {
+    position: fixed;
+    top: 200px;
+    right: 30px;
+    z-index: 9999;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .alert i {
+    margin-right: 10px;
+  }
+  
+  .success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  /* Ajustes generales de estilo */
+  .form-group {
+    position: relative;
+  }
+  
+  /* Iconos de verificación y error */
+  .bi-check-circle {
+    color: green;
+    margin-left: 5px;
+  }
+  
+  .bi-x-circle {
+    color: red;
+    margin-left: 5px;
+  }
+  
+  /* Estilos para mensajes de error de campo */
+  .error-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .input-container {
+      min-width: 100%;
+    }
+  
+    .search-box {
+      flex-direction: column;
+    }
+  
+    .error-message {
+      position: relative;
+      bottom: 0;
+      margin-top: 5px;
+    }
+  }
 
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 768px) {

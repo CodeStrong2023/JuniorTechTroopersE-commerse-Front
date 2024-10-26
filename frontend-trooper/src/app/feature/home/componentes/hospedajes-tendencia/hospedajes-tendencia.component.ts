@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Home } from '../../../../shared/model/home';
 import { HomeService } from '../../../../shared/services/home/home.service';
+import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
 
 @Component({
   selector: 'app-hospedajes-tendencia',
@@ -12,25 +14,27 @@ export class HospedajesTendenciaComponent implements OnInit {
   hospedajes: Home[] = [];
   isHospedajesLoading: boolean = true;
 
-  //Inyectamos el servicio de HomeService para traer hospedajes
-  constructor(private homeService: HomeService) {}
+  //Inyectamos los servicios necesarios
+  constructor(
+    private homeService: HomeService, 
+    private router: Router, 
+    private hospedajeService: HospedajeService) { }
 
   //Método que se ejecuta al iniciar el componente
   ngOnInit(): void {
     this.getHospedajes();
   }
-  
-   // Método para obtener los hospedajes desde el servicio
-   getHospedajes(): void {
+
+  // Método para obtener los hospedajes desde el servicio
+  getHospedajes(): void {
     this.homeService.getHospedajes().subscribe((data: Home[]) => {
       this.hospedajes = data.slice(0, 3); // Limitar a 3 hospedajes
       this.isHospedajesLoading = false; //Ocultamos la animación de carga
     });
   }
 
-  // Método para redirigir a la página de detalles del hospedaje
-  visitarHospedaje(url: string) {
-    // Lógica para redirigir a la página de detalles
-    console.log('Redirigiendo a:', url);
+  visitarHospedaje(hospedajeToken: string) {
+    // Redirige directamente a la página de detalles del hospedaje con el token
+    this.router.navigate([`hospedaje/detalle-hospedaje`, hospedajeToken]);
   }
 }

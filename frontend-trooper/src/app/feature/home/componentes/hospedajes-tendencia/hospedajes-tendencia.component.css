@@ -68,7 +68,7 @@
 .tendencias-card-content p {
   color: var(--color-white);
   font-family: var(--font-text);
-  text-align: justify;
+  text-align: left;
   
 }
 
