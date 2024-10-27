@@ -1,3 +1,16 @@
+/* Estilo para los títulos */
+.destinos-title {
+  font-family: var(--font-title1);
+  font-size: 2rem;
+  text-align: center;
+  color: rgba(212, 206, 206, 0.74);
+  margin-bottom: 40px;
+  z-index: 10;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  
+}
+
+
 .how-trooper-works {  
   color: var(--color-white);
   display: flex;
@@ -21,9 +34,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px; 
 }
-
 .step-card {
   background-color: rgba(7, 7, 7, 0.53);
   border-radius: 50%;
@@ -81,6 +93,7 @@ a:hover {
   max-width: 800px;
   font-family: var(--font-text);
   color: var(--color-white);
+  margin-bottom: 100px; /* Espacio adicional entre descripción y la siguiente sección */
 }
 
 
