@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ImagesService } from '../../../../shared/services/images-service/images.service';
 
 @Component({
@@ -11,24 +12,11 @@ export class TestUploadComponent{
   imageUrl: string | null = null;
   uploading: boolean = false;
 
-  constructor(private uploadService: ImagesService) {}
+  constructor(private router: Router) {}
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
+  // Método para redirigir a la creación de hospedajes
+  goToCreateHostel(): void {
+    this.router.navigate(['/hospedaje/nuevo']);
   }
-
-  uploadImage() {
-    if (this.selectedFile) {
-      this.uploading = true;
-      this.uploadService.uploadImage(this.selectedFile)
-        .then((url) => {
-          this.imageUrl = url;
-          this.uploading = false;
-        })
-        .catch((error) => {
-          console.error('Error uploading image:', error);
-          this.uploading = false;
-        });
-    }
-  }
+ 
 }

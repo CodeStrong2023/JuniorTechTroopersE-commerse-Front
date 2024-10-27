@@ -93,7 +93,7 @@ a:hover {
   max-width: 800px;
   font-family: var(--font-text);
   color: var(--color-white);
-  margin-bottom: 100px; /* Espacio adicional entre descripción y la siguiente sección */
+  margin-bottom: 150px; /* Espacio adicional entre descripción y la siguiente sección */
 }
 
 
