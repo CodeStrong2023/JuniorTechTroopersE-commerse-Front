@@ -24,7 +24,7 @@ export class PerfilUsuarioComponent implements OnInit {
 
   // Nuevas variables para los tickets
   reservas: TicketResponseDTO[] = [];
-  alojamientosReservados: TicketResponseDTO[] = [];
+  alojamientosAlquilados: TicketResponseDTO[] = [];
   isReservasLoading: boolean = true;
 
   constructor(
@@ -76,13 +76,27 @@ export class PerfilUsuarioComponent implements OnInit {
   // Nuevo método para cargar los tickets
   loadTickets(): void {
     const userToken = this.authService.getToken();
+  
+    // Obtener los tickets de reservas propias
     this.ticketService.getTicketsReservas(userToken).subscribe({
-      next: (tickets) => {
-        this.reservas = tickets.filter(ticket => ticket.userNameRenter === this.userProfile?.firstname);
-        this.alojamientosReservados = tickets.filter(ticket => ticket.userNameRenter !== this.userProfile?.firstname);
+      next: (reservas) => {
+        this.reservas = reservas;
         this.isReservasLoading = false;
       },
       error: () => {
+        console.error('Error al cargar los tickets de reservas');
+        this.isReservasLoading = false;
+      }
+    });
+  
+    // Obtener los tickets de hospedajes alquilados a otros usuarios
+    this.ticketService.getUserTickets(userToken).subscribe({
+      next: (alojamientosAlquilados) => {
+        this.alojamientosAlquilados = alojamientosAlquilados;
+        this.isReservasLoading = false;
+      },
+      error: () => {
+        console.error('Error al cargar los tickets de hospedajes alquilados');
         this.isReservasLoading = false;
       }
     });

@@ -154,6 +154,39 @@ li i{
   
 }
 
+.reservas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ddd; /* Color para la línea divisoria */
+  margin: 0 10px;
+}
+
+.reservas-card ul {
+  padding: 0;
+  list-style: none;
+}
+
+.reservas-card ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.reservas-card ul li i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: #2b7df7; /* Color para los iconos */
+}
+
+
 
 .loader { 
   display: flex;

@@ -48,14 +48,37 @@
     </a>
   </div>
 
-  <!-- Card de Mis Reservas -->
   <div class="card reservas-card">
-    <h3>Mis Reservas</h3>
-    <ul>
-      <li><i class="bi bi-calendar-check"></i> Reserva 1 - Detalles</li>
-      <li><i class="bi bi-calendar-check"></i> Reserva 2 - Detalles</li>
+    <!-- Títulos de secciones con línea divisoria en el centro -->
+    <div class="reservas-header">
+      <h3>Mis Reservas</h3>
+      <div class="divider"></div>
+      <h3>Alojamientos Alquilados</h3>
+    </div>
+  
+    <!-- Sección de "Mis Reservas" -->
+    <ul *ngIf="!isReservasLoading; else loadingReservas">
+      <li *ngFor="let reserva of reservas">
+        <i class="bi bi-calendar-check"></i>
+        {{ reserva.nombreHospedaje }} - {{ reserva.startDate | date: 'shortDate' }} a {{ reserva.endDate | date: 'shortDate' }}
+      </li>
+    </ul>
+  
+    <!-- Sección de "Alojamientos Alquilados" -->
+    <ul *ngIf="!isReservasLoading; else loadingReservas">
+      <li *ngFor="let alojamiento of alojamientosAlquilados">
+        <i class="bi bi-house-check"></i>
+        {{ alojamiento.nombreHospedaje }} - {{ alojamiento.startDate | date: 'shortDate' }} a {{ alojamiento.endDate | date: 'shortDate' }}
+      </li>
     </ul>
   </div>
+  
+  <!-- Plantilla de carga -->
+  <ng-template #loadingReservas>
+    <div class="loader">
+      <div class="loader-text">Cargando reservas...</div>
+    </div>
+  </ng-template>
 </div>
 
 <!-- Usando ng-template para mostrar el spinner de carga -->
