@@ -58,11 +58,11 @@
       <div class="check-in-out">
         <div class="check-in">
           <label for="checkin">Check-In</label>
-          <input type="date" id="checkin">
+          <input type="date" id="checkin" [(ngModel)]="checkInDate">
         </div>
         <div class="check-out">
           <label for="checkout">Check-Out</label>
-          <input type="date" id="checkout">
+          <input type="date" id="checkout" [(ngModel)]="checkOutDate">
         </div>
       </div>
 
@@ -74,7 +74,7 @@
         <!-- Añadir más opciones según sea necesario -->
       </select>
 
-      <button class="reserve-button">Reservar</button>
+      <button class="reserve-button" (click)="abrirPago()">Reservar</button>
     </div>
   </div>
 </div>

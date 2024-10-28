@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DestinoSeleccionadoDTO } from '../../../../shared/model/destino-seleccionado-DTO';
 import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaje.service';
+import { TicketService } from '../../../../shared/services/ticket/ticket.service';
 
 @Component({
   selector: 'app-detalle-hospedaje',
@@ -13,11 +14,15 @@ export class DetalleHospedajeComponent implements OnInit {
   hospedaje!: DestinoSeleccionadoDTO;
    //Variable para saber si los hospedajes están cargando
    isHospedajesLoading: boolean = true;
+   checkInDate!: string;
+   checkOutDate!: string;
+   isPagoOpen: boolean = false;
 
 //Inyectamos el servicio de hospedaje y el servicio de rutas
   constructor(
     private route: ActivatedRoute,
-    private hospedajeService: HospedajeService
+    private hospedajeService: HospedajeService,
+    private ticketService: TicketService
   ) {}
 
   //Método que se ejecuta al iniciar el componente
@@ -30,5 +35,13 @@ export class DetalleHospedajeComponent implements OnInit {
           this.isHospedajesLoading = false;
         });
     }
+  }
+
+  abrirPago(): void {
+    this.isPagoOpen = true;
+  }
+
+  cerrarPago(): void {
+    this.isPagoOpen = false;
   }
 }
