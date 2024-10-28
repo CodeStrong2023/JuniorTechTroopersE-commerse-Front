@@ -9,3 +9,4 @@ export interface TicketResponseDTO {
     endDate: Date;
     totalAmount: number;
   }
+  
