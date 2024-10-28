@@ -6,8 +6,14 @@ import { Ticket } from '../../model/ticket';
 @Injectable({
   providedIn: 'root'
 })
+//Servicio para generar un ticket de hospedaje
 export class TicketService {
+
+  //URL de la API para generar un ticket de hospedaje en MODO DESARROLLO
   private apiUrl = 'http://localhost:8080/ticket';
+
+  //URL de la API para generar un ticket de hospedaje en MODO PRODUCCIÓN
+  //private apiUrl = '/ticket';
 
   constructor(private http: HttpClient) {}
 
