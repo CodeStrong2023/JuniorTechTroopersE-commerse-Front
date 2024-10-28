@@ -5,12 +5,12 @@
       <h2 class="carrito-header">Detalles de la Reserva</h2>
       <div class="carrito-details">
         <h3>{{ hospedaje.name }}</h3>
-        <p><strong>Localidad:</strong> {{ hospedaje.locality }}</p>
-        <p><strong>Descripción:</strong> {{ hospedaje.description }}</p>
-        <p><strong>Fecha de check-in:</strong> {{ checkInDate }}</p>
-        <p><strong>Fecha de check-out:</strong> {{ checkOutDate }}</p>
-        <p><strong>Precio por noche:</strong> ${{ hospedaje.price }}</p>
-        <p><strong>Total estimado:</strong> {{ calcularTotal() | currency:'USD' }}</p>
+        <p><strong class="highlight">Localidad:</strong> {{ hospedaje.locality }}</p>
+        <p><strong class="highlight">Descripción:</strong> {{ hospedaje.description }}</p>
+        <p><strong class="highlight">Fecha de check-in:</strong> {{ checkInDate }}</p>
+        <p><strong class="highlight">Fecha de check-out:</strong> {{ checkOutDate }}</p>
+        <p><strong class="highlight">Precio por noche:</strong> ${{ hospedaje.price }}</p>
+        <p><strong class="highlight">Total estimado:</strong> {{ calcularTotal() | currency:'USD' }}</p>
       </div>
       <button class="carrito-cancel-button" (click)="close.emit()">Cancelar</button>
     </div>
@@ -27,16 +27,16 @@
         </select>
 
         <label for="card-number">Número de Tarjeta:</label>
-        <input id="card-number" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" />
+        <input id="card-number" type="text" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
 
         <label for="card-holder">Titular de la Tarjeta:</label>
         <input id="card-holder" type="text" placeholder="Nombre del Titular" />
 
         <label for="expiration-date">Fecha de Expiración:</label>
-        <input id="expiration-date" type="text" placeholder="MM/AA" />
+        <input id="expiration-date" type="text" maxlength="5" placeholder="MM/AA" />
 
         <label for="cvv">CVV:</label>
-        <input id="cvv" type="text" placeholder="CVV" />
+        <input id="cvv" type="text" maxlength="3" placeholder="CVV" />
 
         <label for="email">Correo Electrónico:</label>
         <input id="email" type="email" placeholder="ejemplo@correo.com" />

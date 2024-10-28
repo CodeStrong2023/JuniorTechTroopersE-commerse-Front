@@ -1,3 +1,7 @@
+*{
+  font-family: var(--font-title2);
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -13,6 +17,7 @@
 
 .carrito-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   max-width: 800px;
   background: var(--color-background);
@@ -22,7 +27,7 @@
 }
 
 .carrito-card {
-  background-color: var(--color-card);
+  background: var(--color-background);
   color: var(--color-white);
   padding: 1.5rem;
   border-radius: 8px;
@@ -38,8 +43,13 @@
   text-align: center;
 }
 
-.carrito-details, .carrito-payment-form {
-  background-color: var(--color-card-2);
+.highlight {
+  color: var(--color-button);
+}
+
+.carrito-details,
+.carrito-payment-form {
+  background-color: rgba(7, 7, 7, 0.53);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
@@ -50,7 +60,8 @@
   color: var(--color-button);
 }
 
-.carrito-cancel-button, .carrito-confirm-button {
+.carrito-cancel-button,
+.carrito-confirm-button {
   background-color: var(--color-button);
   color: var(--color-text);
   border: none;
@@ -68,7 +79,8 @@
   background-color: var(--color-card);
 }
 
-.carrito-cancel-button:hover, .carrito-confirm-button:hover {
+.carrito-cancel-button:hover,
+.carrito-confirm-button:hover {
   background-color: var(--color-primary);
 }
 
@@ -79,11 +91,27 @@
   color: var(--color-white);
 }
 
-.carrito-payment-form input, .carrito-payment-form select {
+.carrito-payment-form input,
+.carrito-payment-form select {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.25rem;
   border-radius: 5px;
   border: none;
   font-family: var(--font-text);
+  background-color: #f0f0f0;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .carrito-wrapper {
+    flex-direction: column;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .carrito-card {
+    width: 48%; /* Ocupa casi la mitad del ancho en pantallas medianas y grandes */
+  }
 }
