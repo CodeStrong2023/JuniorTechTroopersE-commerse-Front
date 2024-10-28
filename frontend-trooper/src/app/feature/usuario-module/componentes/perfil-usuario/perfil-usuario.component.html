@@ -2,7 +2,8 @@
 <div class="perfil-container" *ngIf="!isProfileLoading; else loadingProfile" data-aos="zoom-in">
   <!-- Card de Perfil -->
   <div class="card perfil-card">
-    <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.jpeg'" alt="Foto de Perfil" class="perfil-img">
+    <img [src]="userProfile?.imgUrl || '../../../../../assets/images/perfil-usuario/foto-perfil.jpeg'"
+      alt="Foto de Perfil" class="perfil-img">
     <h3>{{ userProfile?.firstname }} {{ userProfile?.lastname }}</h3>
     <p>{{userProfile?.locality}}</p>
     <button class="edit-btn">
@@ -16,7 +17,8 @@
     <ul>
       <li class="phone"><i class="bi bi-telephone"></i>Teléfono: {{ userProfile?.phone }}</li>
       <li class="email"><i class="bi bi-envelope"></i>Email: {{ userProfile?.email }}</li>
-      <li class="birthdate"><i class="bi bi-calendar"></i>Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}</li>
+      <li class="birthdate"><i class="bi bi-calendar"></i>Cumpleaños: {{ userProfile?.birthdate | date: 'longDate' }}
+      </li>
       <li class="location"><i class="bi bi-geo-alt"></i>Ubicación: {{userProfile?.locality}}</li>
     </ul>
     <button class="edit-btn">
@@ -49,35 +51,35 @@
   </div>
 
   <div class="card reservas-card">
-    <!-- Título "Mis Reservas" -->
+    <!-- Título y Lista de Reservas -->
     <div class="reservas-header">
       <h3>Mis Reservas</h3>
     </div>
-    
-    <!-- Lista de Reservas -->
     <ul *ngIf="reservas.length > 0; else noReservas">
-      <li *ngFor="let reserva of reservas">
+      <li *ngFor="let reserva of reservas" (click)="openTicketDetail(reserva)">
         <i class="bi bi-calendar-check"></i> {{ reserva.nombreHospedaje }} - Desde: {{ reserva.startDate | date }} Hasta: {{ reserva.endDate | date }}
       </li>
     </ul>
     <ng-template #noReservas><p>No tienes reservas.</p></ng-template>
     
     <hr class="divider">
-  
-    <!-- Título "Alojamientos Alquilados" -->
+    
+    <!-- Título y Lista de Alojamientos Alquilados -->
     <div class="alojamientos-header">
       <h3>Alojamientos Alquilados</h3>
     </div>
-    
-    <!-- Lista de Alojamientos Alquilados -->
     <ul *ngIf="alojamientosAlquilados.length > 0; else noAlojamientos">
-      <li *ngFor="let alojamiento of alojamientosAlquilados">
+      <li *ngFor="let alojamiento of alojamientosAlquilados" (click)="openTicketDetail(alojamiento)">
         <i class="bi bi-house-check"></i> {{ alojamiento.nombreHospedaje }} - Inquilino: {{ alojamiento.userNameRenter }}
       </li>
     </ul>
     <ng-template #noAlojamientos><p>No tienes alojamientos alquilados.</p></ng-template>
   </div>
   
+  
+
+  
+
   <!-- Plantilla de carga -->
   <ng-template #loadingReservas>
     <div class="loader">
@@ -93,5 +95,7 @@
     <div class="loader-bar"></div>
   </div>
 </ng-template>
-
+<!-- Componente TicketDetail con Modal -->
+<app-detalle-ticket *ngIf="selectedTicket" [ticketDetail]="selectedTicket" (close)="closeTicketDetail()">
+</app-detalle-ticket>
 <app-footer></app-footer>
