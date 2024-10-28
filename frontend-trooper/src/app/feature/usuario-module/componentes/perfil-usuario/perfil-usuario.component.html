@@ -48,14 +48,42 @@
     </a>
   </div>
 
-  <!-- Card de Mis Reservas -->
   <div class="card reservas-card">
-    <h3>Mis Reservas</h3>
-    <ul>
-      <li><i class="bi bi-calendar-check"></i> Reserva 1 - Detalles</li>
-      <li><i class="bi bi-calendar-check"></i> Reserva 2 - Detalles</li>
+    <!-- Título "Mis Reservas" -->
+    <div class="reservas-header">
+      <h3>Mis Reservas</h3>
+    </div>
+    
+    <!-- Lista de Reservas -->
+    <ul *ngIf="reservas.length > 0; else noReservas">
+      <li *ngFor="let reserva of reservas">
+        <i class="bi bi-calendar-check"></i> {{ reserva.nombreHospedaje }} - Desde: {{ reserva.startDate | date }} Hasta: {{ reserva.endDate | date }}
+      </li>
     </ul>
+    <ng-template #noReservas><p>No tienes reservas.</p></ng-template>
+    
+    <hr class="divider">
+  
+    <!-- Título "Alojamientos Alquilados" -->
+    <div class="alojamientos-header">
+      <h3>Alojamientos Alquilados</h3>
+    </div>
+    
+    <!-- Lista de Alojamientos Alquilados -->
+    <ul *ngIf="alojamientosAlquilados.length > 0; else noAlojamientos">
+      <li *ngFor="let alojamiento of alojamientosAlquilados">
+        <i class="bi bi-house-check"></i> {{ alojamiento.nombreHospedaje }} - Inquilino: {{ alojamiento.userNameRenter }}
+      </li>
+    </ul>
+    <ng-template #noAlojamientos><p>No tienes alojamientos alquilados.</p></ng-template>
   </div>
+  
+  <!-- Plantilla de carga -->
+  <ng-template #loadingReservas>
+    <div class="loader">
+      <div class="loader-text">Cargando reservas...</div>
+    </div>
+  </ng-template>
 </div>
 
 <!-- Usando ng-template para mostrar el spinner de carga -->
