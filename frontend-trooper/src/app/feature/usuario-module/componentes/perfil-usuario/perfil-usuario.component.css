@@ -165,12 +165,21 @@ li i{
   flex-grow: 1;
   height: 1px;
   background-color: #ddd; /* Color para la línea divisoria */
-  margin: 0 10px;
+  
+  margin: 0 10px 20px;
+}
+
+.reservas-card {
+  max-height: 300px; /* Altura máxima para la tarjeta */
+  overflow-y: auto; /* Barra de desplazamiento vertical si se excede la altura */
+  padding-right: 10px; /* Espacio para evitar que el scroll tape el contenido */
 }
 
 .reservas-card ul {
   padding: 0;
   list-style: none;
+  max-height: 250px; /* Altura máxima de la lista interna para limitar el contenido visible */
+  overflow-y: auto; /* Scroll en la lista si es necesario */
 }
 
 .reservas-card ul li {
