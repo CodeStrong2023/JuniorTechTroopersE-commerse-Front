@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DestinoSeleccionadoDTO } from '../../../../shared/model/destino-seleccionado-DTO';
+import { Ticket } from '../../../../shared/model/ticket';
+import { TicketService } from '../../../../shared/services/ticket/ticket.service';
 
 @Component({
   selector: 'app-carrito',
@@ -6,36 +9,30 @@ import { Component, Input } from '@angular/core';
   styleUrl: './carrito.component.css'
 })
 export class CarritoComponent {
-  @Input() hospedajeSeleccionado: any; // Datos del hospedaje seleccionado
-  isVisible: boolean = false;
-  cantidadNoches: number = 1; // Cantidad de noches por defecto
-  total: number = 0;
+  @Input() hospedaje!: DestinoSeleccionadoDTO;
+  @Input() checkInDate!: string;
+  @Input() checkOutDate!: string;
+  @Output() close = new EventEmitter<void>();
 
-  ngOnChanges() {
-    this.calcularTotal();
-  }
+  constructor(private ticketService: TicketService) {}
 
-  // Calcular el total en base al precio y cantidad de noches
-  calcularTotal() {
-    this.total = this.hospedajeSeleccionado?.precio * this.cantidadNoches;
-  }
+  confirmarReserva(): void {
+    const ticket: Ticket = {
+      hospedajeToken: this.hospedaje.hospedajeToken,
+      startDate: this.checkInDate,
+      endDate: this.checkOutDate
+    };
 
-  // Método para mostrar/ocultar el carrito
-  toggleCart() {
-    this.isVisible = !this.isVisible;
-  }
+    const userToken = localStorage.getItem('userToken') || ''; // Obtener el token desde el almacenamiento
 
-  // Método para eliminar el hospedaje seleccionado
-  eliminarHospedaje() {
-    this.hospedajeSeleccionado = null;
-    this.cantidadNoches = 1;
-    this.total = 0;
-    this.toggleCart();
-  }
-
-  // Método para realizar la compra (podrías integrar un servicio de pago aquí)
-  realizarCompra() {
-    alert('Compra realizada con éxito');
-    this.eliminarHospedaje();
+    this.ticketService.generateTicket(ticket, userToken).subscribe({
+      next: () => {
+        alert('Reserva confirmada exitosamente');
+        this.close.emit();
+      },
+      error: () => {
+        alert('Hubo un error al confirmar la reserva');
+      }
+    });
   }
 }

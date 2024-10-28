@@ -75,6 +75,7 @@
       </select>
 
       <button class="reserve-button" (click)="abrirPago()">Reservar</button>
+      <app-carrito *ngIf="isPagoOpen" [hospedaje]="hospedaje" [checkInDate]="checkInDate" [checkOutDate]="checkOutDate" (close)="cerrarPago()"></app-carrito>
     </div>
   </div>
 </div>
