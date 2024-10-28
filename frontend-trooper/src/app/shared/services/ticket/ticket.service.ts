@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ticket } from '../../model/ticket';
+import { TicketResponseDTO } from '../../model/ticket-DTO';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,19 @@ export class TicketService {
     });
 
     return this.http.post(this.apiUrl, ticketData, { headers });
+  }
+
+  getTicketsReservas(userToken: string): Observable<TicketResponseDTO[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${userToken}`
+    });
+    return this.http.get<TicketResponseDTO[]>(`${this.apiUrl}/reservas`, { headers });
+  }
+
+  getUserTickets(userToken: string): Observable<TicketResponseDTO[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${userToken}`
+    });
+    return this.http.get<TicketResponseDTO[]>(`${this.apiUrl}/user`, { headers });
   }
 }
