@@ -49,28 +49,33 @@
   </div>
 
   <div class="card reservas-card">
-    <!-- Títulos de secciones con línea divisoria en el centro -->
+    <!-- Título "Mis Reservas" -->
     <div class="reservas-header">
-      <h3>Mis Reservas</h3>
-      <div class="divider"></div>
-      <h3>Alojamientos Alquilados</h3>
+      <h3><i class="bi bi-calendar-check"></i> Mis Reservas</h3>
     </div>
-  
-    <!-- Sección de "Mis Reservas" -->
-    <ul *ngIf="!isReservasLoading; else loadingReservas">
+    
+    <!-- Lista de Reservas -->
+    <ul *ngIf="reservas.length > 0; else noReservas">
       <li *ngFor="let reserva of reservas">
-        <i class="bi bi-calendar-check"></i>
-        {{ reserva.nombreHospedaje }} - {{ reserva.startDate | date: 'shortDate' }} a {{ reserva.endDate | date: 'shortDate' }}
+        <i class="bi bi-calendar-check"></i> {{ reserva.nombreHospedaje }} - Desde: {{ reserva.startDate | date }} Hasta: {{ reserva.endDate | date }}
       </li>
     </ul>
+    <ng-template #noReservas><p>No tienes reservas.</p></ng-template>
+    
+    <hr class="divider">
   
-    <!-- Sección de "Alojamientos Alquilados" -->
-    <ul *ngIf="!isReservasLoading; else loadingReservas">
+    <!-- Título "Alojamientos Alquilados" -->
+    <div class="alojamientos-header">
+      <h3><i class="bi bi-house-check"></i> Alojamientos Alquilados</h3>
+    </div>
+    
+    <!-- Lista de Alojamientos Alquilados -->
+    <ul *ngIf="alojamientosAlquilados.length > 0; else noAlojamientos">
       <li *ngFor="let alojamiento of alojamientosAlquilados">
-        <i class="bi bi-house-check"></i>
-        {{ alojamiento.nombreHospedaje }} - {{ alojamiento.startDate | date: 'shortDate' }} a {{ alojamiento.endDate | date: 'shortDate' }}
+        <i class="bi bi-house-check"></i> {{ alojamiento.nombreHospedaje }} - Inquilino: {{ alojamiento.userNameRenter }}
       </li>
     </ul>
+    <ng-template #noAlojamientos><p>No tienes alojamientos alquilados.</p></ng-template>
   </div>
   
   <!-- Plantilla de carga -->
