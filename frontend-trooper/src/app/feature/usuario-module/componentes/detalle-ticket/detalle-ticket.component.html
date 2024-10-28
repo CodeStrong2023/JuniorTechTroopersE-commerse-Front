@@ -1,1 +1,13 @@
-<p>detalle-ticket works!</p>
+<div class="modal-backdrop" (click)="closeModal()"></div>
+<div class="ticket-detail-card">
+  <button class="close-btn" (click)="closeModal()">
+    <i class="bi bi-x"></i>
+  </button>
+  <h3>{{ ticketDetail.nombreHospedaje }}</h3>
+  <p><strong>Inquilino:</strong> {{ ticketDetail.userNameRenter }}</p>
+  <p><strong>Email:</strong> {{ ticketDetail.emailRenter }}</p>
+  <p><strong>Teléfono:</strong> {{ ticketDetail.phoneRenter }}</p>
+  <p><strong>Fecha de Inicio:</strong> {{ ticketDetail.startDate | date }}</p>
+  <p><strong>Fecha de Fin:</strong> {{ ticketDetail.endDate | date }}</p>
+  <p><strong>Total:</strong> ${{ ticketDetail.totalAmount }}</p>
+</div>
