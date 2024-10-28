@@ -11,8 +11,9 @@
         <p><strong class="highlight">Fecha de check-out:</strong> {{ checkOutDate }}</p>
         <p><strong class="highlight">Precio por noche:</strong> ${{ hospedaje.price }}</p>
         <p><strong class="highlight">Total estimado:</strong> {{ calcularTotal() | currency:'USD' }}</p>
+        <button class="carrito-cancel-button" (click)="close.emit()">Cancelar</button>
       </div>
-      <button class="carrito-cancel-button" (click)="close.emit()">Cancelar</button>
+      
     </div>
 
     <!-- Tarjeta de Pago -->

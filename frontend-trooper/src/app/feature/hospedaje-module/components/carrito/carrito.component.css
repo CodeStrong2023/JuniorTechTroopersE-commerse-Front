@@ -73,15 +73,24 @@
   cursor: pointer;
   width: 100%;
   margin-top: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .carrito-cancel-button {
-  background-color: var(--color-card);
+  background-color: #ff6666;
 }
 
-.carrito-cancel-button:hover,
+.carrito-cancel-button:hover{
+  background-color: #410604b6;
+  box-shadow: 0 2px 12px #f81616;
+  color: var(--color-white);
+}
+
+
 .carrito-confirm-button:hover {
-  background-color: var(--color-primary);
+  background-color: #41410415;
+  box-shadow: 0 2px 12px var(--color-button);
+  color: var(--color-button);
 }
 
 .carrito-payment-form label {
