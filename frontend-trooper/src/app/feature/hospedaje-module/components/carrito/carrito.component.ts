@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DestinoSeleccionadoDTO } from '../../../../shared/model/destino-seleccionado-DTO';
 import { Ticket } from '../../../../shared/model/ticket';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { TicketService } from '../../../../shared/services/ticket/ticket.service';
 
 @Component({
@@ -14,7 +15,10 @@ export class CarritoComponent {
   @Input() checkOutDate!: string;
   @Output() close = new EventEmitter<void>();
 
-  constructor(private ticketService: TicketService) {}
+  constructor(
+    private ticketService: TicketService,
+    private authService: AuthService
+  ) {}
 
   confirmarReserva(): void {
     const ticket: Ticket = {
@@ -23,7 +27,13 @@ export class CarritoComponent {
       endDate: this.checkOutDate
     };
 
-    const userToken = localStorage.getItem('userToken') || ''; // Obtener el token desde el almacenamiento
+    // Obtener el token del usuario a través de AuthService
+    const userToken = this.authService.getToken();
+    
+    if (!userToken) {
+      alert('Por favor, inicie sesión para confirmar la reserva');
+      return;
+    }
 
     this.ticketService.generateTicket(ticket, userToken).subscribe({
       next: () => {
@@ -34,5 +44,13 @@ export class CarritoComponent {
         alert('Hubo un error al confirmar la reserva');
       }
     });
+  }
+
+  calcularTotal(): number {
+    const startDate = new Date(this.checkInDate);
+    const endDate = new Date(this.checkOutDate);
+    const diffInTime = endDate.getTime() - startDate.getTime();
+    const diffInDays = diffInTime / (1000 * 3600 * 24);
+    return diffInDays * this.hospedaje.price;
   }
 }
