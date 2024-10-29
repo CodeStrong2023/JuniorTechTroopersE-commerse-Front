@@ -5,11 +5,11 @@ import { HospedajeService } from '../../../../shared/services/hospedaje/hospedaj
 import { TicketService } from '../../../../shared/services/ticket/ticket.service';
 
 @Component({
-  selector: 'app-detalle-hospedaje',
-  templateUrl: './detalle-hospedaje.component.html',
-  styleUrl: './detalle-hospedaje.component.css'
+  selector: 'app-detalle-tendencia',
+  templateUrl: './detalle-tendencia.component.html',
+  styleUrl: './detalle-tendencia.component.css'
 })
-export class DetalleHospedajeComponent implements OnInit {
+export class DetalleTendenciaComponent implements OnInit {
   //Variable para almacenar los datos del hospedaje seleccionado
   hospedaje!: DestinoSeleccionadoDTO;
    //Variable para saber si los hospedajes están cargando
@@ -17,8 +17,6 @@ export class DetalleHospedajeComponent implements OnInit {
    checkInDate!: string;
    checkOutDate!: string;
    isPagoOpen: boolean = false;
-
-   errorMessage: string | null = null; 
 
 //Inyectamos el servicio de hospedaje y el servicio de rutas
   constructor(
@@ -40,12 +38,7 @@ export class DetalleHospedajeComponent implements OnInit {
   }
 
   abrirPago(): void {
-    if (!this.checkInDate || !this.checkOutDate) {
-      this.errorMessage = 'Por favor, selecciona fechas de check-in y check-out.';
-    } else {
-      this.errorMessage = null; // Limpiar el mensaje de error
-      this.isPagoOpen = true;
-    }
+    this.isPagoOpen = true;
   }
 
   cerrarPago(): void {

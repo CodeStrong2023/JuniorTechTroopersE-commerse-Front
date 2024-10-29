@@ -44,42 +44,25 @@
         
       </div>
 
+
       <!-- Localidad con ícono rojo -->
       <div class="place-location">
         <i class="bi bi-geo-alt-fill text-danger"></i>
         {{ hospedaje.locality }}
       </div>
+
+
     </div>
 
-    <!-- Card con el precio y formulario de reserva -->
-    <div class="price-card">
-      <h2>${{ hospedaje.price }} <span>/ noche</span></h2>
+    <!-- Card de "Comprobar disponibilidad" a la derecha -->
+  <div class="availability-card">
+    <h2>¿Quieres hospedarte aquí?</h2>
+    <p>Comienza comprobando la disponibilidad para tus fechas ideales.</p>
+    <app-filtro class="availability-filter" [initialLocation]="{ nombre: hospedaje.locality }"></app-filtro>
+  </div>
 
-      <div class="check-in-out">
-        <div *ngIf="errorMessage" class="error-message">
-          {{ errorMessage }}
-        </div>
-        <div class="check-in">
-          <label for="checkin">Check-In</label>
-          <input type="date" id="checkin" [(ngModel)]="checkInDate">
-        </div>
-        <div class="check-out">
-          <label for="checkout">Check-Out</label>
-          <input type="date" id="checkout" [(ngModel)]="checkOutDate">
-        </div>
-      </div>
-
-      <label for="guests">Viajeros</label>
-      <select id="guests">
-        <option>1 huésped</option>
-        <option>2 huéspedes</option>
-        <option>3 huéspedes</option>
-        <!-- Añadir más opciones según sea necesario -->
-      </select>
-
-      <button class="reserve-button" (click)="abrirPago()">Reservar</button>
-      <app-carrito *ngIf="isPagoOpen" [hospedaje]="hospedaje" [checkInDate]="checkInDate" [checkOutDate]="checkOutDate" (close)="cerrarPago()"></app-carrito>
-    </div>
+    
+    
   </div>
 </div>
 

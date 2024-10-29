@@ -111,6 +111,57 @@
   background-color: #f0f0f0;
 }
 
+/* Alertas personalizadas */
+.custom-alert {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 9999;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert i {
+  margin-right: 10px;
+}
+
+/* Estilo para los campos con errores */
+.error-bubble {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.5rem;
+  border-radius: 5px;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: max-content;
+  font-size: 0.8rem;
+}
+
+/* Ajustes para la fecha de expiración */
+.expiration-date select {
+  display: inline-block;
+  width: 48%;
+  margin-right: 2%;
+}
+.expiration-date select:last-child {
+  margin-right: 0;
+}
+
+
+
 /* Responsive Layout */
 @media (max-width: 768px) {
   .carrito-wrapper {
@@ -123,4 +174,14 @@
   .carrito-card {
     width: 48%; /* Ocupa casi la mitad del ancho en pantallas medianas y grandes */
   }
+
+  
+}
+
+@media (min-width: 768px) {
+  .carrito-card {
+    width: 48%; /* Ocupa casi la mitad del ancho en pantallas medianas y grandes */
+  }
+
+  
 }

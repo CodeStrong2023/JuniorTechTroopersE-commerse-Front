@@ -1,0 +1,93 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  animation: fadeIn 0.3s ease; /* Animación de entrada */
+}
+
+.ticket-detail-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: rgb(7, 7, 7);
+  color: var(--color-white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  max-width: 400px;
+  width: 90%;
+  font-family: var(--font-text);
+  opacity: 0;
+  animation: slideIn 0.3s ease forwards; /* Animación de entrada */
+}
+
+.ticket-detail-card h3 {
+  font-family: var(--font-title1);
+  color: var(--color-button);
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.ticket-detail-card p {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  color: #d1cccc;
+}
+
+.ticket-detail-card p i {
+  font-size: 20px;
+  color: #2b7df7;
+  margin-right: 8px;
+}
+
+.ticket-detail-card .label {
+  color: var(--color-white);
+  font-weight: bold;
+  font-family: var(--font-title2);
+  margin-right: 5px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-white); /* Color blanco por defecto (antes de pasar el cursor) */
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: red; /* Color rojo al pasar el cursor */
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Animación de salida */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

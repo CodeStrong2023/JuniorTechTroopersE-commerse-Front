@@ -27,6 +27,9 @@ export class PerfilUsuarioComponent implements OnInit {
   alojamientosAlquilados: TicketResponseDTO[] = [];
   isReservasLoading: boolean = true;
 
+  // Nueva variable para ticket seleccionado
+  selectedTicket: TicketResponseDTO | null = null;
+
   constructor(
     private authService: AuthService, 
     private hospedajeService: HospedajeService,
@@ -100,5 +103,14 @@ export class PerfilUsuarioComponent implements OnInit {
         this.isReservasLoading = false;
       }
     });
+  }
+  // Método para abrir detalles del ticket
+  openTicketDetail(ticket: TicketResponseDTO) {
+    this.selectedTicket = ticket;
+  }
+
+  // Método para cerrar el modal
+  closeTicketDetail() {
+    this.selectedTicket = null;
   }
 }

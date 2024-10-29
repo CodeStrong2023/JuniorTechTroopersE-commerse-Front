@@ -1,0 +1,17 @@
+<div class="modal-backdrop" (click)="closeModal()"></div>
+<div class="ticket-detail-card">
+  <button class="close-btn" (click)="closeModal()">
+    <i class="bi bi-x-circle"></i>
+  </button>
+  
+  <h3>{{ ticketDetail.nombreHospedaje }}</h3>
+  
+  <p><i class="bi bi-person-circle"></i> <span class="label">Inquilino:</span> {{ ticketDetail.userNameRenter }}</p>
+  <p><i class="bi bi-envelope"></i> <span class="label">Email:</span> {{ ticketDetail.emailRenter }}</p>
+  <p><i class="bi bi-telephone"></i> <span class="label">Teléfono:</span> {{ ticketDetail.phoneRenter }}</p>
+  
+  <p><i class="bi bi-calendar-event"></i> <span class="label">Fecha de Inicio:</span> {{ ticketDetail.startDate | date }}</p>
+  <p><i class="bi bi-calendar-check"></i> <span class="label">Fecha de Fin:</span> {{ ticketDetail.endDate | date }}</p>
+  
+  <p><i class="bi bi-currency-dollar"></i> <span class="label">Total:</span> ${{ ticketDetail.totalAmount }}</p>
+</div>

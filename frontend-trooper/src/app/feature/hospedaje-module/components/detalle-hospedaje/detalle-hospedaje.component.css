@@ -1,11 +1,12 @@
-*{
+* {
   font-family: var(--font-title2);
 }
 
 .reservation-container {
   padding: 50px;
   max-width: 1200px;
-  margin: 50px auto 0;  /* Añadimos margen superior */
+  margin: 50px auto 0;
+  /* Añadimos margen superior */
 }
 
 .title {
@@ -25,7 +26,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
-  flex-wrap: wrap;  /* Permite que las tarjetas se reorganicen en pantallas pequeñas */
+  flex-wrap: wrap;
+  /* Permite que las tarjetas se reorganicen en pantallas pequeñas */
 }
 
 .place-card,
@@ -34,11 +36,11 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 48%;  
-  margin-bottom: 20px;  
+  width: 48%;
+  margin-bottom: 20px;
 }
 
-.price-card{
+.price-card {
   height: 380px;
 }
 
@@ -133,18 +135,21 @@ select {
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-}  
+}
 
-h2, h3, h4 {
+h2,
+h3,
+h4 {
   margin: 10px 0;
   color: var(--color-button);
 }
 
-p{
+p {
   color: var(--color-button);
 }
 
-.close-btn, .confirm-btn {
+.close-btn,
+.confirm-btn {
   padding: 10px;
   margin: 10px;
   border: none;
@@ -166,7 +171,8 @@ p{
   display: flex;
   gap: 10px;
   margin-top: 15px;
-  flex-wrap: wrap; /* Permitir que las etiquetas se ajusten en pantallas pequeñas */
+  flex-wrap: wrap;
+  /* Permitir que las etiquetas se ajusten en pantallas pequeñas */
 }
 
 .service-tag {
@@ -187,7 +193,7 @@ p{
 .place-location {
   margin-top: 20px;
   font-size: 16px;
-  color: rgb(248, 173, 112); 
+  color: rgb(248, 173, 112);
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -198,86 +204,108 @@ p{
 }
 
 
-  /* From Uiverse.io by barisdogansutcu */
-  svg {
-    width: 3.25em;
-    transform-origin: center;
-    animation: rotate4 2s linear infinite;
+/* From Uiverse.io by barisdogansutcu */
+svg {
+  width: 3.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: hsl(110, 97%, 45%);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
   }
-  
-  circle {
-    fill: none;
-    stroke: hsl(110, 97%, 45%);
-    stroke-width: 2;
+}
+
+@keyframes dash4 {
+  0% {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-    stroke-linecap: round;
-    animation: dash4 1.5s ease-in-out infinite;
   }
-  
-  @keyframes rotate4 {
-    100% {
-      transform: rotate(360deg);
-    }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
   }
-  
-  @keyframes dash4 {
-    0% {
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-    }
-    50% {
-      stroke-dasharray: 90, 200;
-      stroke-dashoffset: -35px;
-    }
-    100% {
-      stroke-dashoffset: -125px;
-    }
+
+  100% {
+    stroke-dashoffset: -125px;
   }
-  
-  /* Estilo de la animación de parpadeo */
-  @keyframes blink {
-    0%, 100% {
-      color: white;
-    }
-    50% {
-      color: hsl(110, 97%, 45%);
-    }
+}
+
+/* Estilo de la animación de parpadeo */
+@keyframes blink {
+
+  0%,
+  100% {
+    color: white;
   }
-  
-  /* Contenedor de carga */
-  .loading-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 1000px; /* Ajusta la altura si es necesario */
+
+  50% {
+    color: hsl(110, 97%, 45%);
   }
-  
-  /* Texto de carga con animación */
-  .loading-text {
-    font-size: 1.2em;
-    margin-top: 10px;
-    animation: blink 1.9s infinite;
-  }
-  
-  .loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+}
+
+/* Contenedor de carga */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1000px;
+  /* Ajusta la altura si es necesario */
+}
+
+/* Texto de carga con animación */
+.loading-text {
+  font-size: 1.2em;
+  margin-top: 10px;
+  animation: blink 1.9s infinite;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.error-message {
+  position: fixed;
+  top: 150px;
+  right: 50px;
+  z-index: 9999;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 
 /* Media queries para dispositivos pequeños */
 @media (max-width: 768px) {
   .reservation-content {
     flex-direction: column;
-    align-items: center;  /* Centra las tarjetas */
+    align-items: center;
+    /* Centra las tarjetas */
   }
 
   .place-card,
   .price-card {
-    width: 100%;  /* Tarjetas ocupan todo el ancho en pantallas pequeñas */
+    width: 100%;
+    /* Tarjetas ocupan todo el ancho en pantallas pequeñas */
     margin-bottom: 20px;
   }
 
@@ -301,7 +329,8 @@ p{
 
   .place-card p,
   .place-details {
-    font-size: 14px;  /* Reduce el tamaño del texto */
+    font-size: 14px;
+    /* Reduce el tamaño del texto */
   }
 
   .price-card h2 {
@@ -310,5 +339,10 @@ p{
 
   .reserve-button {
     font-size: 16px;
+  }
+
+  .error-message{
+    top: 950px;
+  right: 5px;
   }
 }

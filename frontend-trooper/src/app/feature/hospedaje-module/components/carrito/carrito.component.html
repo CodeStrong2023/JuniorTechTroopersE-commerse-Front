@@ -16,36 +16,56 @@
       
     </div>
 
-    <!-- Tarjeta de Pago -->
-    <div class="carrito-card">
-      <h2 class="carrito-header">Información de Pago</h2>
-      <div class="carrito-payment-form">
-        <label for="payment-method">Método de Pago:</label>
-        <select id="payment-method">
-          <option value="credit-card">Tarjeta de Crédito</option>
-          <option value="debit-card">Tarjeta de Débito</option>
-          <option value="paypal">PayPal</option>
+   <!-- Tarjeta de Pago -->
+   <div class="carrito-card">
+    <h2 class="carrito-header">Información de Pago</h2>
+    <div class="carrito-payment-form">
+      <label for="payment-method">Método de Pago:</label>
+      <select id="payment-method">
+        <option value="credit-card">Tarjeta de Crédito</option>
+        <option value="debit-card">Tarjeta de Débito</option>
+        <option value="paypal">PayPal</option>
+      </select>
+
+      <label for="card-number">Número de Tarjeta:</label>
+      <input
+        id="card-number"
+        type="text"
+        maxlength="19"
+        placeholder="XXXX-XXXX-XXXX-XXXX"
+        (input)="formatCardNumber($event)"
+        required
+      />
+
+      <label for="card-holder">Titular de la Tarjeta:</label>
+      <input id="card-holder" type="text" placeholder="Nombre del Titular" required />
+
+      <label for="expiration-date">Fecha de Expiración:</label>
+      <div class="expiration-date">
+        <select id="expiration-month" required>
+          <option value="" disabled selected>Mes</option>
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
         </select>
+        <select id="expiration-year" required>
+          <option value="" disabled selected>Año</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
 
-        <label for="card-number">Número de Tarjeta:</label>
-        <input id="card-number" type="text" maxlength="19" placeholder="XXXX-XXXX-XXXX-XXXX" />
+      <label for="cvv">CVV:</label>
+      <input id="cvv" type="text" maxlength="3" placeholder="CVV" required />
 
-        <label for="card-holder">Titular de la Tarjeta:</label>
-        <input id="card-holder" type="text" placeholder="Nombre del Titular" />
+      <label for="email">Correo Electrónico:</label>
+      <input id="email" type="email" placeholder="ejemplo@correo.com" required />
 
-        <label for="expiration-date">Fecha de Expiración:</label>
-        <input id="expiration-date" type="text" maxlength="5" placeholder="MM/AA" />
-
-        <label for="cvv">CVV:</label>
-        <input id="cvv" type="text" maxlength="3" placeholder="CVV" />
-
-        <label for="email">Correo Electrónico:</label>
-        <input id="email" type="email" placeholder="ejemplo@correo.com" />
-
-        <button class="carrito-confirm-button" (click)="confirmarReserva()">
-          Confirmar y Reservar
-        </button>
+      <button class="carrito-confirm-button" (click)="confirmarReserva()">
+        Confirmar y Reservar
+      </button>
+      <div *ngIf="isAlertVisible" [ngClass]="{'alert-success': alertType === 'success', 'alert-error': alertType === 'error'}" class="custom-alert">
+        {{ alertMessage }}
       </div>
     </div>
   </div>
+</div>
+
 </div>

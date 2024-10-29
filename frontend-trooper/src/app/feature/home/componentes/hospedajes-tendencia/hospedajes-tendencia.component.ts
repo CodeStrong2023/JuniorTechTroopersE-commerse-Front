@@ -35,6 +35,6 @@ export class HospedajesTendenciaComponent implements OnInit {
 
   visitarHospedaje(hospedajeToken: string) {
     // Redirige directamente a la página de detalles del hospedaje con el token
-    this.router.navigate([`hospedaje/detalle-hospedaje`, hospedajeToken]);
+    this.router.navigate([`hospedaje/detalle-tendencia`, hospedajeToken]);
   }
 }

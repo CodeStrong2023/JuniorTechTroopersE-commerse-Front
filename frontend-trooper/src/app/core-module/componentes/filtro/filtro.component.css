@@ -146,6 +146,7 @@
     content: '';
 }
 
+
 .icon-bed::before {
     background-image: url('../../../../assets/icons/filtro/cama.png');
 }

@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { PerfilUsuarioComponent } from './componentes/perfil-usuario/perfil-usuario.component';
 import { CoreModule } from '../../core-module/core.module';
+import { DetalleTicketComponent } from './componentes/detalle-ticket/detalle-ticket.component';
 
 
 @NgModule({
   declarations: [
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    DetalleTicketComponent
   ],
   imports: [
     CommonModule,
