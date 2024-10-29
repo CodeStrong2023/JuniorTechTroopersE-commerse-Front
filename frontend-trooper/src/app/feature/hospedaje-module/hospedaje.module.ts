@@ -8,6 +8,7 @@ import { DetalleHospedajeComponent } from './components/detalle-hospedaje/detall
 import { NuevoHospedajeComponent } from './components/nuevo-hospedaje/nuevo-hospedaje.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DetalleTendenciaComponent } from './components/detalle-tendencia/detalle-tendencia.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     HospedajeProvinciasComponent,
     DetalleHospedajeComponent,
     CarritoComponent,
-    NuevoHospedajeComponent       
+    NuevoHospedajeComponent,
+    DetalleTendenciaComponent       
   ],
   imports: [
     CommonModule,
