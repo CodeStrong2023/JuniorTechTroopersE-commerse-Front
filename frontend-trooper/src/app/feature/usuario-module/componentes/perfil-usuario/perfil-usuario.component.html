@@ -56,8 +56,9 @@
       <h3>Mis Reservas</h3>
     </div>
     <ul *ngIf="reservas.length > 0; else noReservas">
-      <li *ngFor="let reserva of reservas" (click)="openTicketDetail(reserva)">
+      <li *ngFor="let reserva of reservas">
         <i class="bi bi-calendar-check"></i> {{ reserva.nombreHospedaje }} - Desde: {{ reserva.startDate | date }} Hasta: {{ reserva.endDate | date }}
+        <button class="ver-btn" (click)="openTicketDetail(reserva); $event.stopPropagation()">Ver</button>
       </li>
     </ul>
     <ng-template #noReservas><p>No tienes reservas.</p></ng-template>
@@ -69,12 +70,14 @@
       <h3>Alojamientos Alquilados</h3>
     </div>
     <ul *ngIf="alojamientosAlquilados.length > 0; else noAlojamientos">
-      <li *ngFor="let alojamiento of alojamientosAlquilados" (click)="openTicketDetail(alojamiento)">
+      <li *ngFor="let alojamiento of alojamientosAlquilados">
         <i class="bi bi-house-check"></i> {{ alojamiento.nombreHospedaje }} - Inquilino: {{ alojamiento.userNameRenter }}
+        <button class="ver-btn" (click)="openTicketDetail(alojamiento); $event.stopPropagation()">Ver</button>
       </li>
     </ul>
     <ng-template #noAlojamientos><p>No tienes alojamientos alquilados.</p></ng-template>
   </div>
+  
   
   
 
