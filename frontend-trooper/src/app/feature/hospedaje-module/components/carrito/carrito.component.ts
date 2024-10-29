@@ -41,12 +41,25 @@ export class CarritoComponent {
   confirmarReserva(): void {
 
     const cardNumber = (document.getElementById('card-number') as HTMLInputElement).value;
+    const cardHolder = (document.getElementById('card-holder') as HTMLInputElement).value;
+    const cvv = (document.getElementById('cvv') as HTMLInputElement).value;
     const email = (document.getElementById('email') as HTMLInputElement).value;
     const expirationMonth = (document.getElementById('expiration-month') as HTMLSelectElement).value;
     const expirationYear = (document.getElementById('expiration-year') as HTMLSelectElement).value;
 
+    // Validaciones de campos
     if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(cardNumber)) {
       this.showAlert('Número de tarjeta inválido', 'error');
+      return;
+    }
+
+    if (!cardHolder.trim()) {
+      this.showAlert('El nombre del titular es obligatorio', 'error');
+      return;
+    }
+
+    if (!/^\d{3,4}$/.test(cvv)) {
+      this.showAlert('CVV inválido', 'error');
       return;
     }
 
@@ -55,12 +68,16 @@ export class CarritoComponent {
       return;
     }
 
+    if (!expirationMonth || !expirationYear) {
+      this.showAlert('Fecha de expiración es obligatoria', 'error');
+      return;
+    }
+
     const expirationDate = new Date(parseInt(expirationYear), parseInt(expirationMonth) - 1);
     if (expirationDate < new Date()) {
       this.showAlert('La fecha de expiración es inválida', 'error');
       return;
     }
-
     const ticket: Ticket = {
       hospedajeToken: this.hospedaje.hospedajeToken,
       startDate: this.checkInDate,
