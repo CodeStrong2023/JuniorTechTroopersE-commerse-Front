@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FiltroService } from '../../../shared/services/filtro.service';
 import { Hospedaje } from '../../../shared/model/hospedaje';
 import { HospedajeService } from '../../../shared/services/hospedaje/hospedaje.service';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrl: './filtro.component.css'
 })
 export class FiltroComponent implements OnInit{
+  @Input() initialLocation: any = null;
+
   suggestions: any[] = [];
   selectedLocation: any = null;
   selectedDate: string = '';
@@ -25,6 +27,10 @@ export class FiltroComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    if (this.initialLocation) {
+      this.selectedLocation = this.initialLocation; // Asignar localidad inicial si existe
+    }
+
     this.router.events.subscribe(() => {
       if (this.showAlert) {
         setTimeout(() => this.showAlert = false, 5000);
