@@ -292,12 +292,14 @@ circle {
   font-size: 0.9rem;
   margin-left: auto; /* Para alinear el botón a la derecha */
   margin-right: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
 }
 
 .ver-btn:hover {
   background-color: rgba(65, 65, 4, 0.1); /* Color de fondo con transparencia */ 
   color: var(--color-button); /* Cambia el color del icono al hacer hover */
+  box-shadow: 0 1px 3px var(--color-button);
 }
 
 
