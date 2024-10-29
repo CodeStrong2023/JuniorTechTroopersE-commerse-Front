@@ -54,3 +54,44 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-button);
 }
+
+
+/* Estilos de Tooltip Genérico */
+.tooltip::after {
+    content: attr(data-tooltip); /* Obtiene el texto del atributo data-tooltip */
+    position: absolute;
+    bottom: 100%; /* Sitúa el tooltip encima del elemento */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333333; /* Color de fondo del tooltip */
+    color: #ffffff; /* Color del texto del tooltip */
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.6em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Evita que el tooltip interfiera con el hover */
+    z-index: 10000;
+}
+
+/* Triángulo del tooltip */
+.tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 90%; /* Sitúa el triángulo justo debajo del tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+/* Muestra el tooltip al hacer hover */
+.tooltip:hover::after,
+.tooltip:hover::before {
+    opacity: 1;
+}
