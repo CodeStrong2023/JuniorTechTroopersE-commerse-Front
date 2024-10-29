@@ -18,6 +18,8 @@ export class DetalleHospedajeComponent implements OnInit {
    checkOutDate!: string;
    isPagoOpen: boolean = false;
 
+   errorMessage: string | null = null; 
+
 //Inyectamos el servicio de hospedaje y el servicio de rutas
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +40,12 @@ export class DetalleHospedajeComponent implements OnInit {
   }
 
   abrirPago(): void {
-    this.isPagoOpen = true;
+    if (!this.checkInDate || !this.checkOutDate) {
+      this.errorMessage = 'Por favor, selecciona fechas de check-in y check-out.';
+    } else {
+      this.errorMessage = null; // Limpiar el mensaje de error
+      this.isPagoOpen = true;
+    }
   }
 
   cerrarPago(): void {

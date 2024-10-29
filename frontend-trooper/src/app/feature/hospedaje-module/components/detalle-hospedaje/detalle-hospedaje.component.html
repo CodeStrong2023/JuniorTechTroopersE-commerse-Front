@@ -56,6 +56,9 @@
       <h2>${{ hospedaje.price }} <span>/ noche</span></h2>
 
       <div class="check-in-out">
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
         <div class="check-in">
           <label for="checkin">Check-In</label>
           <input type="date" id="checkin" [(ngModel)]="checkInDate">

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { DestinoSeleccionadoDTO } from '../../../../shared/model/destino-seleccionado-DTO';
 import { Ticket } from '../../../../shared/model/ticket';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
@@ -27,7 +28,8 @@ export class CarritoComponent {
 
   constructor(
     private ticketService: TicketService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   //Función para formatear el número de la tarjeta
@@ -88,17 +90,19 @@ export class CarritoComponent {
     const userToken = this.authService.getToken();
 
     if (!userToken) {
-      alert('Por favor, inicie sesión para confirmar la reserva');
+      this.showAlert('Por favor, inicie sesión para confirmar la reserva', 'error');
       return;
     }
 
     this.ticketService.generateTicket(ticket, userToken).subscribe({
       next: () => {
-        alert('Reserva confirmada exitosamente');
-        this.close.emit();
+        this.showAlert('Reserva confirmada exitosamente', 'success');        
+        setTimeout(() => {
+          this.router.navigate(['/perfil-usuario']);
+        }, 3000);
       },
       error: () => {
-        alert('Hubo un error al confirmar la reserva');
+        this.showAlert('Hubo un error al confirmar la reserva','error');
       }
     });
   }
@@ -108,10 +112,10 @@ export class CarritoComponent {
     this.alertType = type;
     this.isAlertVisible = true;
 
-    // Oculta la alerta después de 3 segundos
+    // Oculta la alerta después de 4 segundos
     setTimeout(() => {
       this.isAlertVisible = false;
-    }, 3000);
+    }, 4000);
   }
 
   calcularTotal(): number {

@@ -174,4 +174,14 @@
   .carrito-card {
     width: 48%; /* Ocupa casi la mitad del ancho en pantallas medianas y grandes */
   }
+
+  
+}
+
+@media (min-width: 768px) {
+  .carrito-card {
+    width: 48%; /* Ocupa casi la mitad del ancho en pantallas medianas y grandes */
+  }
+
+  
 }
