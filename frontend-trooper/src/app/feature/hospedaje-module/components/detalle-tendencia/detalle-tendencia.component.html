@@ -1,1 +1,69 @@
-<p>detalle-tendencia works!</p>
+<app-header></app-header>
+
+<!-- Animación de carga mientras los hospedajes se están cargando -->
+<div *ngIf="isHospedajesLoading" class="loading-container">
+  <div class="loading-spinner">
+    <svg viewBox="25 25 50 50">
+      <circle r="20" cy="50" cx="50"></circle>
+    </svg>
+  </div>
+  <!-- Texto de carga con animación de parpadeo -->
+  <p class="loading-text">Cargando hospedaje...</p>
+</div>
+
+<div class="reservation-container" *ngIf="hospedaje" data-aos="zoom-in">
+  <h1 class="title">{{ hospedaje.name }} <span>{{ hospedaje.locality }}</span></h1>
+
+  <div class="reservation-content">
+    <!-- Card principal con los detalles del lugar -->
+    <div class="place-card">
+      <h2>¿Qué ofrece este lugar?</h2>
+      <p>{{ hospedaje.description }}</p>
+      <img [src]="hospedaje.urlImg" alt="Imagen del lugar" class="place-image">
+
+      <!-- Servicios en etiquetas con íconos -->
+      <div class="place-services">
+        <span *ngIf="hospedaje.wifi" class="service-tag">
+          <i class="bi bi-wifi"></i> Wifi
+        </span>
+        <span *ngIf="hospedaje.tv" class="service-tag">
+          <i class="bi bi-tv"></i> TV
+        </span>
+        <span *ngIf="hospedaje.garage" class="service-tag">
+          <i class="bi bi-car-front-fill"></i> Garaje
+        </span>
+        <span *ngIf="hospedaje.airConditioning" class="service-tag">
+          <i class="bi bi-snow"></i> Aire acondicionado
+        </span>
+        <span *ngIf="hospedaje.heating" class="service-tag">
+          <i class="bi bi-thermometer-half"></i> Calefacción
+        </span>
+        <span *ngIf="hospedaje.pool" class="service-tag">
+          <i class="bi bi-water"></i> Piscina
+        </span>
+        
+      </div>
+
+
+      <!-- Localidad con ícono rojo -->
+      <div class="place-location">
+        <i class="bi bi-geo-alt-fill text-danger"></i>
+        {{ hospedaje.locality }}
+      </div>
+
+
+    </div>
+
+    <!-- Card de "Comprobar disponibilidad" a la derecha -->
+  <div class="availability-card">
+    <h2>¿Quieres hospedarte aquí?</h2>
+    <p>Comienza comprobando la disponibilidad para tus fechas ideales.</p>
+    <app-filtro class="availability-filter"></app-filtro>
+  </div>
+
+    
+    
+  </div>
+</div>
+
+<app-footer></app-footer>
