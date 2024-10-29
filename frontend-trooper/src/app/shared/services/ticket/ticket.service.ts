@@ -11,10 +11,10 @@ import { TicketResponseDTO } from '../../model/ticket-DTO';
 export class TicketService {
 
   //URL de la API para generar un ticket de hospedaje en MODO DESARROLLO
-  private apiUrl = 'http://localhost:8080/ticket';
+  //private apiUrl = 'http://localhost:8080/ticket';
 
   //URL de la API para generar un ticket de hospedaje en MODO PRODUCCIÓN
-  //private apiUrl = '/ticket';
+  private apiUrl = 'https://login-o23e.onrender.com/ticket';
 
   constructor(private http: HttpClient) {}
 
