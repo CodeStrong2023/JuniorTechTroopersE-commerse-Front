@@ -19,7 +19,7 @@
     <div class="place-card">
       <h2>¿Qué ofrece este lugar?</h2>
       <p>{{ hospedaje.description }}</p>
-      <img [src]="hospedaje.urlImg" alt="Imagen del lugar" class="place-image">
+      <img [src]="hospedaje.urlImg || 'assets/images/hospedaje-pordefecto/hospedaje.png'" alt="Imagen del lugar" class="place-image">
 
       <!-- Servicios en etiquetas con íconos -->
       <div class="place-services">
