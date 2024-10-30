@@ -19,7 +19,7 @@
     <div class="place-card">
       <h2>¿Qué ofrece este lugar?</h2>
       <p>{{ hospedaje.description }}</p>
-      <img [src]="hospedaje.urlImg" alt="Imagen del lugar" class="place-image">
+      <img [src]="hospedaje.urlImg || 'assets/images/hospedaje-pordefecto/hospedaje.png'" alt="Imagen del lugar" class="place-image">
 
       <!-- Servicios en etiquetas con íconos -->
       <div class="place-services">
@@ -74,7 +74,12 @@
         <option>1 huésped</option>
         <option>2 huéspedes</option>
         <option>3 huéspedes</option>
-        <!-- Añadir más opciones según sea necesario -->
+        <option>4 huéspedes</option>
+        <option>5 huéspedes</option>
+        <option>6 huéspedes</option>
+        <option>7 huéspedes</option>
+        <option>8 huéspedes</option>
+        
       </select>
 
       <button class="reserve-button" (click)="abrirPago()">Reservar</button>
