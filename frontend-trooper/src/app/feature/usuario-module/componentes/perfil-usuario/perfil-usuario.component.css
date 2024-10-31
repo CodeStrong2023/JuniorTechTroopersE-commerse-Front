@@ -302,6 +302,46 @@ circle {
   box-shadow: 0 1px 3px var(--color-button);
 }
 
+/* Tooltip personalizado */
+.add-btn::after {
+    content: attr(data-tooltip); /* Obtiene el texto del data-tooltip */
+    position: absolute;
+    bottom: 100%; /* Sitúa el tooltip encima del botón */
+    right: 50%;
+    transform: translateX(50%);
+    background-color: #333333; /* Color de fondo gris oscuro */
+    color: #ffffff; /* Color del texto */
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: lighter;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Evita que el tooltip interfiera con el hover */
+    z-index: 10000;
+}
+
+/* Triángulo del tooltip */
+.add-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 90%; /* Sitúa el triángulo justo debajo del tooltip */
+    right: 50%;
+    transform: translateX(50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333333 transparent transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10000;
+}
+
+/* Muestra el tooltip al hacer hover */
+.add-btn:hover::after,
+.add-btn:hover::before {
+    opacity: 1;
+}
 
 
 /* Responsivo */
@@ -322,3 +362,4 @@ circle {
     right: 10px;
   }
 }
+
