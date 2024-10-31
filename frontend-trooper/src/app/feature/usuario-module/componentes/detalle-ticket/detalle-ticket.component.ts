@@ -9,6 +9,8 @@ import { TicketResponseDTO } from '../../../../shared/model/ticket-DTO';
 export class DetalleTicketComponent {
   @Input() ticketDetail!: TicketResponseDTO; // Detalles de la reserva/alojamiento
   @Output() close = new EventEmitter<void>(); // Evento para cerrar el modal
+  @Input() role: string = 'Inquilino'; // Rol que determina el texto
+
 
   //Método para cerrar la card
   closeModal() {
