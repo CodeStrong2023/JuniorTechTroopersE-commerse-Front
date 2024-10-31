@@ -77,7 +77,7 @@ export class CarritoComponent {
 
     const expirationDate = new Date(parseInt(expirationYear), parseInt(expirationMonth) - 1);
     if (expirationDate < new Date()) {
-      this.showAlert('La fecha de expiración es inválida', 'error');
+      this.showAlert('La fecha de expiración es inválida, tarjeta fuera de servicio', 'error');
       return;
     }
     const ticket: Ticket = {

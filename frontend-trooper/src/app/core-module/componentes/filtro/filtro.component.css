@@ -211,6 +211,9 @@
     align-items: center;
     z-index: 1;
   }
+
+
+  
   
   /* Estilos para pantallas pequeñas */
 @media (max-width: 600px) {
