@@ -85,6 +85,28 @@ span {
     }
 }
 
+@media (max-width: 1024px) and (min-width: 769px) {
+    .banner-title {
+        font-size: 3vw; /* Ajustar el tamaño de fuente */
+        max-width: 500px;
+    }
+
+    .banner-header {
+        margin-top: 22vh; /* Ajustar el margen superior */
+        padding: 0 15px;
+    }
+
+    .banner-logo {
+        height: 10vw; /* Ajustar tamaño del logo */
+        max-height: 130px;
+    }
+
+    .filtro {
+        top: 55%;
+    }
+}
+
+
 /* Media Queries */
 @media (max-width: 768px) {
     .banner-title {
