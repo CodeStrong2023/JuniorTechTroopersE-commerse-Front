@@ -14,12 +14,12 @@ import { TicketService } from '../../../../shared/services/ticket/ticket.service
 })
 export class PerfilUsuarioComponent implements OnInit {
   userProfile: UserProfile | null = null;
-  
+
   // Control para el spinner de carga
   isProfileLoading: boolean = true; // Para mostrar spinner mientras se carga el perfil
   isHospedajesLoading: boolean = true; // Para mostrar spinner mientras se cargan los alojamientos
 
-  hospedajes: Hospedaje[] = [];  
+  hospedajes: Hospedaje[] = [];
   errorMessage: string = '';
 
   // Nuevas variables para los tickets
@@ -29,11 +29,13 @@ export class PerfilUsuarioComponent implements OnInit {
 
   // Nueva variable para ticket seleccionado
   selectedTicket: TicketResponseDTO | null = null;
+  // Variable adicional para identificar al propietario o inquilino
+  ticketRole: string = 'Inquilino';
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private hospedajeService: HospedajeService,
-    private ticketService : TicketService) {}
+    private ticketService: TicketService) { }
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -79,7 +81,7 @@ export class PerfilUsuarioComponent implements OnInit {
   // Nuevo método para cargar los tickets
   loadTickets(): void {
     const userToken = this.authService.getToken();
-  
+
     // Obtener los tickets de reservas propias
     this.ticketService.getTicketsReservas(userToken).subscribe({
       next: (reservas) => {
@@ -91,7 +93,7 @@ export class PerfilUsuarioComponent implements OnInit {
         this.isReservasLoading = false;
       }
     });
-  
+
     // Obtener los tickets de hospedajes alquilados a otros usuarios
     this.ticketService.getUserTickets(userToken).subscribe({
       next: (alojamientosAlquilados) => {
@@ -104,9 +106,12 @@ export class PerfilUsuarioComponent implements OnInit {
       }
     });
   }
-  // Método para abrir detalles del ticket
-  openTicketDetail(ticket: TicketResponseDTO) {
+
+
+  // Método para abrir detalles del ticket con rol asignado
+  openTicketDetail(ticket: TicketResponseDTO, role: 'Propietario' | 'Inquilino') {
     this.selectedTicket = ticket;
+    this.ticketRole = role;
   }
 
   // Método para cerrar el modal
